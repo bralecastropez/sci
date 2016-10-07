@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="609bcf7cce2747c4a6c36d9a25fd2ab3" Name="Diagram1">
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Caja" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Categoria" Width="1.5" PointX="8.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Cliente" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Compra" Width="1.5" PointX="7.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Empleado" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Empresa" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Equipo" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Factura" Width="1.5" PointX="10.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Inventario" Width="1.5" PointX="5.25" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Modulo" Width="1.5" PointX="1.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Pedido" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Producto" Width="1.5" PointX="10.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Producto_Compra" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Producto_Factura" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Producto_Inventario" Width="1.5" PointX="12.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Proveedor" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Reporte" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Rol" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Sucursal" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Usuario" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Model.Schema.Venta" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Caja_Sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Caja_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Factura_Caja" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Venta_Caja" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.PK_Compra_Caja" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.PK_Pedido_Caja" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Producto_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Cliente_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Pedido_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_ProductoCompra_Compra" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.PK_Compra_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Usuario_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Equipo_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Reporte_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Sucursal_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Inventario_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_ProductoInventario_Inventario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Venta_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_Producto_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_ProductoCompra_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.FK_ProductoInventario_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.PK_Usuario_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="SCI.BusinessObjects.Model.Schema.Rol_Modulo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

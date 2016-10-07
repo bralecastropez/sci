@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FE9C67F1-17B5-4D63-BF8A-0E5F4BE59B8E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <AssemblyName>SCI.BusinessObjects</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SCI.BusinessObjects.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SCI.BusinessObjects.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\DataContext.vb" />
+    <Compile Include="Models\IdentityBusinessObjects.vb" />
+    <Compile Include="Models\PrincipleBusinessObjects.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Schema\Caja.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Categoria.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Cliente.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Compra.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Empleado.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Empresa.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Equipo.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Factura.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Inventario.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Modulo.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Pedido.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Producto.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Producto_Compra.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Producto_Factura.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Producto_Inventario.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Proveedor.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Reporte.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Rol.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\SCIDataModel.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCIDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\SCIDataModel.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCIDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\SCIDataModel.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Sucursal.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\sysdiagrams.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Usuario.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Venta.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Schema\SCIDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SCIDataModel.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="Schema\SCIDataModel.edmx.diagram">
+      <DependentUpon>SCIDataModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Schema\SCIDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SCIDataModel.edmx</DependentUpon>
+      <LastGenOutput>SCIDataModel.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Schema\SCIDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SCIDataModel.edmx</DependentUpon>
+      <LastGenOutput>SCIDataModel.vb</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
