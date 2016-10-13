@@ -20,7 +20,7 @@ Namespace SCI.Modules.UserLogin.ViewModels
         Private _loginMessage As String
         Private _loginSuccess As Boolean = False
         Private _MostrarError As String = "Hidden"
-        Private _userAccess As IUsuarioDataService
+        Private _userAccess As IUserDataService
 #End Region
 #Region "Propiedades"
         Public Property User As Usuario
@@ -82,8 +82,8 @@ Namespace SCI.Modules.UserLogin.ViewModels
 
 #Region "Constructores"
         Public Sub New()
-            ServiceLocator.RegisterService(Of IUsuarioDataService)(New UsuarioDataService)
-            _userAccess = GetService(Of IUsuarioDataService)()
+            ServiceLocator.RegisterService(Of IUserDataService)(New UserDataService)
+            _userAccess = GetService(Of IUserDataService)()
             LoginCommand = New RelayCommand(AddressOf LoginExecute, AddressOf CanLoginExecute)
             MostrarError = "Hidden"
         End Sub

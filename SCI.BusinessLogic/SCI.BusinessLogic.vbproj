@@ -91,9 +91,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Services\Implementations\CategoryDataService.vb" />
-    <Compile Include="Services\Implementations\UsuarioDataService.vb" />
+    <Compile Include="Services\Implementations\UserDataService.vb" />
     <Compile Include="Services\Interfaces\ICategoryDataService.vb" />
-    <Compile Include="Services\Interfaces\IUsuarioDataService.vb" />
+    <Compile Include="Services\Interfaces\IUserDataService.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

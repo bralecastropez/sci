@@ -6,10 +6,10 @@ Imports SCI.BusinessObjects.Models
 Imports SCI.Infrastructure.Helpers
 
 Namespace SCI.BusinessLogic.Services
-    Public Class UsuarioDataService
-        Implements IUsuarioDataService
+    Public Class UserDataService
+        Implements IUserDataService
 
-        Public Function GetUserByUserName(ByVal UserName As String) As Usuario Implements IUsuarioDataService.GetUserByUserName
+        Public Function GetUserByUserName(ByVal UserName As String) As Usuario Implements IUserDataService.GetUserByUserName
             Dim Resultado As New Usuario
             Try
                 Resultado = (From u In DataContext.DBEntities.Usuario Where u.Nick = UserName).FirstOrDefault
@@ -35,7 +35,7 @@ Namespace SCI.BusinessLogic.Services
             Return Resultado
         End Function
 
-        Public Function Login(ByVal UserName As String, ByVal LoginPassword As String) As Boolean Implements IUsuarioDataService.Login
+        Public Function Login(ByVal UserName As String, ByVal LoginPassword As String) As Boolean Implements IUserDataService.Login
             Dim errMsg As String = String.Empty
             Dim user As Usuario = Nothing
 
