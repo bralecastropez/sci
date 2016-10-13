@@ -56,8 +56,8 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
+    <Reference Include="MahApps.Metro, Version=1.3.0.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.3.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -81,7 +81,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\MahApps.Metro.1.3.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xaml" />
@@ -119,9 +119,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModel\UserLoginViewModel.vb" />
-    <Compile Include="View\Test.xaml.vb">
-      <DependentUpon>Test.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\UserLoginView.xaml.vb">
       <DependentUpon>UserLoginView.xaml</DependentUpon>
     </Compile>
@@ -153,17 +150,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="View\Test.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\UserLoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CSI.BusinessLogic\SCI.BusinessLogic.vbproj">
+    <ProjectReference Include="..\SCI.BusinessLogic\SCI.BusinessLogic.vbproj">
       <Project>{d1d93999-2ab2-48fe-a241-2124ac157052}</Project>
       <Name>SCI.BusinessLogic</Name>
     </ProjectReference>
@@ -174,6 +167,10 @@
     <ProjectReference Include="..\SCI.Infrastructure\SCI.Infrastructure.vbproj">
       <Project>{6a1b3e85-59c3-4630-bceb-10f2400db955}</Project>
       <Name>SCI.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCI.Modules.Category\SCI.Modules.Category.vbproj">
+      <Project>{126ef6b1-e717-4e10-a6b3-97cea621881c}</Project>
+      <Name>SCI.Modules.Category</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -93,7 +93,7 @@
                         <!--<Label FontFamily="Arial" FontSize="14" Content="Usuario o Contraseña Incorrectos!"/>-->
                         <TextBlock x:Name="LoginStatusTextBlock" Foreground="Red" TextWrapping="Wrap" Text="{Binding Path=LoginMessage}"  />
                     </StackPanel>
-                    <TextBox Grid.Row="5" Grid.Column="1" materialDesign:HintAssist.Hint="Usuario"  Margin="30 25 30 10"
+                    <TextBox Grid.Row="5" Grid.Column="1" FontFamily="Arial" FontSize="14" materialDesign:HintAssist.Hint="Usuario"  Margin="30 25 30 10"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Path=UserName, Mode=TwoWay}"  />
                     <PasswordBox Grid.Row="5" FontFamily="Arial" FontSize="14" Grid.Column="1" Margin="30 15 30 10" materialDesign:HintAssist.Hint="Contraseña" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                             myXamlHelpers:PasswordBoxHelper.BindPassword="True"

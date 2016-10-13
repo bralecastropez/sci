@@ -6,6 +6,8 @@ Imports SCI.BusinessObjects.Models
 Imports SCI.Infrastructure
 Imports SCI.Infrastructure.Helpers
 Imports SCI.BusinessLogic.Services
+Imports System.Windows
+Imports SCI.Modules.Category.Views
 
 Namespace SCI.Modules.UserLogin.ViewModels
     Public Class UserLoginViewModel
@@ -20,7 +22,7 @@ Namespace SCI.Modules.UserLogin.ViewModels
         Private _MostrarError As String = "Hidden"
         Private _userAccess As IUsuarioDataService
 #End Region
-#Region "Properties"
+#Region "Propiedades"
         Public Property User As Usuario
             Get
                 Return _user
@@ -78,14 +80,16 @@ Namespace SCI.Modules.UserLogin.ViewModels
         Public Property LoginCommand As ICommand
 #End Region
 
+#Region "Constructores"
         Public Sub New()
             ServiceLocator.RegisterService(Of IUsuarioDataService)(New UsuarioDataService)
             _userAccess = GetService(Of IUsuarioDataService)()
             LoginCommand = New RelayCommand(AddressOf LoginExecute, AddressOf CanLoginExecute)
             MostrarError = "Hidden"
         End Sub
+#End Region
 
-#Region "Command Methods"
+#Region "Metodos"
 
         Private Sub LoginExecute()
             Dim paramUserName = UserName
@@ -94,6 +98,7 @@ Namespace SCI.Modules.UserLogin.ViewModels
                 If _userAccess.Login(paramUserName, paramPassword) Then
                     LoginSuccess = True
                     LoginMessage = "Bienvenido " & _userAccess.GetUserByUserName(UserName).Nick
+                    Application.Current.MainWindow.Content = New CategoryView
                 End If
             Catch ex As Exception
                 LoginMessage = ex.Message
