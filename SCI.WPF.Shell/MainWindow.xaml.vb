@@ -1,6 +1,5 @@
 ﻿Imports MahApps.Metro.Controls
 Imports SCI.Modules.UserLogin.Views
-Imports SCI.Modules.Dashboard.Views
 
 Namespace SCI.WPF.Shell
 

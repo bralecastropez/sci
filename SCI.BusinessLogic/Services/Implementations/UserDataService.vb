@@ -82,6 +82,7 @@ Namespace SCI.BusinessLogic.Services
 
                     For Each modu In modules
                         For Each m In modu
+                            MsgBox(m.Descripcion)
                             moduleList.Add(m.Descripcion)
                         Next
                     Next
@@ -90,7 +91,7 @@ Namespace SCI.BusinessLogic.Services
 
                     Dim identity As New IdentityBusinessObject(user.Nick, "Custom")
                     principal = New PrincipleBusinessObject(identity, roleList)
-
+                    LoggedInUser.GetInstance.UserLogged = user
                     'Throw New Exception(errMsg)
                 Else
                     Dim identity As New IdentityBusinessObject("", "")

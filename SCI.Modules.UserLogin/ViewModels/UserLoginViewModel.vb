@@ -1,13 +1,8 @@
-﻿Imports System.ComponentModel
-Imports System.Collections.ObjectModel
-Imports System.Windows.Input
-Imports System.Threading
-Imports SCI.BusinessObjects.Models
-Imports SCI.Infrastructure
+﻿Imports System.Windows.Input
 Imports SCI.Infrastructure.Helpers
 Imports SCI.BusinessLogic.Services
 Imports System.Windows
-Imports SCI.Modules.Category.Views
+Imports SCI.Modules.Manager.Views
 
 Namespace SCI.Modules.UserLogin.ViewModels
     Public Class UserLoginViewModel
@@ -98,7 +93,7 @@ Namespace SCI.Modules.UserLogin.ViewModels
                 If _userAccess.Login(paramUserName, paramPassword) Then
                     LoginSuccess = True
                     LoginMessage = "Bienvenido " & _userAccess.GetUserByUserName(UserName).Nick
-                    Application.Current.MainWindow.Content = New CategoryView
+                    Application.Current.MainWindow.Content = New ManagerView
                 End If
             Catch ex As Exception
                 LoginMessage = ex.Message

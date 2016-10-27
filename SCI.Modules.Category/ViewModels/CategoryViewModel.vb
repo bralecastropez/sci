@@ -101,9 +101,16 @@ Namespace SCI.Modules.Category.ViewModels
         Sub New()
             MyBase.New()
             TituloModulo = "Categoria"
+
+
+
+
             ServiceLocator.RegisterService(Of ICategoryDataService)(New CategoryDataService)
             _categoryAccess = GetService(Of ICategoryDataService)()
             ListadoDeCategorias = _categoryAccess.Listar
+
+
+
             AddCommand = New RelayCommand(AddressOf AddCategoryExecute, AddressOf CanAddExecute)
             EditCommand = New RelayCommand(AddressOf EditCategoryExecute, AddressOf CanEditExecute)
             DeleteCommand = New RelayCommand(AddressOf DeleteCategoryExecute, AddressOf CanDeleteExecute)
