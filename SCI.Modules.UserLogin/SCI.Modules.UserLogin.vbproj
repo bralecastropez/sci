@@ -168,6 +168,18 @@
       <Project>{6a1b3e85-59c3-4630-bceb-10f2400db955}</Project>
       <Name>SCI.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SCI.Modules.Category\SCI.Modules.Category.vbproj">
+      <Project>{126ef6b1-e717-4e10-a6b3-97cea621881c}</Project>
+      <Name>SCI.Modules.Category</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCI.Modules.Dashboard\SCI.Modules.Dashboard.vbproj">
+      <Project>{f2b92370-8f05-44e0-abc1-be039be57089}</Project>
+      <Name>SCI.Modules.Dashboard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCI.Modules.Employee\SCI.Modules.Employee.vbproj">
+      <Project>{c3742918-3273-4259-aece-fef17931db55}</Project>
+      <Name>SCI.Modules.Employee</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SCI.Modules.Manager\SCI.Modules.Manager.vbproj">
       <Project>{c64eb509-dd64-46a1-9187-15200fb21aa2}</Project>
       <Name>SCI.Modules.Manager</Name>
