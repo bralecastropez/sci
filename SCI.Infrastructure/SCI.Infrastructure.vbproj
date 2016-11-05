@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\ItemMenu.vb" />
+    <Compile Include="Domain\AnotherCommandImplementation.vb" />
     <Compile Include="Helpers\Crypto.vb" />
     <Compile Include="Helpers\GuiViewBase.vb" />
     <Compile Include="Helpers\RelayCommand.vb" />
@@ -107,7 +108,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

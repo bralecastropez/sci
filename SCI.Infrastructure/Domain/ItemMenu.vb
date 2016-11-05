@@ -29,6 +29,13 @@ Namespace SCI.Infrastructure.Domain
             End Set
         End Property
 #End Region
+#Region "Constructores"
+        Sub New(ByVal Nombre As String, ByVal Contenido As Object)
+            Me.Nombre = Nombre
+            Me.Contenido = Contenido
+        End Sub
+
+#End Region
     End Class
 
 End Namespace

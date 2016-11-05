@@ -1,6 +1,8 @@
 ﻿Imports SCI.Infrastructure.Helpers
 Imports SCI.BusinessLogic.Services
 Imports SCI.Modules.Category.Views
+Imports System.Windows.Input
+Imports MaterialDesignColors.WpfExample.Domain
 
 Namespace SCI.Modules.Category.ViewModels
     Public Class CategoryViewModel
@@ -51,6 +53,7 @@ Namespace SCI.Modules.Category.ViewModels
                 OnPropertyChanged("ListadoDeCategorias")
             End Set
         End Property
+        Public Property SearchCommand As ICommand
 #End Region
 #Region "Metodos"
         Public Sub AddCategoryExecute()
@@ -96,6 +99,10 @@ Namespace SCI.Modules.Category.ViewModels
         Public Function CanAcceptCategoryExecute() As Boolean
             Return (Not String.IsNullOrEmpty(Nombre))
         End Function
+
+        Public Sub Buscar(ByVal Obj As Object)
+
+        End Sub
 #End Region
 #Region "Constructores"
         Sub New()
@@ -104,6 +111,10 @@ Namespace SCI.Modules.Category.ViewModels
             ServiceLocator.RegisterService(Of ICategoryDataService)(New CategoryDataService)
             _categoryAccess = GetService(Of ICategoryDataService)()
             ListadoDeCategorias = _categoryAccess.Listar
+
+            SearchCommand = New AnotherCommandImplementation(AddressOf Buscar)
+            'SearchCommand = New RelayCommand(AddressOf Buscar)
+
             AddCommand = New RelayCommand(AddressOf AddCategoryExecute, AddressOf CanAddExecute)
             EditCommand = New RelayCommand(AddressOf EditCategoryExecute, AddressOf CanEditExecute)
             DeleteCommand = New RelayCommand(AddressOf DeleteCategoryExecute, AddressOf CanDeleteExecute)

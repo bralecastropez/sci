@@ -44,8 +44,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dragablz, Version=0.0.3.171, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dragablz.0.0.3.171\lib\net45\Dragablz.dll</HintPath>
+    <Reference Include="Dragablz, Version=0.0.3.172, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dragablz.0.0.3.172\lib\net45\Dragablz.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -118,8 +118,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModel\UserLoginViewModel.vb" />
-    <Compile Include="View\UserLoginView.xaml.vb">
+    <Compile Include="ViewModels\UserLoginViewModel.vb" />
+    <Compile Include="Views\UserLoginView.xaml.vb">
       <DependentUpon>UserLoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Xaml Helpers\PasswordBoxHelper.vb" />
@@ -150,7 +150,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="View\UserLoginView.xaml">
+    <Page Include="Views\UserLoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,6 +171,18 @@
     <ProjectReference Include="..\SCI.Modules.Category\SCI.Modules.Category.vbproj">
       <Project>{126ef6b1-e717-4e10-a6b3-97cea621881c}</Project>
       <Name>SCI.Modules.Category</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCI.Modules.Dashboard\SCI.Modules.Dashboard.vbproj">
+      <Project>{f2b92370-8f05-44e0-abc1-be039be57089}</Project>
+      <Name>SCI.Modules.Dashboard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCI.Modules.Employee\SCI.Modules.Employee.vbproj">
+      <Project>{c3742918-3273-4259-aece-fef17931db55}</Project>
+      <Name>SCI.Modules.Employee</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCI.Modules.Manager\SCI.Modules.Manager.vbproj">
+      <Project>{c64eb509-dd64-46a1-9187-15200fb21aa2}</Project>
+      <Name>SCI.Modules.Manager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

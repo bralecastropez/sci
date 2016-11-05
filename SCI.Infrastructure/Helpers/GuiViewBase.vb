@@ -10,6 +10,11 @@ Namespace SCI.Infrastructure.Helpers
         Private _MostrarSegundoDialogo As Boolean
         Private _ContenidoPrimerDialogo
         Private _ContenidoSegundoDialogo
+        Private _ShowFirstDialog As Boolean
+        Private _ShowSecondDialog As Boolean
+        Private _FirstDialogContent
+        Private _SecondDialogContent
+
         'Componentes
         Private _TituloModulo As String
         Private _TituloCrud As String

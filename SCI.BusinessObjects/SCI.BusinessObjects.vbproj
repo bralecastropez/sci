@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Helpers\DataContext.vb" />
     <Compile Include="Models\IdentityBusinessObjects.vb" />
+    <Compile Include="Models\LoggedInUser.vb" />
     <Compile Include="Models\PrincipleBusinessObjects.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -183,7 +184,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
