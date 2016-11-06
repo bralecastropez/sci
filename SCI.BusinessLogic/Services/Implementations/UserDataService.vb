@@ -1,9 +1,7 @@
-﻿Imports System.Linq
-Imports System.Security.Principal
-Imports System.Text.RegularExpressions
-Imports System.Data.Entity
+﻿Imports System.Security.Principal
 Imports SCI.BusinessObjects.Models
 Imports SCI.Infrastructure.Helpers
+Imports SCI.BusinessLogic.Util
 
 Namespace SCI.BusinessLogic.Services
     Public Class UserDataService
@@ -14,6 +12,7 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Resultado = (From u In DataContext.DBEntities.Usuario Where u.Nick = UserName).FirstOrDefault
             Catch ex As Exception
+                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Obtener Usuario")
                 Throw New Exception(ex.Message, ex.InnerException)
             End Try
             Return Resultado

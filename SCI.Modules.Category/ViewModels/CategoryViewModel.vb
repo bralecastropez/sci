@@ -101,7 +101,12 @@ Namespace SCI.Modules.Category.ViewModels
         End Function
 
         Public Sub Buscar(ByVal Obj As Object)
-
+            Try
+                Dim Busqueda As String = TryCast(Obj, String)
+                ListadoDeCategorias = _categoryAccess.Buscar(Busqueda)
+            Catch ex As Exception
+                'Agregar error helper
+            End Try
         End Sub
 #End Region
 #Region "Constructores"

@@ -1,12 +1,11 @@
 ﻿Namespace SCI.BusinessLogic.Services
     Public Interface ICategoryDataService
-        Function Insertar(ByVal Categoria As Categoria) As Boolean
-        Function Editar(ByVal Categoria As Categoria) As Boolean
-        Function Eliminar(ByVal Categoria As Categoria) As Boolean
-        Function Listar() As List(Of Categoria)
-        Function Buscar(ByVal Valor As String) As List(Of Categoria)
-        Function BuscarPorId(ByVal Valor As String) As List(Of Categoria)
-        Function BuscarPorNombre(ByVal Valor As String) As List(Of Categoria)
-        Function BuscarPorDescripcion(ByVal Valor As String) As List(Of Categoria)
+
+        Function GetCategories() As List(Of Categoria)
+        Function AddCategory(ByVal Category As Categoria) As Boolean
+        Function EditCategory(ByVal Category As Categoria) As Boolean
+        Function DeleteCategory(ByVal Category As Categoria) As Boolean
+        Function SearchCategory(ByVal Data As String) As List(Of Categoria)
+
     End Interface
 End Namespace

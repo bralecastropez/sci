@@ -1,11 +1,4 @@
-﻿Imports SCI.BusinessObjects.Models
-Imports System.Data.Metadata.Edm
-Imports System.Reflection
-Imports System.IO
-Imports System.Xml
-Imports System.Data.Mapping
-
-Public Class DataContext
+﻿Public Class DataContext
 
     Private Shared _DBEntities As DbInventarioEntities
     Public Shared Property DBEntities() As DbInventarioEntities
