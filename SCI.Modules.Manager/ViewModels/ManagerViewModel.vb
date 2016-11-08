@@ -1,6 +1,6 @@
 ﻿Imports SCI.BusinessLogic.Services
 Imports SCI.BusinessObjects.Models
-Imports SCI.Infrastructure.Domain
+Imports SCI.BusinessObjects.Domain
 Imports SCI.Infrastructure.Helpers
 Imports SCI.Modules.Category.Views
 Imports SCI.Modules.Dashboard.Views

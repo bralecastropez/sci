@@ -1,13 +1,6 @@
-﻿Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Text
-Imports System.Threading.Tasks
-Imports System.Windows.Input
+﻿Imports System.Windows.Input
 
-Namespace MaterialDesignColors.WpfExample.Domain
-    ''' <summary>
-    ''' No WPF project is complete without it's own version of this.
-    ''' </summary>
+Namespace SCI.BusinessObjects.Domain
     Public Class AnotherCommandImplementation
         Implements ICommand
         Private ReadOnly _execute As Action(Of Object)

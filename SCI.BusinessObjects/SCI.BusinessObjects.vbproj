@@ -52,15 +52,20 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationBuildTasks" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -74,7 +79,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\AnotherCommandImplementation.vb" />
     <Compile Include="Helpers\DataContext.vb" />
+    <Compile Include="Domain\ItemMenu.vb" />
     <Compile Include="Models\IdentityBusinessObjects.vb" />
     <Compile Include="Models\LoggedInUser.vb" />
     <Compile Include="Models\PrincipleBusinessObjects.vb" />
@@ -93,6 +100,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Domain\NotEmptyValidationRule.vb" />
     <Compile Include="Schema\Caja.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
@@ -174,7 +182,10 @@
     <Compile Include="Schema\Venta.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Util\SCILog.vb" />
+    <Compile Include="ViewHelpers\ViewModels\ConfirmDialogViewModel.vb" />
+    <Compile Include="ViewHelpers\Views\ConfirmDialogView.xaml.vb">
+      <DependentUpon>ConfirmDialogView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -220,6 +231,19 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ViewHelpers\Views\ConfirmDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SCI.Infrastructure\SCI.Infrastructure.vbproj">
+      <Project>{6a1b3e85-59c3-4630-bceb-10f2400db955}</Project>
+      <Name>SCI.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

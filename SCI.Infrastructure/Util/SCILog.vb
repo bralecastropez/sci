@@ -1,14 +1,14 @@
-﻿Namespace SCI.BusinessLogic.Util
+﻿Namespace SCI.Infrastructure.Util
     Public Class SCILog
 #Region "Fields"
-        Public Shared _Instancia As SCILog = Nothing
+        Public Shared _Instance As SCILog = Nothing
 #End Region
 #Region "Methods"
-        Public Shared Function Instancia() As SCILog
-            If IsNothing(_Instancia) Then
-                _Instancia = New SCILog
+        Public Shared Function GetInstance() As SCILog
+            If IsNothing(_Instance) Then
+                _Instance = New SCILog
             End If
-            Return _Instancia
+            Return _Instance
         End Function
         Private Sub ArchivoLog(ByVal NombreExcepcion As String, ByVal NombreEvento As String, ByVal NombreControl As String, ByVal NumeroDeLinea As String, ByVal NombreClase As String)
             Try

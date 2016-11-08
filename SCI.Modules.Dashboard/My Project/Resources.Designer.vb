@@ -33,7 +33,7 @@ Namespace My.Resources
         Private resourceCulture As Global.System.Globalization.CultureInfo
         
         '''<summary>
-        '''  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+        '''  Devuelve la GetInstance de ResourceManager almacenada en caché utilizada por esta clase.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager

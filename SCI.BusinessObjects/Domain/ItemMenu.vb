@@ -1,6 +1,6 @@
 ﻿Imports SCI.Infrastructure.Helpers
 
-Namespace SCI.Infrastructure.Domain
+Namespace SCI.BusinessObjects.Domain
     Public Class ItemMenu
         Inherits ViewModelBase
 

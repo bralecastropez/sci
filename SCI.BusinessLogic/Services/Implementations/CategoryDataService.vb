@@ -1,4 +1,4 @@
-﻿Imports SCI.BusinessLogic.Util
+﻿Imports SCI.Infrastructure.Util
 Namespace SCI.BusinessLogic.Services
     Public Class CategoryDataService
         Implements ICategoryDataService
@@ -10,7 +10,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Insertar Categoria")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Categoria")
             End Try
             Return Resultado
         End Function
@@ -25,7 +25,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Eliminar Categoria")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Categoria")
             End Try
             Return Resultado
         End Function
@@ -41,7 +41,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Editar Categoria")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Categoria")
             End Try
             Return Resultado
         End Function
@@ -51,7 +51,7 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Resultado = DataContext.DBEntities.Categoria.ToList
             Catch ex As Exception
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Listar Categorias")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Categorias")
             End Try
             Return Resultado
         End Function
@@ -85,7 +85,7 @@ Namespace SCI.BusinessLogic.Services
                     End If
                 End If
             Catch ex As Exception
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Buscar Categoria")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Categoria")
             End Try
             Return Resultado
         End Function

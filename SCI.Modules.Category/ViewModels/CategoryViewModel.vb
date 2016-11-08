@@ -2,7 +2,7 @@
 Imports SCI.BusinessLogic.Services
 Imports SCI.Modules.Category.Views
 Imports System.Windows.Input
-Imports MaterialDesignColors.WpfExample.Domain
+Imports SCI.BusinessObjects.ViewHelpers.Views
 
 Namespace SCI.Modules.Category.ViewModels
     Public Class CategoryViewModel
@@ -72,7 +72,7 @@ Namespace SCI.Modules.Category.ViewModels
         Public Sub CancelCategoryExecute()
             Nombre = ""
             Descripcion = ""
-            ListadoDeCategorias = _categoryAccess.Listar
+            ListadoDeCategorias = _categoryAccess.GetCategories
             CancelExecute()
         End Sub
         Public Sub AcceptCategoryExecute()
@@ -81,19 +81,25 @@ Namespace SCI.Modules.Category.ViewModels
                     Dim NuevaCategoria As New Categoria
                     NuevaCategoria.Descripcion = Descripcion
                     NuevaCategoria.Nombre = Nombre
-                    _categoryAccess.Insertar(NuevaCategoria)
+                    _categoryAccess.AddCategory(NuevaCategoria)
+                    ContenidoSegundoDialogo = New ConfirmDialogView("Éxito", "Se agregó correctamente la categoria", "Aceptar")
+                    MostrarSegundoDialogo = True
                 Case TipoMantenimiento.Editar
                     CategoriaSeleccionada.Nombre = Nombre
                     CategoriaSeleccionada.Descripcion = Descripcion
-                    _categoryAccess.Editar(CategoriaSeleccionada)
+                    _categoryAccess.EditCategory(CategoriaSeleccionada)
+                    ContenidoSegundoDialogo = New ConfirmDialogView("Éxito", "Se actualizó correctamente la categoria", "Aceptar")
+                    MostrarSegundoDialogo = True
                 Case TipoMantenimiento.Eliminar
                     CategoriaSeleccionada.Nombre = Nombre
                     CategoriaSeleccionada.Descripcion = Descripcion
-                    _categoryAccess.Eliminar(CategoriaSeleccionada)
+                    _categoryAccess.DeleteCategory(CategoriaSeleccionada)
+                    ContenidoSegundoDialogo = New ConfirmDialogView("Éxito", "Se eliminó correctamente la categoria", "Aceptar")
+                    MostrarSegundoDialogo = True
             End Select
             Nombre = ""
             Descripcion = ""
-            ListadoDeCategorias = _categoryAccess.Listar
+            ListadoDeCategorias = _categoryAccess.GetCategories
             AcceptExecute()
         End Sub
         Public Function CanAcceptCategoryExecute() As Boolean
@@ -101,12 +107,7 @@ Namespace SCI.Modules.Category.ViewModels
         End Function
 
         Public Sub Buscar(ByVal Obj As Object)
-            Try
-                Dim Busqueda As String = TryCast(Obj, String)
-                ListadoDeCategorias = _categoryAccess.Buscar(Busqueda)
-            Catch ex As Exception
-                'Agregar error helper
-            End Try
+
         End Sub
 #End Region
 #Region "Constructores"
@@ -115,10 +116,9 @@ Namespace SCI.Modules.Category.ViewModels
             TituloModulo = "Categoria"
             ServiceLocator.RegisterService(Of ICategoryDataService)(New CategoryDataService)
             _categoryAccess = GetService(Of ICategoryDataService)()
-            ListadoDeCategorias = _categoryAccess.Listar
+            ListadoDeCategorias = _categoryAccess.GetCategories
 
-            SearchCommand = New AnotherCommandImplementation(AddressOf Buscar)
-            'SearchCommand = New RelayCommand(AddressOf Buscar)
+            'SearchCommand = New AnotherCommandImplementation(Buscar)
 
             AddCommand = New RelayCommand(AddressOf AddCategoryExecute, AddressOf CanAddExecute)
             EditCommand = New RelayCommand(AddressOf EditCategoryExecute, AddressOf CanEditExecute)

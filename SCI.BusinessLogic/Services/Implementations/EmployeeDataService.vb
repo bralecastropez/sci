@@ -1,4 +1,4 @@
-﻿Imports SCI.BusinessLogic.Util
+﻿Imports SCI.Infrastructure.Util
 
 Namespace SCI.BusinessLogic.Services
     Public Class EmployeeDataService
@@ -11,7 +11,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Insertar Empleado")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Empleado")
             End Try
             Return Resultado
         End Function
@@ -26,7 +26,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Eliminar Empleado")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Empleado")
             End Try
             Return Resultado
         End Function
@@ -50,7 +50,7 @@ Namespace SCI.BusinessLogic.Services
 
             Catch ex As Exception
                 Resultado = False
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Editar Empleado")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Empleado")
             End Try
             Return Resultado
         End Function
@@ -60,7 +60,7 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Resultado = DataContext.DBEntities.Empleado.ToList
             Catch ex As Exception
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Listar Empleados")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Empleados")
             End Try
             Return Resultado
         End Function
@@ -72,7 +72,7 @@ Namespace SCI.BusinessLogic.Services
                                  Where em.Nombre.Contains(Data))
                 Resultado = DataContext.DBEntities.Empleado.ToList
             Catch ex As Exception
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Buscar Empleado")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Empleado")
             End Try
             Return Resultado
         End Function

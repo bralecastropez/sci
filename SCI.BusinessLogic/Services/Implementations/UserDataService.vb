@@ -1,7 +1,7 @@
 ﻿Imports System.Security.Principal
 Imports SCI.BusinessObjects.Models
 Imports SCI.Infrastructure.Helpers
-Imports SCI.BusinessLogic.Util
+Imports SCI.Infrastructure.Util
 
 Namespace SCI.BusinessLogic.Services
     Public Class UserDataService
@@ -12,7 +12,7 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Resultado = (From u In DataContext.DBEntities.Usuario Where u.Nick = UserName).FirstOrDefault
             Catch ex As Exception
-                SCILog.Instancia.Control(ex, [GetType]().ToString, "Error al Obtener Usuario")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Obtener Usuario")
                 Throw New Exception(ex.Message, ex.InnerException)
             End Try
             Return Resultado
@@ -48,7 +48,7 @@ Namespace SCI.BusinessLogic.Services
                     errMsg += "El nombre de usuario no es valido. Por favor Intente de Nuevo"
                     Throw New Exception(errMsg)
                 End If
-                If VerifyUserAndPassword(sUserName, CryptoHelper.ObtenerPassword(sLoginPassword)) Then
+                If VerifyUserAndPassword(sUserName, CryptoHelper.GetPassword(sLoginPassword)) Then
                     Dim nombreUsuario As String = user.Nick
 
                     Dim roleList As New List(Of String)

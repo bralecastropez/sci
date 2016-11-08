@@ -1,11 +1,12 @@
-﻿Imports System
-Imports System.Text
+﻿Imports System.Text
 Imports System.Security.Cryptography
+Imports SCI.Infrastructure.Util
 
 Namespace SCI.Infrastructure.Helpers
     Public Class CryptoHelper
-        Public Shared Function GenerarPassword(ByVal StrPass As String) As String
-            Dim Resultado As String = ""
+#Region "Functions"
+        Public Shared Function GeneratePassword(ByVal StrPass As String) As String
+            Dim Result As String = ""
             Try
                 Dim md5 As New MD5CryptoServiceProvider
                 Dim bytValue() As Byte
@@ -18,37 +19,35 @@ Namespace SCI.Infrastructure.Helpers
                 md5.Clear()
 
                 For i = 0 To bytHash.Length - 1
-                    Resultado &= bytHash(i).ToString("x").PadLeft(2, "0")
+                    Result &= bytHash(i).ToString("x").PadLeft(2, "0")
                 Next
             Catch ex As Exception
-                MsgBox(ex.Message)
+                SCILog.GetInstance.Control(ex, "Crytpo", "Error al Generar Contraseña")
             End Try
-            Return Resultado
+            Return Result
         End Function
-
-        Public Shared Function EncriptarPassword(ByVal Password As String) As String
+        Public Shared Function EncryptPassword(ByVal Password As String) As String
+            Dim Result As String = ""
+            Try
+                Result = StrReverse(GeneratePassword(Password))
+            Catch ex As Exception
+                SCILog.GetInstance.Control(ex, "Crytpo", "Error al Encriptar Contraseña")
+            End Try
+            Return Result
+        End Function
+        Public Shared Function GetPassword(ByVal Password As String) As String
             Dim Resultado As String = ""
             Try
-                Resultado = StrReverse(GenerarPassword(Password))
+                Resultado = EncryptPassword(Password)
             Catch ex As Exception
-                MsgBox(ex.Message)
+                SCILog.GetInstance.Control(ex, "Crytpo", "Error al Obtener la Contraseña")
             End Try
             Return Resultado
         End Function
-
-        Public Shared Function ObtenerPassword(ByVal Password As String) As String
-            Dim Resultado As String = ""
-            Try
-                Resultado = EncriptarPassword(Password)
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-            Return Resultado
-        End Function
-
         Public Shared Function Verify(ByVal User As String, ByVal Pass As String)
             Return True
         End Function
+#End Region
     End Class
 End Namespace
 

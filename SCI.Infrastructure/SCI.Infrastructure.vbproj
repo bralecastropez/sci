@@ -76,8 +76,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\ItemMenu.vb" />
-    <Compile Include="Domain\AnotherCommandImplementation.vb" />
     <Compile Include="Helpers\Crypto.vb" />
     <Compile Include="Helpers\GuiViewBase.vb" />
     <Compile Include="Helpers\RelayCommand.vb" />
@@ -98,6 +96,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Util\SCILog.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

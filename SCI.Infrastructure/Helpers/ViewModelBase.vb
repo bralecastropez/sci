@@ -1,32 +1,33 @@
 ﻿Imports System.ComponentModel
-Imports System.Threading
-Imports System.Windows.Input
 
 Namespace SCI.Infrastructure.Helpers
     Public Class ViewModelBase
         Implements INotifyPropertyChanged
-
-        Private myServiceLocator As New ServiceLocator
-
-        Public Event PropertyChanged(sender As Object, e As PropertyChangedEventArgs) Implements INotifyPropertyChanged.PropertyChanged
-
-        Protected Sub OnPropertyChanged(ByVal strPropertyName As String)
-            If Me.PropertyChangedEvent IsNot Nothing Then
-                RaiseEvent PropertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(strPropertyName))
-            End If
-        End Sub
-
-        Private privateThrowOnInvalidPropertyName As Boolean
-
+#Region "Fields"
+        Private _myServiceLocator As New ServiceLocator
+        Private _privateThrowOnInvalidPropertyName As Boolean
+        Private _privateDisplayName As String
+#End Region
+#Region "Properties"
         Protected Overridable Property ThrowOnInvalidPropertyName() As Boolean
             Get
-                Return privateThrowOnInvalidPropertyName
+                Return _privateThrowOnInvalidPropertyName
             End Get
             Set(ByVal value As Boolean)
-                privateThrowOnInvalidPropertyName = value
+                _privateThrowOnInvalidPropertyName = value
             End Set
         End Property
+        Public Overridable Property DisplayName() As String
+            Get
+                Return _privateDisplayName
+            End Get
 
+            Protected Set(ByVal value As String)
+                _privateDisplayName = value
+            End Set
+        End Property
+#End Region
+#Region "Methods"
         <Conditional("DEBUG"), DebuggerStepThrough()>
         Public Sub VerifyPropertyName(ByVal propertyName As String)
             ' Verify that the property name matches a real,
@@ -41,25 +42,25 @@ Namespace SCI.Infrastructure.Helpers
                 End If
             End If
         End Sub
-
-        Private privateDisplayName As String
-
-        Public Overridable Property DisplayName() As String
-            Get
-                Return privateDisplayName
-            End Get
-
-            Protected Set(ByVal value As String)
-                privateDisplayName = value
-            End Set
-        End Property
-
+#End Region
+#Region "Functions"
         Public Function ServiceLocator() As ServiceLocator
-            Return Me.myServiceLocator
+            Return Me._myServiceLocator
         End Function
 
         Public Function GetService(Of T)() As T
-            Return myServiceLocator.GetService(Of T)()
+            Return _myServiceLocator.GetService(Of T)()
         End Function
+#End Region
+#Region "Events"
+        Public Event PropertyChanged(sender As Object, e As PropertyChangedEventArgs) Implements INotifyPropertyChanged.PropertyChanged
+#End Region
+#Region "Contructors"
+        Protected Sub OnPropertyChanged(ByVal strPropertyName As String)
+            If Me.PropertyChangedEvent IsNot Nothing Then
+                RaiseEvent PropertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(strPropertyName))
+            End If
+        End Sub
+#End Region
     End Class
 End Namespace
