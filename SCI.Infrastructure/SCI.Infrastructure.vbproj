@@ -76,8 +76,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\AnotherCommandImplementation.vb" />
     <Compile Include="Helpers\Crypto.vb" />
-    <Compile Include="Helpers\GuiViewBase.vb" />
     <Compile Include="Helpers\RelayCommand.vb" />
     <Compile Include="Helpers\ServiceLocator.vb" />
     <Compile Include="Helpers\ViewModelBase.vb" />

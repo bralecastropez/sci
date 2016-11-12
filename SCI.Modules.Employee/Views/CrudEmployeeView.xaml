@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="SCI.Modules.Employee.Views.CrudEmployeeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:domain="clr-namespace:SCI.BusinessObjects.Domain;assembly=SCI.BusinessObjects"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d">
+    <Grid>
+        <materialDesign:DialogHost DialogContent="{Binding SecondDialogContent}" IsOpen="{Binding ShowSecondDialog}" CloseOnClickAway="True" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <materialDesign:ColorZone Mode="PrimaryMid" Height="80" Effect="{DynamicResource MaterialDesignShadowDepth1}" Grid.Row="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="10, 15, 20, 25" Command="{Binding CancelCommand}" HorizontalAlignment="Left" ToolTip="Atras">
+                            <materialDesign:PackIcon Kind="ArrowLeft" Height="20" Width="20" />
+                        </Button>
+                        <TextBlock Margin="15 15 0 15" Padding="10" Text="{Binding MaintanceTitle}" HorizontalAlignment="Stretch" TextAlignment="Center" FontSize="17" Width="Auto"/>
+                    </StackPanel>
+                </materialDesign:ColorZone>
+                <StackPanel Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Vertical" Grid.Column="0" Width="300">
+                            <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Nombre: "/>
+                            <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Nombre">
+                                <TextBox.Text>
+                                    <Binding Path="Nombre" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Apellido: "/>
+                            <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Apellido">
+                                <TextBox.Text>
+                                    <Binding Path="Apellido" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Teléfono: "/>
+                            <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Teléfono">
+                                <TextBox.Text>
+                                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            
+                            <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Género: "/>
+                            <ComboBox IsEnabled="{Binding EnableEdit}" SelectedValue="{Binding Genero}" MaxDropDownHeight="200" Margin="15 0 4 0">
+                                <ComboBoxItem>Masculino</ComboBoxItem>
+                                <ComboBoxItem>Femenino</ComboBoxItem>
+                            </ComboBox>
+                            
+                            
+                            <!--<TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Dirección">
+                        <TextBox.Text>
+                            <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>-->
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1" Width="300">
+                            <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="DPI: "/>
+                            <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="DPI">
+                                <TextBox.Text>
+                                    <Binding Path="Dpi" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            
+                            <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Dirección: "/>
+                            <TextBox IsEnabled="{Binding EnableEdit}" TextWrapping="Wrap" VerticalAlignment="Stretch" Margin="15 0 4 0" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="Dirección">
+                                <TextBox.Text>
+                                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Correo Eléctronico: "/>
+                            <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" Text="{Binding Correo}" materialDesign:HintAssist.Hint="Correo Eléctronico"/>
+                            <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Comentario" />
+                            <TextBox  IsEnabled="{Binding EnableEdit}" TextWrapping="Wrap" Text="{Binding Comentario}" VerticalAlignment="Stretch" Margin="15 0 4 0" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="Comentario"/>
+                            
+                        </StackPanel>
+                    </Grid>
+                    
+                    
+                    <Label Margin="0 10 0 10" Visibility="{Binding VisibleDelete}" Content="¿Desea Eliminar el Registro?" FontFamily="Open Sans" FontSize="13" HorizontalContentAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" Margin="0 8 8 0" Command="{Binding CancelCommand}" Content="{Binding CancelButtonTitle}"/>
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 8 8 0" Command="{Binding AcceptCommand}" Content="{Binding ExecuteButtonTitle}"/>
+                    </StackPanel>
+                    <TextBlock Height="17">
+
+                    </TextBlock>
+                </StackPanel>
+
+            </Grid>
+        </materialDesign:DialogHost>
+
+    </Grid>
+</UserControl>

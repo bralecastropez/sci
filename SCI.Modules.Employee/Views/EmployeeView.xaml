@@ -23,7 +23,7 @@
         </EventTrigger>
     </UserControl.Triggers>-->
     <Grid>
-        <materialDesign:DialogHost HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsOpen="{Binding MostrarPrimerDialogo}" DialogContent="{Binding ContenidoPrimerDialogo}" CloseOnClickAway="True">
+        <materialDesign:DialogHost HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsOpen="{Binding ShowFirstDialog}" DialogContent="{Binding FirstDialogContent}" CloseOnClickAway="True">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -47,7 +47,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Grid.Column="0" Margin="16" Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Database" Height="32" Width="32" />
+                                        <materialDesign:PackIcon Kind="AccountMultiple" Height="32" Width="32" />
                                         <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Margin="16 0 16 0">Listado de Empleados</TextBlock>
                                     </StackPanel>
                                     <StackPanel Grid.Column="1" Orientation="Horizontal">
@@ -102,7 +102,7 @@
                                 </Grid>
                             </materialDesign:ColorZone>
                         </materialDesign:TransitioningContent>
-                        <DataGrid Padding="20" Grid.Row="1" SelectedItem="{Binding SelectedEmployee}" ItemsSource="{Binding EmployeeList}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" ScrollViewer.CanContentScroll="True">
+                        <DataGrid Padding="20" Grid.Row="1" SelectedItem="{Binding SelectedEmployee}" ItemsSource="{Binding EmployeesList}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" ScrollViewer.CanContentScroll="True">
 
                             <DataGrid.Columns>
 

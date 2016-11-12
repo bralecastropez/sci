@@ -1,4 +1,5 @@
-﻿Imports SCI.Infrastructure.Util
+﻿Imports System.Data.Entity
+Imports SCI.Infrastructure.Util
 Namespace SCI.BusinessLogic.Services
     Public Class CategoryDataService
         Implements ICategoryDataService
@@ -18,10 +19,10 @@ Namespace SCI.BusinessLogic.Services
         Public Function DeleteCategory(Category As Categoria) As Boolean Implements ICategoryDataService.DeleteCategory
             Dim Resultado As Boolean = True
             Try
-                Dim CategoriaEliminar As Categoria = (From cat In DataContext.DBEntities.Categoria
-                                                      Where cat.IdCategoria = Category.IdCategoria
-                                                      Select cat).SingleOrDefault()
-                DataContext.DBEntities.Categoria.Remove(CategoriaEliminar)
+                'Dim CategoriaEliminar As Categoria = (From cat In DataContext.DBEntities.Categoria
+                '                                      Where cat.IdCategoria = Category.IdCategoria
+                '                                      Select cat).SingleOrDefault()
+                DataContext.DBEntities.Categoria.Remove(Category)
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
@@ -33,11 +34,12 @@ Namespace SCI.BusinessLogic.Services
         Public Function EditCategory(Category As Categoria) As Boolean Implements ICategoryDataService.EditCategory
             Dim Resultado As Boolean = True
             Try
-                Dim CategoriaEditar As Categoria = (From cat In DataContext.DBEntities.Categoria
-                                                    Where cat.IdCategoria = Category.IdCategoria
-                                                    Select cat).SingleOrDefault()
-                CategoriaEditar.Nombre = Category.Nombre
-                CategoriaEditar.Descripcion = Category.Descripcion
+                'Dim CategoriaEditar As Categoria = (From cat In DataContext.DBEntities.Categoria
+                '                                    Where cat.IdCategoria = Category.IdCategoria
+                '                                    Select cat).SingleOrDefault()
+                'CategoriaEditar.Nombre = Category.Nombre
+                'CategoriaEditar.Descripcion = Category.Descripcion
+                DataContext.DBEntities.Entry(Category).State = EntityState.Modified
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
@@ -59,17 +61,11 @@ Namespace SCI.BusinessLogic.Services
         Public Function SearchCategory(Data As String) As List(Of Categoria) Implements ICategoryDataService.SearchCategory
             Dim Resultado As List(Of Categoria) = Nothing
             Try
-                Dim query1 = (From c In DataContext.DBEntities.Categoria
-                              Where c.Nombre.Contains(Data)
-                              Select c).ToList
-                Dim query2 = (From c In DataContext.DBEntities.Categoria
-                              Where c.Descripcion.Contains(Data)
-                              Select c).ToList
+                Dim query1 = (From c In DataContext.DBEntities.Categoria Where c.Nombre.Contains(Data) Select c).ToList
+                Dim query2 = (From c In DataContext.DBEntities.Categoria Where c.Descripcion.Contains(Data) Select c).ToList
                 If IsNumeric(Data) Then
                     Dim Valor1 As Integer = (Integer.Parse(Data))
-                    Dim query = (From c In DataContext.DBEntities.Categoria
-                                 Where c.IdCategoria = Valor1
-                                 Select c).ToList
+                    Dim query = (From c In DataContext.DBEntities.Categoria Where c.IdCategoria = Valor1 Select c).ToList
                     If query.Count > 0 Then
                         Resultado = query
                     ElseIf query1.Count > 0 Then

@@ -9,11 +9,14 @@ Imports SCI.Modules.Employee.Views
 Namespace SCI.Modules.Manager.ViewModels
     Public Class ManagerViewModel
         Inherits GuiViewBase
+
 #Region "Propiedades"
-        Private _ListadoDeModulos As List(Of ItemMenu)
-        Private _TituloTopbar As String
-        Private _ModuloSeleccionado As Integer
+        Private _ModulesList As List(Of ItemMenu)
+        Private _SelectedModule As Integer = 0
         Private _userAccess As IUserDataService
+        Private _ListadoDeModulos As List(Of ItemMenu)
+        Private _ModuloSeleccionado As Integer = 0
+
 #End Region
 #Region "Metodos"
         Public Property ModuloSeleccionado As Integer
@@ -23,15 +26,15 @@ Namespace SCI.Modules.Manager.ViewModels
             Set(value As Integer)
                 _ModuloSeleccionado = value
                 OnPropertyChanged("ModuloSeleccionado")
-            End Set
-        End Property
-        Public Property TituloTopbar() As String
-            Get
-                Return _TituloTopbar
-            End Get
-            Set(ByVal value As String)
-                _TituloTopbar = value
-                OnPropertyChanged("TituloTopbar")
+
+                Select Case ModuloSeleccionado
+                    Case 0
+                        HeaderTitle = "Bienvenido " & UserLogged.Empleado.Nombre & " - Dashboard"
+                    Case 1
+                        HeaderTitle = "Bienvenido " & UserLogged.Empleado.Nombre & " - Empleados"
+                    Case 2
+                        HeaderTitle = "Bienvenido " & UserLogged.Empleado.Nombre & " - Categorias"
+                End Select
             End Set
         End Property
         Public Property ListadoDeModulos As List(Of ItemMenu)
@@ -52,8 +55,11 @@ Namespace SCI.Modules.Manager.ViewModels
             ListadoDeModulos.Add(New ItemMenu("Categorias", New CategoryView))
             ServiceLocator.RegisterService(Of IUserDataService)(New UserDataService)
             _userAccess = GetService(Of IUserDataService)()
-            ModuloSeleccionado = 2
-            TituloTopbar = "Bienvenido " & LoggedInUser.GetInstance.UserLogged.Empleado.Nombre
+            HeaderTitle = "Bienvenido " & UserLogged.Empleado.Nombre & " - Dashboard"
+        End Sub
+
+        Public Overrides Sub CleanFields()
+            Throw New NotImplementedException()
         End Sub
 #End Region
 

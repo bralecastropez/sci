@@ -172,11 +172,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Chartridge046_small.jpg" />
-    <Content Include="Resources\Contact.png" />
-    <Content Include="Resources\favicon.ico" />
-    <Content Include="Resources\ms-icon-310x310.png" />
-    <Content Include="Resources\ProfilePic.jpg" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

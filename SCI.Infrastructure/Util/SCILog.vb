@@ -22,8 +22,7 @@
                         Archivo.WriteLine("Fecha: " & DateTime.Now)
                         Archivo.WriteLine("Nombre de la Excepcion: " & NombreExcepcion)
                         Archivo.WriteLine("Nombre del Evento: " & NombreEvento)
-                        Dim Linea() As String = NombreEvento.Split(".vb:línea ")
-                        Archivo.WriteLine("Número de Línea: " & Linea(24).Replace("vb:línea ", ""))
+                        Archivo.WriteLine(NumeroDeLinea)
                         Archivo.WriteLine("Nombre de la Clase: " & NombreClase)
                         Archivo.WriteLine(" ----------------------------------------------------------------------------- ")
                         Archivo.Close()
@@ -34,8 +33,7 @@
                         Archivo.WriteLine("Fecha: " & DateTime.Now)
                         Archivo.WriteLine("Nombre de la Excepcion: " & NombreExcepcion)
                         Archivo.WriteLine("Nombre del Evento: " & NombreEvento)
-                        Dim Linea() As String = NombreEvento.Split(".vb:línea ")
-                        Archivo.WriteLine("Número de Línea: " & Linea(24).Replace("vb:línea ", ""))
+                        Archivo.WriteLine(NumeroDeLinea)
                         Archivo.WriteLine("Nombre de la Clase: " & NombreClase)
                         Archivo.WriteLine(" ----------------------------------------------------------------------------- ")
                         Archivo.Close()
@@ -50,7 +48,14 @@
         Private Function Linea(ByVal Excepcion As Exception) As String
             Dim NoLinea As String = ""
             Try
-                NoLinea = Convert.ToInt32(Excepcion.InnerException)
+                Dim LineaError() As String = Excepcion.ToString.Split(".vb:línea ")
+                'NoLinea = ("Número de Línea: " & LineaError(24).Replace("vb:línea ", ""))
+                For i As Integer = 0 To (LineaError.Length - 1)
+                    If LineaError(i).ToString.Contains("vb:línea ") Then
+                        NoLinea = "Número de Línea: " & LineaError(i).Replace("vb:línea ", "")
+                    End If
+                Next
+                'NoLinea = Convert.ToInt32(Excepcion.InnerException)
             Catch ex As Exception
                 MsgBox("Error en el Log --- NoLinea ---> " & ex.Message)
             End Try

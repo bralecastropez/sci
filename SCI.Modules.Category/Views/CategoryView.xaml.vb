@@ -1,4 +1,5 @@
 ﻿Imports SCI.Modules.Category.ViewModels
+Imports System.Windows.Controls
 
 Namespace SCI.Modules.Category.Views
     Public Class CategoryView
@@ -12,7 +13,7 @@ Namespace SCI.Modules.Category.Views
             DataContext = New CategoryViewModel
         End Sub
 
-        Private Sub SearchBox_TextChanged(sender As Object, e As System.Windows.Controls.TextChangedEventArgs) Handles SearchBox.TextChanged
+        Private Sub SearchBox_TextChanged(sender As Object, e As TextChangedEventArgs) Handles SearchBox.TextChanged
             SearchButton.Command.Execute(SearchBox.Text)
         End Sub
     End Class

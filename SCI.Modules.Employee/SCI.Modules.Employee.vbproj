@@ -117,6 +117,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\EmployeeViewModel.vb" />
+    <Compile Include="Views\CrudEmployeeView.xaml.vb">
+      <DependentUpon>CrudEmployeeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeeView.xaml.vb">
       <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
@@ -157,6 +160,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\CrudEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EmployeeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

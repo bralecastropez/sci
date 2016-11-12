@@ -1,10 +1,11 @@
 ﻿Namespace SCI.BusinessObjects.Models
-    Public Class LoggedInUser
+    Public Class LogonConfig
 #Region "Fields"
-        Private Shared _instance As LoggedInUser = Nothing
+        Private Shared _instance As LogonConfig = Nothing
         Private Shared _userLogged As Usuario
         Private Shared _isAuth As Boolean = False
         Private Shared _modules As List(Of Modulo)
+        Private Shared _headerTitle As String
 #End Region
 #Region "Properties"
         Public Shared Property UserLogged() As Usuario
@@ -31,11 +32,19 @@
                 _modules = value
             End Set
         End Property
+        Public Property HeaderTitle As String
+            Get
+                Return _headerTitle
+            End Get
+            Set(value As String)
+                _headerTitle = value
+            End Set
+        End Property
 #End Region
 #Region "Methods"
-        Public Shared Function GetInstance() As LoggedInUser
+        Public Shared Function GetInstance() As LogonConfig
             If _instance Is Nothing Then
-                _instance = New LoggedInUser
+                _instance = New LogonConfig
             End If
             Return _instance
         End Function

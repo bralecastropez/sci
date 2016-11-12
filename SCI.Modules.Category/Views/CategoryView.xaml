@@ -23,7 +23,7 @@
         </EventTrigger>
     </UserControl.Triggers>-->
     <Grid>
-        <materialDesign:DialogHost HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsOpen="{Binding MostrarPrimerDialogo}" DialogContent="{Binding ContenidoPrimerDialogo}" CloseOnClickAway="True">
+        <materialDesign:DialogHost HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsOpen="{Binding ShowFirstDialog}" DialogContent="{Binding FirstDialogContent}" CloseOnClickAway="True">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -76,7 +76,7 @@
                                 </Grid>
                             </materialDesign:ColorZone>
                         </materialDesign:TransitioningContent>
-                        <DataGrid Padding="20" Grid.Row="1" SelectedItem="{Binding CategoriaSeleccionada}" ItemsSource="{Binding ListadoDeCategorias}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" ScrollViewer.CanContentScroll="True">
+                        <DataGrid Padding="20" Grid.Row="1" SelectedItem="{Binding SelectedCategory}" ItemsSource="{Binding CategoriesList}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" ScrollViewer.CanContentScroll="True">
                             
                                 <DataGrid.Columns>
                                     

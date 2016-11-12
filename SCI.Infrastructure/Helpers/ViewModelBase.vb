@@ -34,8 +34,7 @@ Namespace SCI.Infrastructure.Helpers
             ' public, instance property on this object.
             If TypeDescriptor.GetProperties(Me)(propertyName) Is Nothing Then
                 Dim msg As String = "Invalid property name: " & propertyName
-
-                If Me.ThrowOnInvalidPropertyName Then
+                If ThrowOnInvalidPropertyName Then
                     Throw New Exception(msg)
                 Else
                     Debug.Fail(msg)
@@ -45,9 +44,8 @@ Namespace SCI.Infrastructure.Helpers
 #End Region
 #Region "Functions"
         Public Function ServiceLocator() As ServiceLocator
-            Return Me._myServiceLocator
+            Return _myServiceLocator
         End Function
-
         Public Function GetService(Of T)() As T
             Return _myServiceLocator.GetService(Of T)()
         End Function
@@ -57,8 +55,8 @@ Namespace SCI.Infrastructure.Helpers
 #End Region
 #Region "Contructors"
         Protected Sub OnPropertyChanged(ByVal strPropertyName As String)
-            If Me.PropertyChangedEvent IsNot Nothing Then
-                RaiseEvent PropertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(strPropertyName))
+            If PropertyChangedEvent IsNot Nothing Then
+                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(strPropertyName))
             End If
         End Sub
 #End Region

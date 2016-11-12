@@ -79,11 +79,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\AnotherCommandImplementation.vb" />
+    <Compile Include="Domain\GuiViewBase.vb" />
     <Compile Include="Helpers\DataContext.vb" />
     <Compile Include="Domain\ItemMenu.vb" />
     <Compile Include="Models\IdentityBusinessObjects.vb" />
-    <Compile Include="Models\LoggedInUser.vb" />
+    <Compile Include="Models\LogonConfig.vb" />
     <Compile Include="Models\PrincipleBusinessObjects.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

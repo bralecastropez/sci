@@ -12,6 +12,7 @@ Namespace SCI.Infrastructure.Helpers
         Private _SecondDialogContent As Object
         Private _ThirdDialogContent As Object
         'Components
+        Private _HeaderTitle As String
         Private _ModuleTitle As String
         Private _MaintanceTitle As String
         Private _CancelButtonTitle As String
@@ -91,6 +92,15 @@ Namespace SCI.Infrastructure.Helpers
                 OnPropertyChanged("ThirdDialogContent")
             End Set
         End Property
+        Public Property HeaderTitle As String
+            Get
+                Return _HeaderTitle
+            End Get
+            Set(value As String)
+                _HeaderTitle = value
+                OnPropertyChanged("HeaderTitle")
+            End Set
+        End Property
         Public Property ModuleTitle As String
             Get
                 Return _ModuleTitle
@@ -145,12 +155,35 @@ Namespace SCI.Infrastructure.Helpers
                 OnPropertyChanged("VisibleDelete")
             End Set
         End Property
-
-        'Eventos
+        Public Property Maintance As MaintanceType
+            Get
+                Return _Maintance
+            End Get
+            Set(value As MaintanceType)
+                _Maintance = value
+            End Set
+        End Property
+        Public Property MaintanceDetail As MaintanceDetailType
+            Get
+                Return _MaintanceDetail
+            End Get
+            Set(value As MaintanceDetailType)
+                _MaintanceDetail = value
+            End Set
+        End Property
+        'USER
+        Public Property UserLogged As Usuario = LogonConfig.GetInstance.UserLogged
+        'Events
         Public Property AddCommand As ICommand
         Public Property EditCommand As ICommand
         Public Property DeleteCommand As ICommand
         Public Property CancelCommand As ICommand
+        'TODO: Se queda este en vez del "Accept"
+        Public Property ExecuteCommand As ICommand
+        Public Property SearchCommand As ICommand
+        'TODO: Posiblemente se quite para el detalle
+        Public Property PrintCommand As ICommand
+        'TODO: Eliminar Metodo o cambiarlo al español
         Public Property AcceptCommand As ICommand
 #End Region
 #Region "Constructors"
@@ -159,32 +192,57 @@ Namespace SCI.Infrastructure.Helpers
         End Sub
 #End Region
 #Region "Methods"
-        Public Sub AddExecute(ByVal Contenido As Object)
+        Public Sub AddExecute(ByVal Content As Object)
+            MaintanceTitle = "Agregar " & ModuleTitle
+            FirstDialogContent = Content
+            Maintance = MaintanceType.Add
+            CancelButtonTitle = "Cancelar"
+            ExecuteButtonTitle = "Agregar"
+            VisibleDelete = "Hidden"
+            EnableEdit = True
+            ShowFirstDialog = True
             'TODO: Cambiar Metodos en Español
-
             MostrarPrimerDialogo = True
             TituloCrud = "Agregar " & TituloModulo
-            ContenidoPrimerDialogo = Contenido
+            ContenidoPrimerDialogo = Content
             Mantenimiento = TipoMantenimiento.Agregar
             TituloBotonCancelar = "Cancelar"
             TituloBotonEjecutar = "Agregar"
             VisibleEliminar = "Hidden"
             Habilitado = True
         End Sub
-        Public Sub EditExecute(ByVal Contenido As Object)
+        Public Sub EditExecute(ByVal Content As Object)
+            MaintanceTitle = "Editar " & ModuleTitle
+            FirstDialogContent = Content
+            Maintance = MaintanceType.Edit
+            CancelButtonTitle = "Cancelar"
+            ExecuteButtonTitle = "Editar"
+            VisibleDelete = "Hidden"
+            EnableEdit = True
+            ShowFirstDialog = True
+            'TODO: Cambiar Metodos al Español
             MostrarPrimerDialogo = True
             TituloCrud = "Editar " & TituloModulo
-            ContenidoPrimerDialogo = Contenido
+            ContenidoPrimerDialogo = Content
             Mantenimiento = TipoMantenimiento.Editar
             TituloBotonCancelar = "Cancelar"
             TituloBotonEjecutar = "Editar"
             VisibleEliminar = "Hidden"
             Habilitado = True
         End Sub
-        Public Sub DeleteExecute(ByVal Contenido As Object)
+        Public Sub DeleteExecute(ByVal Content As Object)
+            MaintanceTitle = "Eliminar " & ModuleTitle
+            FirstDialogContent = Content
+            Maintance = MaintanceType.Delete
+            CancelButtonTitle = "No"
+            ExecuteButtonTitle = "Si"
+            VisibleDelete = "Visible"
+            EnableEdit = False
+            ShowFirstDialog = True
+            'TODO: Cambiar Metodos al Español
             MostrarPrimerDialogo = True
             TituloCrud = "Eliminar " & TituloModulo
-            ContenidoPrimerDialogo = Contenido
+            ContenidoPrimerDialogo = Content
             Mantenimiento = TipoMantenimiento.Eliminar
             TituloBotonCancelar = "No"
             TituloBotonEjecutar = "Si"
@@ -199,7 +257,21 @@ Namespace SCI.Infrastructure.Helpers
         End Sub
 #End Region
 #Region "Functions"
-
+        Public Function CanAddExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanEditExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanDeleteExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanCancelExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanAcceptExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
 #End Region
 #Region "Campos"
         'Dialogos
@@ -342,21 +414,7 @@ Namespace SCI.Infrastructure.Helpers
 #Region "Metodos"
 #Region "Comandos"
 
-        Public Function CanAddExecute(ByVal param As Object) As Boolean
-            Return True
-        End Function
-        Public Function CanEditExecute(ByVal param As Object) As Boolean
-            Return True
-        End Function
-        Public Function CanDeleteExecute(ByVal param As Object) As Boolean
-            Return True
-        End Function
-        Public Function CanCancelExecute(ByVal param As Object) As Boolean
-            Return True
-        End Function
-        Public Function CanAcceptExecute(ByVal param As Object) As Boolean
-            Return True
-        End Function
+
 #End Region
 #End Region
     End Class

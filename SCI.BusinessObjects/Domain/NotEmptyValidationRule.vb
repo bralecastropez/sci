@@ -9,7 +9,7 @@ Namespace SCI.BusinessObjects.Domain
         Public Overrides Function Validate(value As Object, cultureInfo As CultureInfo) As ValidationResult
             Dim Result As ValidationResult
             Try
-                If String.IsNullOrWhiteSpace(value.ToString) And Not value.ToString = "" Then
+                If String.IsNullOrWhiteSpace(value.ToString) Then
                     Result = New ValidationResult(False, "Este campo es requerido")
                 Else
                     Result = ValidationResult.ValidResult

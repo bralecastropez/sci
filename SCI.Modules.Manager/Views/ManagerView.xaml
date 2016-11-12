@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:md="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:domain="clr-namespace:SCI.Infrastructure.Domain;assembly=SCI.Infrastructure"
              xmlns:dashboardViews="clr-namespace:SCI.Modules.Dashboard.Views;assembly=SCI.Modules.Dashboard"
              xmlns:categoryViews="clr-namespace:SCI.Modules.Category.Views;assembly=SCI.Modules.Category"
              xmlns:employeeViews="clr-namespace:SCI.Modules.Employee.Views;assembly=SCI.Modules.Employee"
@@ -52,7 +51,7 @@
                                 <Button Content="Acerca de SCI ..."/>
                             </StackPanel>
                         </md:PopupBox>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="{Binding TituloTopbar}"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="{Binding HeaderTitle}"/>
                     </DockPanel>
                 </md:ColorZone>
                 <ContentControl Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Contenido}" />

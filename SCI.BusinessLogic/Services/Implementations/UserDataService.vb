@@ -90,7 +90,7 @@ Namespace SCI.BusinessLogic.Services
 
                     Dim identity As New IdentityBusinessObject(user.Nick, "Custom")
                     principal = New PrincipleBusinessObject(identity, roleList)
-                    LoggedInUser.GetInstance.UserLogged = user
+                    LogonConfig.GetInstance.UserLogged = user
                     'Throw New Exception(errMsg)
                 Else
                     Dim identity As New IdentityBusinessObject("", "")
