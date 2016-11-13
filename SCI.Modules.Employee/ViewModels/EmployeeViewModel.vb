@@ -1,5 +1,6 @@
 ﻿Imports SCI.BusinessLogic.Services
 Imports SCI.BusinessObjects.Models
+Imports SCI.BusinessObjects.ViewHelpers.Views
 Imports SCI.Infrastructure.Helpers
 Imports SCI.Modules.Employee.Views
 
@@ -8,6 +9,7 @@ Namespace SCI.Modules.Employee.ViewModels
         Inherits GuiViewBase
 #Region "Fields"
         Private _EmployeesList As List(Of Empleado)
+        Private _GendersList As List(Of String)
         Private _SelectedEmployee As Empleado
         Private _Nombre As String
         Private _Apellido As String
@@ -26,6 +28,15 @@ Namespace SCI.Modules.Employee.ViewModels
             End Get
             Set(value As IEmployeeDataService)
                 _EmployeeAccess = value
+            End Set
+        End Property
+        Public Property GendersList As List(Of String)
+            Get
+                Return _GendersList
+            End Get
+            Set(value As List(Of String))
+                _GendersList = value
+                OnPropertyChanged("GendersList")
             End Set
         End Property
         Public Property EmployeesList() As List(Of Empleado)
@@ -87,12 +98,13 @@ Namespace SCI.Modules.Employee.ViewModels
                 Return _Genero
             End Get
             Set(value As String)
-                If value.ToLower.Contains("comboboxitem") Then
-                    Dim GeneroMalo() As String = value.Split(": ")
-                    _Genero = GeneroMalo(GeneroMalo.Length - 1)
-                Else
-                    _Genero = value
-                End If
+                'If value.ToLower.Contains("comboboxitem") Then
+                '    Dim GeneroMalo() As String = value.Split(": ")
+                '    _Genero = GeneroMalo(GeneroMalo.Length - 1)
+                'Else
+                '    _Genero = value
+                'End If
+                _Genero = value
                 OnPropertyChanged("Genero")
             End Set
         End Property
@@ -126,55 +138,86 @@ Namespace SCI.Modules.Employee.ViewModels
 #End Region
 #Region "Contructors"
         Sub New()
+            ModuleTitle = "Empleado"
+            HeaderTitle = UserLogged.Empleado.Nombre & " - Empleado"
+
             ServiceLocator.RegisterService(Of IEmployeeDataService)(New EmployeeDataService)
             EmployeeAccess = GetService(Of IEmployeeDataService)()
-            EmployeesList = _EmployeeAccess.GetEmployees
-            HeaderTitle = UserLogged.Empleado.Nombre & " - Empleado"
-            ModuleTitle = "Empleado"
+
+            EmployeesList = EmployeeAccess.GetEmployees
+
             AddCommand = New RelayCommand(AddressOf AddEmployeeExecute, AddressOf CanAddExecute)
             EditCommand = New RelayCommand(AddressOf EditEmployeeExecute, AddressOf CanEditExecute)
             DeleteCommand = New RelayCommand(AddressOf DeleteEmployeeExecute)
+
             CancelCommand = New RelayCommand(AddressOf CancelExecute)
+            AcceptCommand = New RelayCommand(AddressOf AcceptEmployeeExecute, AddressOf CanAcceptExecute)
+            SearchCommand = New RelayCommand(AddressOf SearchEmployee)
+
+            GendersList = New List(Of String)
+            GendersList.Add("Masculino")
+            GendersList.Add("Femenino")
         End Sub
 #End Region
 #Region "Methods"
+        Private Sub AcceptEmployeeExecute()
+            If MaintanceType.Add = Maintance Then
+                SelectedEmployee = New Empleado
+            End If
+            SelectedEmployee.Nombre = Nombre
+            SelectedEmployee.Apellido = Apellido
+            SelectedEmployee.Correo = Correo
+            SelectedEmployee.Telefono = Telefono
+            SelectedEmployee.Genero = Genero
+            SelectedEmployee.Direccion = Direccion
+            SelectedEmployee.Comentario = Comentario
+            SelectedEmployee.Dpi = Dpi
+            Select Case Maintance
+                Case MaintanceType.Add
+                    If EmployeeAccess.AddEmployee(SelectedEmployee) Then
+                        SecondDialogContent = New ConfirmDialogView("Éxito", "Se agregó correctamente el empleado", "Aceptar")
+                        ShowSecondDialog = True
+                    End If
+                Case MaintanceType.Edit
+                    If EmployeeAccess.EditEmployee(SelectedEmployee) Then
+                        SecondDialogContent = New ConfirmDialogView("", "Se actualizó correctamente el empleado", "Aceptar")
+                        ShowSecondDialog = True
+                    End If
+                Case MaintanceType.Delete
+                    If EmployeeAccess.DeleteEmployee(SelectedEmployee) Then
+                        SecondDialogContent = New ConfirmDialogView("Se eliminó correctamente el empleado", "", "Aceptar")
+                        ShowSecondDialog = True
+                    End If
+            End Select
+            CleanFields()
+            AcceptExecute()
+        End Sub
         Public Sub EditEmployeeExecute()
-            Nombre = SelectedEmployee.Nombre
-            Apellido = SelectedEmployee.Apellido
-            Telefono = SelectedEmployee.Telefono
-            Correo = SelectedEmployee.Correo
-            Direccion = SelectedEmployee.Direccion
-            Comentario = SelectedEmployee.Comentario
-            Dpi = SelectedEmployee.Dpi
-            Genero = SelectedEmployee.Genero
+            LoadFields()
             EditExecute(New CrudEmployeeView(Me))
         End Sub
 
         Public Sub DeleteEmployeeExecute()
-            Nombre = SelectedEmployee.Nombre
-            Apellido = SelectedEmployee.Apellido
-            Telefono = SelectedEmployee.Telefono
-            Correo = SelectedEmployee.Correo
-            Direccion = SelectedEmployee.Direccion
-            Comentario = SelectedEmployee.Comentario
-            Dpi = SelectedEmployee.Dpi
-            Genero = SelectedEmployee.Genero
+            LoadFields()
             DeleteExecute(New CrudEmployeeView(Me))
         End Sub
         Public Sub AddEmployeeExecute()
-            Nombre = ""
-            Apellido = ""
-            Telefono = ""
-            Correo = ""
-            Direccion = ""
-            Comentario = ""
-            Dpi = ""
-            Genero = ""
+            CleanFields()
             AddExecute(New CrudEmployeeView(Me))
         End Sub
         Public Overloads Sub CancelExecute()
             ShowFirstDialog = False
             CleanFields()
+        End Sub
+        Public Sub LoadFields()
+            Nombre = SelectedEmployee.Nombre
+            Apellido = SelectedEmployee.Apellido
+            Telefono = SelectedEmployee.Telefono
+            Correo = SelectedEmployee.Correo
+            Direccion = SelectedEmployee.Direccion
+            Comentario = SelectedEmployee.Comentario
+            Dpi = SelectedEmployee.Dpi
+            Genero = SelectedEmployee.Genero
         End Sub
         Public Overrides Sub CleanFields()
             Nombre = ""
@@ -186,6 +229,9 @@ Namespace SCI.Modules.Employee.ViewModels
             Dpi = ""
             Genero = ""
             EmployeesList = EmployeeAccess.GetEmployees
+        End Sub
+        Public Sub SearchEmployee(ByVal Data As String)
+            EmployeesList = EmployeeAccess.SearchEmployee(Data)
         End Sub
 #End Region
 

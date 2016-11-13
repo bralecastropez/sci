@@ -85,27 +85,25 @@ Namespace SCI.Modules.Category.ViewModels
             CancelExecute()
         End Sub
         Public Sub AcceptCategoryExecute()
+            If Maintance = MaintanceType.Add Then
+                SelectedCategory = New Categoria
+            End If
+            SelectedCategory.Nombre = Nombre
+            SelectedCategory.Descripcion = Descripcion
             Select Case Maintance
                 Case MaintanceType.Add
-                    Dim NuevaCategoria As New Categoria
-                    NuevaCategoria.Descripcion = Descripcion
-                    NuevaCategoria.Nombre = Nombre
-                    If CategoryAccess.AddCategory(NuevaCategoria) Then
+                    If CategoryAccess.AddCategory(SelectedCategory) Then
                         SecondDialogContent = New ConfirmDialogView("Éxito", "Se agregó correctamente la categoria", "Aceptar")
                         ShowSecondDialog = True
                     End If
                 Case MaintanceType.Edit
-                    SelectedCategory.Nombre = Nombre
-                    SelectedCategory.Descripcion = Descripcion
                     If CategoryAccess.EditCategory(SelectedCategory) Then
-                        SecondDialogContent = New ConfirmDialogView("Éxito", "Se actualizó correctamente la categoria", "Aceptar")
+                        SecondDialogContent = New ConfirmDialogView("", "Se actualizó correctamente la categoria", "Aceptar")
                         ShowSecondDialog = True
                     End If
                 Case MaintanceType.Delete
-                    SelectedCategory.Nombre = Nombre
-                    SelectedCategory.Descripcion = Descripcion
                     If CategoryAccess.DeleteCategory(SelectedCategory) Then
-                        SecondDialogContent = New ConfirmDialogView("Éxito", "Se eliminó correctamente la categoria", "Aceptar")
+                        SecondDialogContent = New ConfirmDialogView("Se eliminó correctamente la categoria", "", "Aceptar")
                         ShowSecondDialog = True
                     End If
             End Select
@@ -113,10 +111,15 @@ Namespace SCI.Modules.Category.ViewModels
             AcceptExecute()
         End Sub
         Public Function CanAcceptCategoryExecute() As Boolean
-            Return (Not String.IsNullOrWhiteSpace(Nombre))
+            'Return (Not String.IsNullOrWhiteSpace(Nombre))
+            If String.IsNullOrWhiteSpace(Nombre) Then
+                Return False
+            Else
+                Return True
+            End If
         End Function
-        Public Sub Buscar(ByVal Obj As Object)
-            CategoriesList = CategoryAccess.SearchCategory(Obj.ToString)
+        Public Sub SearchCategory(ByVal Data As String)
+            CategoriesList = CategoryAccess.SearchCategory(Data)
         End Sub
 #End Region
 #Region "Constructors"
@@ -127,13 +130,14 @@ Namespace SCI.Modules.Category.ViewModels
             CategoryAccess = GetService(Of ICategoryDataService)()
             CategoriesList = CategoryAccess.GetCategories
 
-            SearchCommand = New AnotherCommandImplementation(AddressOf Buscar)
-
             AddCommand = New RelayCommand(AddressOf AddCategoryExecute, AddressOf CanAddExecute)
             EditCommand = New RelayCommand(AddressOf EditCategoryExecute, AddressOf CanEditExecute)
-            DeleteCommand = New RelayCommand(AddressOf DeleteCategoryExecute, AddressOf CanDeleteExecute)
-            CancelCommand = New RelayCommand(AddressOf CancelCategoryExecute, AddressOf CanCancelExecute)
+            DeleteCommand = New RelayCommand(AddressOf DeleteCategoryExecute)
+
+            SearchCommand = New RelayCommand(AddressOf SearchCategory)
+            CancelCommand = New RelayCommand(AddressOf CancelCategoryExecute)
             AcceptCommand = New RelayCommand(AddressOf AcceptCategoryExecute, AddressOf CanAcceptCategoryExecute)
+
         End Sub
 #End Region
 

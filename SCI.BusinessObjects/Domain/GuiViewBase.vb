@@ -181,13 +181,8 @@ Namespace SCI.Infrastructure.Helpers
         Public Property EditCommand As ICommand
         Public Property DeleteCommand As ICommand
         Public Property CancelCommand As ICommand
-        'TODO: Se queda este en vez del "Accept"
-        Public Property ExecuteCommand As ICommand
-        Public Property SearchCommand As ICommand
-        'TODO: Posiblemente se quite para el detalle
-        Public Property PrintCommand As ICommand
-        'TODO: Eliminar Metodo o cambiarlo al español
         Public Property AcceptCommand As ICommand
+        Public Property SearchCommand As ICommand
 #End Region
 #Region "Constructors"
         Sub New()

@@ -1,4 +1,5 @@
-﻿Imports SCI.Modules.Employee.ViewModels
+﻿Imports System.Windows.Controls
+Imports SCI.Modules.Employee.ViewModels
 
 Namespace SCI.Modules.Employee.Views
     Public Class EmployeeView
@@ -10,7 +11,7 @@ Namespace SCI.Modules.Employee.Views
             ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
             DataContext = New EmployeeViewModel()
         End Sub
-        Private Sub SearchBox_TextChanged(sender As Object, e As System.Windows.Controls.TextChangedEventArgs) Handles SearchBox.TextChanged
+        Private Sub SearchBox_TextChanged(sender As Object, e As TextChangedEventArgs) Handles SearchBox.TextChanged
             SearchButton.Command.Execute(SearchBox.Text)
         End Sub
     End Class

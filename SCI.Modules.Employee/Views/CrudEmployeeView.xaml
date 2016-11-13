@@ -60,10 +60,7 @@
                             </TextBox>
                             
                             <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Género: "/>
-                            <ComboBox IsEnabled="{Binding EnableEdit}" SelectedValue="{Binding Genero}" MaxDropDownHeight="200" Margin="15 0 4 0">
-                                <ComboBoxItem>Masculino</ComboBoxItem>
-                                <ComboBoxItem>Femenino</ComboBoxItem>
-                            </ComboBox>
+                            <ComboBox IsEnabled="{Binding EnableEdit}" ItemsSource="{Binding GendersList}" SelectedItem="{Binding Genero}" MaxDropDownHeight="200" Margin="15 0 4 0"/>
                             
                             
                             <!--<TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Dirección">

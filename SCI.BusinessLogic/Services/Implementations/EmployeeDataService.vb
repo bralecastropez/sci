@@ -56,7 +56,7 @@ Namespace SCI.BusinessLogic.Services
         End Function
 
         Public Function GetEmployees() As List(Of Empleado) Implements IEmployeeDataService.GetEmployees
-            Dim Resultado As List(Of Empleado) = Nothing
+            Dim Resultado As List(Of Empleado) = New List(Of Empleado)
             Try
                 Resultado = DataContext.DBEntities.Empleado.ToList
             Catch ex As Exception
@@ -66,7 +66,7 @@ Namespace SCI.BusinessLogic.Services
         End Function
 
         Public Function SearchEmployee(Data As String) As List(Of Empleado) Implements IEmployeeDataService.SearchEmployee
-            Dim Resultado As List(Of Empleado) = Nothing
+            Dim Resultado As List(Of Empleado) = New List(Of Empleado)
             Try
                 Dim Busqueda1 = (From em In DataContext.DBEntities.Empleado.ToList
                                  Where em.Nombre.Contains(Data))
