@@ -11,5 +11,9 @@ Namespace SCI.Modules.Employee.Views
             ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
             DataContext = ViewModel
         End Sub
+
+        Private Sub DialogHost_Initialized(sender As Object, e As EventArgs)
+
+        End Sub
     End Class
 End Namespace

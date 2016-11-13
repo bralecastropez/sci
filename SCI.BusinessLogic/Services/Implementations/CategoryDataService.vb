@@ -53,8 +53,8 @@ Namespace SCI.BusinessLogic.Services
         Public Function SearchCategory(Data As String) As List(Of Categoria) Implements ICategoryDataService.SearchCategory
             Dim Resultado As List(Of Categoria) = New List(Of Categoria)
             Try
-                Dim query1 = (From c In DataContext.DBEntities.Categoria Where c.Nombre.Contains(Data) Select c).ToList
-                Dim query2 = (From c In DataContext.DBEntities.Categoria Where c.Descripcion.Contains(Data) Select c).ToList
+                Dim query1 = (From c In DataContext.DBEntities.Categoria Where c.Nombre.ToLower.Contains(Data.ToLower) Select c).ToList
+                Dim query2 = (From c In DataContext.DBEntities.Categoria Where c.Descripcion.ToLower.Contains(Data.ToLower) Select c).ToList
                 If IsNumeric(Data) Then
                     Dim Valor1 As Integer = (Integer.Parse(Data))
                     Dim query = (From c In DataContext.DBEntities.Categoria Where c.IdCategoria = Valor1 Select c).ToList

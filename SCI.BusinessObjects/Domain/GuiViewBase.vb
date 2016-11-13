@@ -180,6 +180,7 @@ Namespace SCI.Infrastructure.Helpers
         Public Property AddCommand As ICommand
         Public Property EditCommand As ICommand
         Public Property DeleteCommand As ICommand
+        Public Property DetailCommand As ICommand
         Public Property CancelCommand As ICommand
         Public Property AcceptCommand As ICommand
         Public Property SearchCommand As ICommand
@@ -221,6 +222,16 @@ Namespace SCI.Infrastructure.Helpers
             EnableEdit = False
             ShowFirstDialog = True
         End Sub
+        Public Sub DetailExecute(ByVal Content As Object)
+            MaintanceTitle = "Detalle " & ModuleTitle
+            FirstDialogContent = Content
+            Maintance = MaintanceType.Detail
+            CancelButtonTitle = "Aceptar"
+            ExecuteButtonTitle = "Imprimir"
+            VisibleDelete = "Hidden"
+            EnableEdit = False
+            ShowFirstDialog = True
+        End Sub
         Public Sub AcceptExecute()
             CancelExecute()
         End Sub
@@ -242,6 +253,9 @@ Namespace SCI.Infrastructure.Helpers
             Return True
         End Function
         Public Function CanAcceptExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanDetailExecute(ByVal param As Object) As Boolean
             Return True
         End Function
 #End Region

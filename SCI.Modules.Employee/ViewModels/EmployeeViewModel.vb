@@ -1,4 +1,5 @@
-﻿Imports SCI.BusinessLogic.Services
+﻿Imports System.Windows.Controls
+Imports SCI.BusinessLogic.Services
 Imports SCI.BusinessObjects.Models
 Imports SCI.BusinessObjects.ViewHelpers.Views
 Imports SCI.Infrastructure.Helpers
@@ -45,7 +46,7 @@ Namespace SCI.Modules.Employee.ViewModels
             End Get
             Set(ByVal value As List(Of Empleado))
                 _EmployeesList = value
-                OnPropertyChanged("EmployeeList")
+                OnPropertyChanged("EmployeesList")
             End Set
         End Property
         Public Property SelectedEmployee As Empleado
@@ -98,12 +99,6 @@ Namespace SCI.Modules.Employee.ViewModels
                 Return _Genero
             End Get
             Set(value As String)
-                'If value.ToLower.Contains("comboboxitem") Then
-                '    Dim GeneroMalo() As String = value.Split(": ")
-                '    _Genero = GeneroMalo(GeneroMalo.Length - 1)
-                'Else
-                '    _Genero = value
-                'End If
                 _Genero = value
                 OnPropertyChanged("Genero")
             End Set
@@ -149,6 +144,7 @@ Namespace SCI.Modules.Employee.ViewModels
             AddCommand = New RelayCommand(AddressOf AddEmployeeExecute, AddressOf CanAddExecute)
             EditCommand = New RelayCommand(AddressOf EditEmployeeExecute, AddressOf CanEditExecute)
             DeleteCommand = New RelayCommand(AddressOf DeleteEmployeeExecute)
+            DetailCommand = New RelayCommand(AddressOf DetailEmployeeExecute)
 
             CancelCommand = New RelayCommand(AddressOf CancelExecute)
             AcceptCommand = New RelayCommand(AddressOf AcceptEmployeeExecute, AddressOf CanAcceptExecute)
@@ -188,6 +184,9 @@ Namespace SCI.Modules.Employee.ViewModels
                         SecondDialogContent = New ConfirmDialogView("Se eliminó correctamente el empleado", "", "Aceptar")
                         ShowSecondDialog = True
                     End If
+                Case MaintanceType.Detail
+                    Dim printDlg As New PrintDialog
+                    printDlg.PrintVisual(New CrudEmployeeView(Me), "Window Printing.")
             End Select
             CleanFields()
             AcceptExecute()
@@ -200,6 +199,10 @@ Namespace SCI.Modules.Employee.ViewModels
         Public Sub DeleteEmployeeExecute()
             LoadFields()
             DeleteExecute(New CrudEmployeeView(Me))
+        End Sub
+        Public Sub DetailEmployeeExecute()
+            LoadFields()
+            DetailExecute(New CrudEmployeeView(Me))
         End Sub
         Public Sub AddEmployeeExecute()
             CleanFields()
