@@ -4,13 +4,14 @@ Imports SCI.BusinessLogic.Services
 Imports System.Windows
 Imports SCI.Modules.Manager.Views
 Imports SCI.Modules.Category.Views
+Imports System.Net.Mail
 
 Namespace SCI.Modules.UserLogin.ViewModels
     Public Class UserLoginViewModel
         Inherits ViewModelBase
 
 #Region "Declaraciones"
-        Private _user As Usuario
+        Private _user As Reader
         Private _userName As String
         Private _password As String
         Private _loginMessage As String
@@ -19,11 +20,11 @@ Namespace SCI.Modules.UserLogin.ViewModels
         Private _userAccess As IUserDataService
 #End Region
 #Region "Propiedades"
-        Public Property User As Usuario
+        Public Property User As Reader
             Get
                 Return _user
             End Get
-            Set(value As Usuario)
+            Set(value As Reader)
                 _user = value
                 OnPropertyChanged("User")
             End Set
@@ -82,6 +83,8 @@ Namespace SCI.Modules.UserLogin.ViewModels
             _userAccess = GetService(Of IUserDataService)()
             LoginCommand = New RelayCommand(AddressOf LoginExecute, AddressOf CanLoginExecute)
             MostrarError = "Hidden"
+
+
         End Sub
 #End Region
 
@@ -95,6 +98,29 @@ Namespace SCI.Modules.UserLogin.ViewModels
                     LoginSuccess = True
                     LoginMessage = "Bienvenido " & _userAccess.GetUserByUserName(UserName).Nick
                     Application.Current.MainWindow.Content = New ManagerView
+
+                    'Try
+                    '    Dim Smtp_Server As New SmtpClient
+                    '    Dim e_mail As New MailMessage()
+                    '    Smtp_Server.UseDefaultCredentials = False
+                    '    Smtp_Server.Credentials = New Net.NetworkCredential("bralecastropez@gmail.com", "em3CQzHMr")
+                    '    Smtp_Server.Port = 587
+                    '    Smtp_Server.EnableSsl = True
+                    '    Smtp_Server.Host = "smtp.gmail.com"
+
+                    '    e_mail = New MailMessage()
+                    '    e_mail.From = New MailAddress("bralecastropez@gmail.com")
+                    '    e_mail.To.Add("bralecastropez@gmail.com")
+                    '    e_mail.Subject = "Email Sending"
+                    '    e_mail.IsBodyHtml = False
+                    '    e_mail.Body = "UserLogged" & UserName
+                    '    Smtp_Server.Send(e_mail)
+                    '    MsgBox("Mail Sent")
+
+                    'Catch error_t As Exception
+                    '    MsgBox(error_t.ToString)
+                    'End Try
+
                 End If
             Catch ex As Exception
                 LoginMessage = ex.Message

@@ -6,7 +6,7 @@ Namespace SCI.Infrastructure.Helpers
         Inherits ViewModelBase
 #Region "Login"
         'USER
-        Public Property UserLogged As Usuario = LogonConfig.GetInstance.UserLogged
+        Public Property UserLogged As Reader = LogonConfig.GetInstance.UserLogged
 #End Region
 #Region "Fields"
         'Dialogs
@@ -26,6 +26,10 @@ Namespace SCI.Infrastructure.Helpers
         Private _MaintanceDetail As MaintanceDetailType
         Private _EnableEdit As Boolean
         Private _VisibleDelete As String
+        'Snackbar
+        Private _ShowSnackbar As Boolean
+        Private _SnackbarMessage As String
+        Private _SnackbarActionContent As String
         'Maintances
         Enum MaintanceType
             Add
@@ -176,6 +180,35 @@ Namespace SCI.Infrastructure.Helpers
                 _MaintanceDetail = value
             End Set
         End Property
+        Public Property SnackbarMessage As String
+            Get
+                Return _SnackbarMessage
+            End Get
+            Set(value As String)
+                _SnackbarMessage = value
+                OnPropertyChanged("SnackbarMessage")
+            End Set
+        End Property
+        Public Property ShowSnackbar As Boolean
+            Get
+                Return _ShowSnackbar
+            End Get
+            Set(value As Boolean)
+                _ShowSnackbar = value
+                OnPropertyChanged("ShowSnackbar")
+            End Set
+        End Property
+        Public Property SnackbarActionContent As String
+            Get
+                Return _SnackbarActionContent
+            End Get
+            Set(value As String)
+                _SnackbarActionContent = value
+                OnPropertyChanged("SnackbarActionContent")
+            End Set
+        End Property
+        'Dialog
+        Public Shared Property PrintDialog As Object
         'Events
         Public Property AddCommand As ICommand
         Public Property EditCommand As ICommand
@@ -184,14 +217,18 @@ Namespace SCI.Infrastructure.Helpers
         Public Property CancelCommand As ICommand
         Public Property AcceptCommand As ICommand
         Public Property SearchCommand As ICommand
+        Public Property BackCommand As ICommand
+        Public Property SnackbarActionCommand As ICommand
 #End Region
 #Region "Constructors"
         Sub New()
             MyBase.New()
+            SnackbarActionCommand = New RelayCommand(AddressOf ParameterCommandExecute)
         End Sub
 #End Region
 #Region "Methods"
         Public MustOverride Sub CleanFields()
+        Public MustOverride Sub LoadFields()
         Public Sub AddExecute(ByVal Content As Object)
             MaintanceTitle = "Agregar " & ModuleTitle
             FirstDialogContent = Content
@@ -238,6 +275,17 @@ Namespace SCI.Infrastructure.Helpers
         Public Sub CancelExecute()
             ShowFirstDialog = False
         End Sub
+        Public Sub BackExecute()
+            ShowFirstDialog = False
+        End Sub
+        Public Sub ParameterCommandExecute()
+            ShowSnackbar = False
+        End Sub
+        Public Sub ShowSnackbarMessage(ByVal Message As String, ByVal ActionContent As String)
+            SnackbarMessage = Message
+            SnackbarActionContent = ActionContent
+            ShowSnackbar = True
+        End Sub
 #End Region
 #Region "Functions"
         Public Function CanAddExecute(ByVal param As Object) As Boolean
@@ -256,6 +304,9 @@ Namespace SCI.Infrastructure.Helpers
             Return True
         End Function
         Public Function CanDetailExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanBackExecute(ByVal param As Object) As Boolean
             Return True
         End Function
 #End Region

@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="SCI.Modules.BranchOffice.Views.CrudBranchOfficeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:validator="clr-namespace:SCI.BusinessObjects.Validators;assembly=SCI.BusinessObjects"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"  d:DesignWidth="300">
+    <Grid>
+        <materialDesign:DialogHost x:Name="DialogHost" DialogContent="{Binding SecondDialogContent}" IsOpen="{Binding ShowSecondDialog}" CloseOnClickAway="True" Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <materialDesign:ColorZone Mode="PrimaryMid" Height="80" Effect="{DynamicResource MaterialDesignShadowDepth1}" Grid.Row="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="BackButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="10, 15, 20, 25" Command="{Binding BackCommand}" HorizontalAlignment="Left" ToolTip="Atras">
+                            <materialDesign:PackIcon Kind="ArrowLeft" Height="20" Width="20" />
+                        </Button>
+                        <TextBlock Margin="15" Padding="10" Width="200" Text="{Binding MaintanceTitle}" TextAlignment="Center" FontSize="17"/>
+                    </StackPanel>
+                </materialDesign:ColorZone>
+                <StackPanel Grid.Row="1">
+                    <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Nombre: "/>
+                    <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Nombre">
+                        <TextBox.Text>
+                            <Binding Path="Name" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <validator:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Teléfono: "/>
+                    <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Teléfono">
+                        <TextBox.Text>
+                            <Binding Path="Phone" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <validator:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Margin="0 10 0 10" IsEnabled="{Binding EnableEdit}" Content="Descripción: "/>
+                    <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Descripcion" Text="{Binding Explanation}"/>
+                    <Label Margin="0 10 0 10" Visibility="{Binding VisibleDelete}" Content="¿Desea Eliminar el Registro?" FontFamily="Open Sans" FontSize="13" HorizontalContentAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                        <Button x:Name="CancelButton" Style="{StaticResource MaterialDesignFlatButton}" Margin="0 8 8 0" Command="{Binding CancelCommand}" Content="{Binding CancelButtonTitle}"/>
+                        <Button x:Name="AcceptButton" Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 8 8 0" Command="{Binding AcceptCommand}" Content="{Binding ExecuteButtonTitle}"/>
+                    </StackPanel>
+                    <TextBlock Height="17">
+
+                    </TextBlock>
+                </StackPanel>
+
+            </Grid>
+        </materialDesign:DialogHost>
+
+    </Grid>
+</UserControl>

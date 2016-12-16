@@ -7,10 +7,10 @@ Namespace SCI.BusinessLogic.Services
     Public Class UserDataService
         Implements IUserDataService
 
-        Public Function GetUserByUserName(ByVal UserName As String) As Usuario Implements IUserDataService.GetUserByUserName
-            Dim Resultado As New Usuario
+        Public Function GetUserByUserName(ByVal UserName As String) As Reader Implements IUserDataService.GetUserByUserName
+            Dim Resultado As New Reader
             Try
-                Resultado = (From u In DataContext.DBEntities.Usuario Where u.Nick = UserName).FirstOrDefault
+                Resultado = (From u In DataContext.DBEntities.Reader Where u.Nick = UserName).FirstOrDefault
             Catch ex As Exception
                 SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Obtener Usuario")
                 Throw New Exception(ex.Message, ex.InnerException)
@@ -21,7 +21,7 @@ Namespace SCI.BusinessLogic.Services
         Private Function VerifyUserAndPassword(ByVal UserName As String, ByVal Password As String) As Boolean
             Dim Resultado = False
             Try
-                Dim usuario As Usuario = (From u In DataContext.DBEntities.Usuario Where u.Nick = UserName And u.Pass = Password).FirstOrDefault
+                Dim usuario As Reader = (From u In DataContext.DBEntities.Reader Where u.Nick = UserName And u.Pass = Password).FirstOrDefault
                 If Not usuario.Nick Is Nothing Then
                     Resultado = True
                 Else
@@ -36,7 +36,7 @@ Namespace SCI.BusinessLogic.Services
 
         Public Function Login(ByVal UserName As String, ByVal LoginPassword As String) As Boolean Implements IUserDataService.Login
             Dim errMsg As String = String.Empty
-            Dim user As Usuario = Nothing
+            Dim user As Reader = Nothing
 
             Dim sUserName As String = Trim(UserName)
             Dim sLoginPassword As String = Trim(LoginPassword)
@@ -54,8 +54,8 @@ Namespace SCI.BusinessLogic.Services
                     Dim roleList As New List(Of String)
                     Dim sRoleList() As String = Nothing
                     Dim roles = (From r In DataContext.DBEntities.Rol
-                                 Join u In DataContext.DBEntities.Usuario
-                                 On r.IdRol Equals u.IdRol
+                                 Join u In DataContext.DBEntities.Reader
+                                 On r.RolId Equals u.RolId
                                  Where u.Nick = sUserName
                                  Select r)
 
@@ -67,22 +67,22 @@ Namespace SCI.BusinessLogic.Services
                     Dim i As Integer = 0
 
                     For Each r In roles
-                        roleList.Add(r.IdRol)
+                        roleList.Add(r.RolId)
                         i += 1
                     Next
 
                     Dim idRole As Integer = CInt(roleList(0).ToString)
 
                     Dim modules = (From r In DataContext.DBEntities.Rol
-                                   Where r.IdRol = idRole
-                                   Select r.Modulo)
+                                   Where r.RolId = idRole
+                                   Select r.Module)
 
                     Dim moduleList As New List(Of String)
 
                     For Each modu In modules
                         For Each m In modu
-                            MsgBox(m.Descripcion)
-                            moduleList.Add(m.Descripcion)
+                            MsgBox(m.Explanation)
+                            moduleList.Add(m.Explanation)
                         Next
                     Next
 

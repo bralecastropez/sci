@@ -7,6 +7,10 @@ Namespace SCI.Modules.Dashboard.ViewModels
         Public Overrides Sub CleanFields()
             Throw New NotImplementedException()
         End Sub
+
+        Public Overrides Sub LoadFields()
+            Throw New NotImplementedException()
+        End Sub
 #End Region
     End Class
 End Namespace

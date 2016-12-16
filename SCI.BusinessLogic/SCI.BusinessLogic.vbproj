@@ -91,11 +91,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Services\Implementations\CategoryDataService.vb" />
+    <Compile Include="Services\Implementations\CustomerDataService.vb" />
     <Compile Include="Services\Implementations\EmployeeDataService.vb" />
+    <Compile Include="Services\Implementations\BranchOfficeDataService.vb" />
+    <Compile Include="Services\Implementations\ProviderDataService.vb" />
     <Compile Include="Services\Implementations\UserDataService.vb" />
     <Compile Include="Services\Interfaces\ICategoryDataService.vb" />
     <Compile Include="Services\Interfaces\ICustomerDataService.vb" />
     <Compile Include="Services\Interfaces\IEmployeeDataService.vb" />
+    <Compile Include="Services\Interfaces\IBranchOfficeDataService.vb" />
+    <Compile Include="Services\Interfaces\IProviderDataService.vb" />
     <Compile Include="Services\Interfaces\IUserDataService.vb" />
   </ItemGroup>
   <ItemGroup>

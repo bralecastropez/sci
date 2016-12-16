@@ -32,7 +32,7 @@
                 <!--<materialDesign:Card Padding="32" Margin="16">
                     <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" TextAlignment="Center">Listado de Categorias</TextBlock>
                 </materialDesign:Card>-->
-                
+
                 <materialDesign:Card Margin="0, 0, 0, 0" >
                     <Grid>
                         <Grid.RowDefinitions>
@@ -66,57 +66,88 @@
 
 
                                         <!--<Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="10 0 10 0" HorizontalAlignment="Left" ToolTip="Imprimir">-->
-                                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="10 0 10 0" HorizontalAlignment="Left" ToolTip="Imprimir">
-                                            <materialDesign:PackIcon Kind="Printer" Height="24" Width="24" />
-                                        </Button>
-
+                                        <!--<Button Style="{StaticResource  MaterialDesignFloatingActionMiniButton}" Margin="10 0 10 0" HorizontalAlignment="Left" ToolTip="Información">
+                                            <materialDesign:PackIcon Kind="InformationOutline" Height="24" Width="24" />
+                                        </Button>-->
+                                        <materialDesign:PopupBox Margin="16,0,16,0" StaysOpen="True">
+                                            <Grid Width="300" Margin="8,8,8,8">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignTitleTextBlock}" Margin="8,8,8,16">Opciones</TextBlock>
+                                                <ListBox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <materialDesign:PackIcon Kind="CommentQuestionOutline" Margin="10 0 10 0" Height="24" Width="24" />
+                                                        <TextBlock>Información</TextBlock>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <materialDesign:PackIcon Kind="CommentAlertOutline" Margin="10 0 10 0" Height="24" Width="24" />
+                                                        <TextBlock>Notificar un Error</TextBlock>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <materialDesign:PackIcon Kind="CommentTextOutline" Margin="10 0 10 0" Height="24" Width="24" />
+                                                        <TextBlock>Comentarios</TextBlock>
+                                                    </StackPanel>
+                                                </ListBox>
+                                            </Grid>
+                                        </materialDesign:PopupBox>
                                     </StackPanel>
-                                    
+
 
                                 </Grid>
                             </materialDesign:ColorZone>
                         </materialDesign:TransitioningContent>
-                        <DataGrid Padding="20" Grid.Row="1" SelectedItem="{Binding SelectedCategory}" ItemsSource="{Binding CategoriesList}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" ScrollViewer.CanContentScroll="True">
-                            
-                                <DataGrid.Columns>
-                                    
-                                        <DataGridTextColumn Header="#" Binding="{Binding IdCategoria}"/>
-                                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" />
-                                    <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" />
-                                    <DataGridTemplateColumn Header="Acciones">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Editar">
-                                                            <materialDesign:PackIcon Kind="Pencil" Height="15" Width="15" />
-                                                        </Button>
-                                                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Eliminar">
-                                                            <materialDesign:PackIcon Kind="Delete" Height="15" Width="15" />
-                                                        </Button>
-                                                    </StackPanel>
-                                                </materialDesign:TransitioningContent>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                </DataGrid.Columns>
-                            
+                        <DataGrid Padding="20" Grid.Row="1" SelectedItem="{Binding SelectedCategory}" ItemsSource="{Binding CategoriesList, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" ScrollViewer.CanContentScroll="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="#" Binding="{Binding CategoryId}"/>
+                                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="Descripción" Binding="{Binding Explanation}" />
+                                <DataGridTemplateColumn Header="Acciones">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignFlatButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Editar">
+                                                        <materialDesign:PackIcon Kind="Pencil" Height="15" Width="15" />
+                                                    </Button>
+                                                    <TextBlock Text="|" Margin="0 8 8 0"/>
+                                                    <Button Style="{StaticResource MaterialDesignFlatButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Eliminar">
+                                                        <materialDesign:PackIcon Kind="Delete" Height="15" Width="15" />
+                                                    </Button>
+                                                    <TextBlock Text="|" Margin="0 8 8 0"/>
+                                                    <Button Style="{StaticResource MaterialDesignFlatButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DetailCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Eliminar">
+                                                        <materialDesign:PackIcon Kind="Delete" Height="15" Width="15" />
+                                                    </Button>
+                                                </StackPanel>
+                                            </materialDesign:TransitioningContent>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    
+
                 </materialDesign:Card>
 
                 <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1" Effect="{DynamicResource MaterialDesignShadowDepth5}">
                     <TextBlock Margin="16"></TextBlock>
                 </materialDesign:ColorZone>
                 <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="0" Margin="0 0 28 -20" 
-                        ToolTip="Agregar Categoria" Command="{Binding AddCommand}" >
+                        ToolTip="Agregar Empleado" Command="{Binding AddCommand}" >
                     <Viewbox Width="22" Height="22">
                         <Canvas Width="24" Height="24">
                             <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}, Path=Foreground}" />
                         </Canvas>
                     </Viewbox>
                 </Button>
+                <materialDesign:Snackbar IsActive="{Binding ShowSnackbar}">
+                    <materialDesign:SnackbarMessage Content="{Binding SnackbarMessage}" ActionContent="{Binding SnackbarActionContent}" ActionCommand="{Binding SnackbarActionCommand}"/>
+                </materialDesign:Snackbar>
             </Grid>
         </materialDesign:DialogHost>
     </Grid>

@@ -1,14 +1,14 @@
 ﻿Public Class DataContext
 
-    Private Shared _DBEntities As DbInventarioEntities
-    Public Shared Property DBEntities() As DbInventarioEntities
+    Private Shared _DBEntities As InventarioDemoEntities
+    Public Shared Property DBEntities() As InventarioDemoEntities
         Get
             If _DBEntities Is Nothing Then
-                _DBEntities = New DbInventarioEntities()
+                _DBEntities = New InventarioDemoEntities()
             End If
             Return _DBEntities
         End Get
-        Set(value As DbInventarioEntities)
+        Set(value As InventarioDemoEntities)
             _DBEntities = value
         End Set
     End Property

@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:domain="clr-namespace:SCI.BusinessObjects.Domain;assembly=SCI.BusinessObjects"
+             xmlns:domain="clr-namespace:SCI.BusinessObjects.Validators;assembly=SCI.BusinessObjects"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
     <Grid>
-        <materialDesign:DialogHost Command=""  DialogContent="{Binding SecondDialogContent}" IsOpen="{Binding ShowSecondDialog}" CloseOnClickAway="True" Initialized="DialogHost_Initialized" >
+        <materialDesign:DialogHost x:Name="DialogHost" DialogContent="{Binding SecondDialogContent}" IsOpen="{Binding ShowSecondDialog}" CloseOnClickAway="True" >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -15,7 +15,7 @@
                 </Grid.RowDefinitions>
                 <materialDesign:ColorZone Mode="PrimaryMid" Height="80" Effect="{DynamicResource MaterialDesignShadowDepth1}" Grid.Row="0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="10, 15, 20, 25" Command="{Binding CancelCommand}" HorizontalAlignment="Left" ToolTip="Atras">
+                        <Button x:Name="BackButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="10, 15, 20, 25" Command="{Binding BackCommand}" HorizontalAlignment="Left" ToolTip="Atras">
                             <materialDesign:PackIcon Kind="ArrowLeft" Height="20" Width="20" />
                         </Button>
                         <TextBlock Margin="15 15 0 15" Padding="10" Text="{Binding MaintanceTitle}" HorizontalAlignment="Stretch" TextAlignment="Center" FontSize="17" Width="Auto"/>
@@ -31,7 +31,7 @@
                             <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Nombre: "/>
                             <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Nombre">
                                 <TextBox.Text>
-                                    <Binding Path="Nombre" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
                                         <Binding.ValidationRules>
                                             <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                                         </Binding.ValidationRules>
@@ -41,17 +41,19 @@
                             <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Apellido: "/>
                             <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Apellido">
                                 <TextBox.Text>
-                                    <Binding Path="Apellido" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding Path="LastName" UpdateSourceTrigger="PropertyChanged">
                                         <Binding.ValidationRules>
                                             <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                                         </Binding.ValidationRules>
                                     </Binding>
                                 </TextBox.Text>
                             </TextBox>
+                            <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Fecha de Nacimiento: "/>
+                            <DatePicker SelectedDate="{Binding BirthDate}" HorizontalAlignment="Stretch" Margin="15 0 4 0" materialDesign:HintAssist.Hint="Fecha de Nacimiento"/>
                             <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Teléfono: "/>
                             <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Teléfono">
                                 <TextBox.Text>
-                                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding Path="Phone" UpdateSourceTrigger="PropertyChanged">
                                         <Binding.ValidationRules>
                                             <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                                         </Binding.ValidationRules>
@@ -60,7 +62,7 @@
                             </TextBox>
                             
                             <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Género: "/>
-                            <ComboBox IsEnabled="{Binding EnableEdit}" ItemsSource="{Binding GendersList}" SelectedItem="{Binding Genero}" MaxDropDownHeight="200" Margin="15 0 4 0"/>
+                            <ComboBox IsEnabled="{Binding EnableEdit}" ItemsSource="{Binding GendersList}" SelectedItem="{Binding Gender}" MaxDropDownHeight="200" Margin="15 0 4 0"/>
                             
                             
                             <!--<TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Dirección">
@@ -88,7 +90,7 @@
                             <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Dirección: "/>
                             <TextBox IsEnabled="{Binding EnableEdit}" TextWrapping="Wrap" VerticalAlignment="Stretch" Margin="15 0 4 0" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="Dirección">
                                 <TextBox.Text>
-                                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding Path="Direction" UpdateSourceTrigger="PropertyChanged">
                                         <Binding.ValidationRules>
                                             <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                                         </Binding.ValidationRules>
@@ -96,9 +98,9 @@
                                 </TextBox.Text>
                             </TextBox>
                             <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Correo Eléctronico: "/>
-                            <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" Text="{Binding Correo}" materialDesign:HintAssist.Hint="Correo Eléctronico"/>
+                            <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" Text="{Binding Email}" materialDesign:HintAssist.Hint="Correo Eléctronico"/>
                             <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Comentario" />
-                            <TextBox  IsEnabled="{Binding EnableEdit}" TextWrapping="Wrap" Text="{Binding Comentario}" VerticalAlignment="Stretch" Margin="15 0 4 0" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="Comentario"/>
+                            <TextBox  IsEnabled="{Binding EnableEdit}" TextWrapping="Wrap" Text="{Binding Comment}" VerticalAlignment="Stretch" Margin="15 0 4 0" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="Comentario"/>
                             
                         </StackPanel>
                     </Grid>
@@ -106,8 +108,8 @@
                     
                     <Label Margin="0 10 0 10" Visibility="{Binding VisibleDelete}" Content="¿Desea Eliminar el Registro?" FontFamily="Open Sans" FontSize="13" HorizontalContentAlignment="Center"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" Margin="0 8 8 0" Command="{Binding CancelCommand}" Content="{Binding CancelButtonTitle}"/>
-                        <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 8 8 0" Command="{Binding AcceptCommand}" Content="{Binding ExecuteButtonTitle}"/>
+                        <Button x:Name="CancelButton" Style="{StaticResource MaterialDesignFlatButton}" Margin="0 8 8 0" Command="{Binding CancelCommand}" Content="{Binding CancelButtonTitle}"/>
+                        <Button x:Name="AcceptButton" Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 8 8 0" Command="{Binding AcceptCommand}" Content="{Binding ExecuteButtonTitle}"/>
                     </StackPanel>
                     <TextBlock Height="17">
 

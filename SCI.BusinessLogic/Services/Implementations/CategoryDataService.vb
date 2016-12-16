@@ -1,81 +1,73 @@
 ﻿Imports System.Data.Entity
+Imports System.Reflection
 Imports SCI.Infrastructure.Util
 Namespace SCI.BusinessLogic.Services
     Public Class CategoryDataService
         Implements ICategoryDataService
 
-        Public Function AddCategory(Category As Categoria) As Boolean Implements ICategoryDataService.AddCategory
+        Public Function AddCategory(Category As Category) As Boolean Implements ICategoryDataService.AddCategory
             Dim Resultado As Boolean = True
             Try
-                DataContext.DBEntities.Categoria.Add(Category)
+                DataContext.DBEntities.Category.Add(Category)
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Categoria")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Category")
             End Try
             Return Resultado
         End Function
 
-        Public Function DeleteCategory(Category As Categoria) As Boolean Implements ICategoryDataService.DeleteCategory
+        Public Function DeleteCategory(Category As Category) As Boolean Implements ICategoryDataService.DeleteCategory
             Dim Resultado As Boolean = True
             Try
-                DataContext.DBEntities.Categoria.Remove(Category)
+                DataContext.DBEntities.Category.Remove(Category)
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Categoria")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Category")
             End Try
             Return Resultado
         End Function
 
-        Public Function EditCategory(Category As Categoria) As Boolean Implements ICategoryDataService.EditCategory
+        Public Function EditCategory(Category As Category) As Boolean Implements ICategoryDataService.EditCategory
             Dim Resultado As Boolean = True
             Try
                 DataContext.DBEntities.Entry(Category).State = EntityState.Modified
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Categoria")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Category")
             End Try
             Return Resultado
         End Function
 
-        Public Function GetCategories() As List(Of Categoria) Implements ICategoryDataService.GetCategories
-            Dim Resultado As List(Of Categoria) = New List(Of Categoria)
+        Public Function GetCategories() As List(Of Category) Implements ICategoryDataService.GetCategories
+            Dim Resultado As List(Of Category) = New List(Of Category)
             Try
-                Resultado = DataContext.DBEntities.Categoria.ToList
+                Resultado = DataContext.DBEntities.Category.ToList
             Catch ex As Exception
                 SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Categorias")
             End Try
             Return Resultado
         End Function
 
-        Public Function SearchCategory(Data As String) As List(Of Categoria) Implements ICategoryDataService.SearchCategory
-            Dim Resultado As List(Of Categoria) = New List(Of Categoria)
+        Public Function SearchCategory(Data As String) As List(Of Category) Implements ICategoryDataService.SearchCategory
+            Dim Result As ICollection(Of Category) = New List(Of Category)
             Try
-                Dim query1 = (From c In DataContext.DBEntities.Categoria Where c.Nombre.ToLower.Contains(Data.ToLower) Select c).ToList
-                Dim query2 = (From c In DataContext.DBEntities.Categoria Where c.Descripcion.ToLower.Contains(Data.ToLower) Select c).ToList
-                If IsNumeric(Data) Then
-                    Dim Valor1 As Integer = (Integer.Parse(Data))
-                    Dim query = (From c In DataContext.DBEntities.Categoria Where c.IdCategoria = Valor1 Select c).ToList
-                    If query.Count > 0 Then
-                        Resultado = query
-                    ElseIf query1.Count > 0 Then
-                        Resultado = query1
-                    ElseIf query2.Count > 0 Then
-                        Resultado = query2
-                    End If
-                Else
-                    If query1.Count > 0 Then
-                        Resultado = query1
-                    ElseIf query2.Count > 0 Then
-                        Resultado = query2
-                    End If
-                End If
+                For Each _Category In GetCategories()
+                    Dim _Type As Type = _Category.GetType()
+                    Dim _Properties() As PropertyInfo = _Type.GetProperties()
+                    For Each _Property As PropertyInfo In _Properties
+                        If (_Property.GetValue(_Category, Nothing).ToString.ToLower.Trim.Contains(Data.ToLower)) Then
+                            Result.Add(_Category)
+                            Exit For
+                        End If
+                    Next
+                Next
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Categoria")
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Category")
             End Try
-            Return Resultado
+            Return Result
         End Function
     End Class
 End Namespace

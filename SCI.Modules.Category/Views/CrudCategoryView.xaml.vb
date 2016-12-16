@@ -9,6 +9,8 @@ Namespace SCI.Modules.Category.Views
 
             ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
             DataContext = ViewModel
+            ViewModel.PrintDialog = DialogHost
         End Sub
+
     End Class
 End Namespace

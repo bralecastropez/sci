@@ -103,17 +103,16 @@
                             </materialDesign:ColorZone>
                         </materialDesign:TransitioningContent>
                         <DataGrid Padding="20" Grid.Row="1" SelectedItem="{Binding SelectedEmployee}" ItemsSource="{Binding EmployeesList}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" ScrollViewer.CanContentScroll="True">
-
                             <DataGrid.Columns>
-
-                                <DataGridTextColumn Header="#" Binding="{Binding IdEmpleado}"/>
-                                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" />
-                                <DataGridTextColumn Header="Apellido" Binding="{Binding Apellido}" />
-                                <DataGridTextColumn Header="Correo" Binding="{Binding Correo}" />
-                                <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}" />
-                                <DataGridTextColumn Header="Dirección" Binding="{Binding Direccion}" />
-                                <DataGridTextColumn Header="Género" Binding="{Binding Genero}" />
-                                <DataGridTextColumn Header="Comentario" Binding="{Binding Comentario}" />
+                                <DataGridTextColumn Header="#" Binding="{Binding EmployeeId}"/>
+                                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="Apellido" Binding="{Binding LastName}" />
+                                <DataGridTextColumn Header="Correo" Binding="{Binding Email}" />
+                                <DataGridTextColumn Header="Telefono" Binding="{Binding Phone}" />
+                                <DataGridTextColumn Header="Dirección" Binding="{Binding Direction}" />
+                                <DataGridTextColumn Header="Género" Binding="{Binding Gender}" />
+                                <DataGridTextColumn Header="Fecha de Nacimiento" Binding="{Binding BirthDate}" />
+                                <DataGridTextColumn Header="Comentario" Binding="{Binding Comment}" />
                                 <DataGridTextColumn Header="DPI" Binding="{Binding Dpi}" />
                                 <DataGridTemplateColumn Header="Acciones">
                                     <DataGridTemplateColumn.CellTemplate>
@@ -123,11 +122,13 @@
                                                     <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Editar">
                                                         <materialDesign:PackIcon Kind="Pencil" Height="15" Width="15" />
                                                     </Button>
+                                                    <TextBlock Text="|" Margin="0 8 8 0"/>
                                                     <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Eliminar">
                                                         <materialDesign:PackIcon Kind="Delete" Height="15" Width="15" />
                                                     </Button>
+                                                    <TextBlock Text="|" Margin="0 8 8 0"/>
                                                     <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DetailCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Detalle">
-                                                        <materialDesign:PackIcon Kind="Information" Height="15" Width="15" />
+                                                        <materialDesign:PackIcon Kind="Details" Height="15" Width="15" />
                                                     </Button>
                                                 </StackPanel>
                                             </materialDesign:TransitioningContent>
@@ -135,7 +136,6 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
-
                         </DataGrid>
                     </Grid>
 
@@ -152,6 +152,9 @@
                         </Canvas>
                     </Viewbox>
                 </Button>
+                <materialDesign:Snackbar IsActive="{Binding ShowSnackbar}">
+                    <materialDesign:SnackbarMessage Content="{Binding SnackbarMessage}" ActionContent="{Binding SnackbarActionContent}" ActionCommand="{Binding SnackbarActionCommand}"/>
+                </materialDesign:Snackbar>
             </Grid>
         </materialDesign:DialogHost>
     </Grid>

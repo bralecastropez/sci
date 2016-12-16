@@ -3,36 +3,34 @@
 Namespace SCI.BusinessObjects.Domain
     Public Class ItemMenu
         Inherits ViewModelBase
-
-#Region "Campos"
-        Private _Nombre As String
-        Private _Contenido As Object
+#Region "Fields"
+        Private _Name As String
+        Private _Content As Object
 #End Region
-
-#Region "Propiedades"
-        Public Property Nombre As String
+#Region "Properties"
+        Public Property Name As String
             Get
-                Return _Nombre
+                Return _Name
             End Get
             Set(ByVal value As String)
-                _Nombre = value
-                OnPropertyChanged("Nombre")
+                _Name = value
+                OnPropertyChanged("Name")
             End Set
         End Property
-        Public Property Contenido As Object
+        Public Property Content As Object
             Get
-                Return _Contenido
+                Return _Content
             End Get
             Set(ByVal value As Object)
-                _Contenido = value
-                OnPropertyChanged("Contenido")
+                _Content = value
+                OnPropertyChanged("Content")
             End Set
         End Property
 #End Region
-#Region "Constructores"
-        Sub New(ByVal Nombre As String, ByVal Contenido As Object)
-            Me.Nombre = Nombre
-            Me.Contenido = Contenido
+#Region "Constructors"
+        Sub New(ByVal Name As String, ByVal Content As Object)
+            Me.Name = Name
+            Me.Content = Content
         End Sub
 
 #End Region

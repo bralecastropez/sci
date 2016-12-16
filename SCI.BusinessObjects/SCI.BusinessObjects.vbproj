@@ -44,8 +44,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dragablz, Version=0.0.3.172, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dragablz.0.0.3.172\lib\net45\Dragablz.dll</HintPath>
+    <Reference Include="Dragablz, Version=0.0.3.181, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dragablz.0.0.3.181\lib\net45\Dragablz.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -68,8 +68,8 @@
       <HintPath>..\packages\MaterialDesignThemes.MahApps.0.0.8\lib\net45\MaterialDesignThemes.MahApps.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf, Version=2.1.0.657, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignThemes.2.1.0.657\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.2.1.750, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.2.1.750\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationBuildTasks" />
@@ -124,59 +124,67 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Domain\NotEmptyValidationRule.vb" />
-    <Compile Include="Schema\Caja.vb">
+    <Compile Include="Schema\BranchOffice.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Categoria.vb">
+    <Compile Include="Schema\CashOrder.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Cliente.vb">
+    <Compile Include="Schema\Category.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Compra.vb">
+    <Compile Include="Schema\Checkout.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Empleado.vb">
+    <Compile Include="Schema\Company.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Empresa.vb">
+    <Compile Include="Schema\Customer.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Equipo.vb">
+    <Compile Include="Schema\Employee.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Factura.vb">
+    <Compile Include="Schema\Equipment.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Inventario.vb">
+    <Compile Include="Schema\Inventory.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Modulo.vb">
+    <Compile Include="Schema\Invoice.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Pedido.vb">
+    <Compile Include="Schema\Module.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Producto.vb">
+    <Compile Include="Schema\Product.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Producto_Compra.vb">
+    <Compile Include="Schema\Product_Inventory.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Producto_Factura.vb">
+    <Compile Include="Schema\Product_Purchase.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Producto_Inventario.vb">
+    <Compile Include="Schema\Product_Sale.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Proveedor.vb">
+    <Compile Include="Schema\Provider.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Reporte.vb">
+    <Compile Include="Schema\Purchase.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Reader.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Report.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Schema\Rol.vb">
+      <DependentUpon>SCIDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Sale.vb">
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Schema\SCIDataModel.Context.vb">
@@ -194,18 +202,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SCIDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Schema\Sucursal.vb">
-      <DependentUpon>SCIDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Schema\sysdiagrams.vb">
-      <DependentUpon>SCIDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Schema\Usuario.vb">
-      <DependentUpon>SCIDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Schema\Venta.vb">
-      <DependentUpon>SCIDataModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Validators\EmailValidationRule.vb" />
+    <Compile Include="Validators\ModelValidator.vb" />
+    <Compile Include="Validators\NitValidationRule.vb" />
+    <Compile Include="Validators\NotEmptyValidationRule.vb" />
     <Compile Include="ViewHelpers\ViewModels\ConfirmDialogViewModel.vb" />
     <Compile Include="ViewHelpers\Views\ConfirmDialogView.xaml.vb">
       <DependentUpon>ConfirmDialogView.xaml</DependentUpon>
@@ -232,15 +232,31 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="packages.config" />
     <EntityDeploy Include="Schema\SCIDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SCIDataModel.Designer.vb</LastGenOutput>
     </EntityDeploy>
-    <None Include="packages.config" />
     <None Include="Schema\SCIDataModel.edmx.diagram">
       <DependentUpon>SCIDataModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ViewHelpers\Views\ConfirmDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCI.Infrastructure\SCI.Infrastructure.vbproj">
+      <Project>{6a1b3e85-59c3-4630-bceb-10f2400db955}</Project>
+      <Name>SCI.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Schema\SCIDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -252,22 +268,6 @@
       <DependentUpon>SCIDataModel.edmx</DependentUpon>
       <LastGenOutput>SCIDataModel.vb</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="ViewHelpers\Views\ConfirmDialogView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\SCI.Infrastructure\SCI.Infrastructure.vbproj">
-      <Project>{6a1b3e85-59c3-4630-bceb-10f2400db955}</Project>
-      <Name>SCI.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

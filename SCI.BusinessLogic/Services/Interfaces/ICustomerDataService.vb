@@ -1,9 +1,10 @@
-﻿Namespace SCI.BusinessLogic.Services
+﻿
+Namespace SCI.BusinessLogic.Services
     Public Interface ICustomerDataService
-        Function Add(ByVal Cliente As Cliente) As Boolean
-        Function Edit(ByVal Cliente As Cliente) As Boolean
-        Function Delete(ByVal Cliente As Cliente) As Boolean
-        Function GetCustomers() As List(Of Cliente)
-        Function Search(ByVal Valor As String) As List(Of Cliente)
+        Function AddCustomer(ByVal Customer As Customer) As Boolean
+        Function EditCustomer(ByVal Customer As Customer) As Boolean
+        Function DeleteCustomer(ByVal Customer As Customer) As Boolean
+        Function GetCustomers() As List(Of Customer)
+        Function SearchCustomer(ByVal Data As String) As List(Of Customer)
     End Interface
 End Namespace
