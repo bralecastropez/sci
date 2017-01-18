@@ -7,6 +7,7 @@ Imports SCI.Modules.Employee.Views
 Imports SCI.Modules.Customer.Views
 Imports SCI.Modules.Provider.Views
 Imports SCI.Modules.BranchOffice.Views
+Imports SCI.Modules.Inventory.Views
 
 Namespace SCI.Modules.Manager.ViewModels
     Public Class ManagerViewModel
@@ -47,9 +48,11 @@ Namespace SCI.Modules.Manager.ViewModels
             ModulesList.Add(New ItemMenu("Clientes", New CustomerView))
             ModulesList.Add(New ItemMenu("Proveedores", New ProviderView))
             ModulesList.Add(New ItemMenu("Sucursales", New BranchOfficeView))
+            ModulesList.Add(New ItemMenu("Inventarios", New InventoryView))
             ServiceLocator.RegisterService(Of IUserDataService)(New UserDataService)
             _userAccess = GetService(Of IUserDataService)()
             HeaderTitle = "Bienvenido " & UserLogged.Employee.Name & " - Dashboard"
+            SelectedModule = 6
         End Sub
 
         Public Overrides Sub CleanFields()

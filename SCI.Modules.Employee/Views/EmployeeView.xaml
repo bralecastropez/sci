@@ -105,30 +105,28 @@
                         <DataGrid Padding="20" Grid.Row="1" SelectedItem="{Binding SelectedEmployee}" ItemsSource="{Binding EmployeesList}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" ScrollViewer.CanContentScroll="True">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="#" Binding="{Binding EmployeeId}"/>
-                                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" />
-                                <DataGridTextColumn Header="Apellido" Binding="{Binding LastName}" />
-                                <DataGridTextColumn Header="Correo" Binding="{Binding Email}" />
-                                <DataGridTextColumn Header="Telefono" Binding="{Binding Phone}" />
-                                <DataGridTextColumn Header="Dirección" Binding="{Binding Direction}" />
-                                <DataGridTextColumn Header="Género" Binding="{Binding Gender}" />
-                                <DataGridTextColumn Header="Fecha de Nacimiento" Binding="{Binding BirthDate}" />
-                                <DataGridTextColumn Header="Comentario" Binding="{Binding Comment}" />
-                                <DataGridTextColumn Header="DPI" Binding="{Binding Dpi}" />
+                                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*" />
+                                <DataGridTextColumn Header="Apellido" Binding="{Binding LastName}" Width="*" />
+                                <!--<DataGridTextColumn Header="Correo" Binding="{Binding Email}" Width="*" />-->
+                                <DataGridTextColumn Header="Telefono" Binding="{Binding Phone}"/>
+                                <!--<DataGridTextColumn Header="Dirección" Binding="{Binding Direction}" Width="*" />-->
+                                <DataGridTextColumn Header="Género" Binding="{Binding Gender}"/>
+                                <DataGridTextColumn Header="Fecha de Nacimiento" Binding="{Binding BirthDate}"/>
+                                <DataGridTextColumn Header="Comentario" Binding="{Binding Comment}" Width="*" />
+                                <DataGridTextColumn Header="DPI" Binding="{Binding Dpi}" Width="*" />
                                 <DataGridTemplateColumn Header="Acciones">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Editar">
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Editar" Width="50">
                                                         <materialDesign:PackIcon Kind="Pencil" Height="15" Width="15" />
                                                     </Button>
-                                                    <TextBlock Text="|" Margin="0 8 8 0"/>
-                                                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Eliminar">
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Eliminar" Width="50">
                                                         <materialDesign:PackIcon Kind="Delete" Height="15" Width="15" />
                                                     </Button>
-                                                    <TextBlock Text="|" Margin="0 8 8 0"/>
-                                                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DetailCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Detalle">
-                                                        <materialDesign:PackIcon Kind="Details" Height="15" Width="15" />
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DetailCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Detalle" Width="50">
+                                                        <materialDesign:PackIcon Kind="Information" Height="15" Width="15" />
                                                     </Button>
                                                 </StackPanel>
                                             </materialDesign:TransitioningContent>

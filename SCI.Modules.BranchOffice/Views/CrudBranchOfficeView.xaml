@@ -42,8 +42,8 @@
                             </Binding>
                         </TextBox.Text>
                     </TextBox>
-                    <Label Margin="0 10 0 10" IsEnabled="{Binding EnableEdit}" Content="Descripción: "/>
-                    <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Descripcion" Text="{Binding Explanation}"/>
+                    <Label Margin="0 10 0 10" IsEnabled="{Binding EnableEdit}" Content="Dirección: "/>
+                    <TextBox Margin="15 0 4 0" Height="50" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Dirección" Text="{Binding Direction}"/>
                     <Label Margin="0 10 0 10" Visibility="{Binding VisibleDelete}" Content="¿Desea Eliminar el Registro?" FontFamily="Open Sans" FontSize="13" HorizontalContentAlignment="Center"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
                         <Button x:Name="CancelButton" Style="{StaticResource MaterialDesignFlatButton}" Margin="0 8 8 0" Command="{Binding CancelCommand}" Content="{Binding CancelButtonTitle}"/>

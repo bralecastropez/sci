@@ -256,7 +256,6 @@
       <Name>SCI.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Schema\SCIDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

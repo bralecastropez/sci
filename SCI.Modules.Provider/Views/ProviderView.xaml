@@ -108,10 +108,10 @@
                                 <DataGridTextColumn Header="Nombre" Binding="{Binding BusinessName}" />
                                 <DataGridTextColumn Header="Dirección Principal" Binding="{Binding PrincipalAddress}" />
                                 <DataGridTextColumn Header="Dirección" Binding="{Binding Direction}" />
-                                <DataGridTextColumn Header="Teléfono" Binding="{Binding Phone}" />
-                                <DataGridTextColumn Header="PBX" Binding="{Binding Pbx}" />
+                                <DataGridTextColumn Header="Teléfono" Binding="{Binding Phone}" Width="100"/>
+                                <DataGridTextColumn Header="PBX" Binding="{Binding Pbx}" Width="100"/>
                                 <DataGridTextColumn Header="Correo Electrónico" Binding="{Binding Email}" />
-                                <DataGridTextColumn Header="NIT" Binding="{Binding Nit}" />
+                                <DataGridTextColumn Header="NIT" Binding="{Binding Nit}" Width="100" />
                                 <DataGridTextColumn Header="Página Web" Binding="{Binding WebPage}" />
                                 <DataGridTextColumn Header="Descripción" Binding="{Binding Explanation}" />
                                 <DataGridTemplateColumn Header="Acciones">
@@ -119,16 +119,16 @@
                                         <DataTemplate>
                                             <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Editar">
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Editar">
                                                         <materialDesign:PackIcon Kind="Pencil" Height="15" Width="15" />
                                                     </Button>
                                                     <TextBlock Text="|" Margin="0 8 8 0"/>
-                                                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Eliminar">
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Eliminar">
                                                         <materialDesign:PackIcon Kind="Delete" Height="15" Width="15" />
                                                     </Button>
                                                     <TextBlock Text="|" Margin="0 8 8 0"/>
-                                                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DetailCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Detalle">
-                                                        <materialDesign:PackIcon Kind="Details" Height="15" Width="15" />
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DetailCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Detalle">
+                                                        <materialDesign:PackIcon Kind="Information" Height="15" Width="15" />
                                                     </Button>
                                                 </StackPanel>
                                             </materialDesign:TransitioningContent>

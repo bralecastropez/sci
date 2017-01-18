@@ -1,7 +1,7 @@
 ﻿Imports System.Windows.Controls
 Imports SCI.BusinessLogic.Services
 Imports SCI.BusinessObjects.Validators
-Imports SCI.BusinessObjects.ViewHelpers.Views
+'Imports SCI.BusinessObjects.ViewHelpers.Views
 Imports SCI.Infrastructure.Helpers
 Imports SCI.Infrastructure.Util
 Imports SCI.Modules.BranchOffice.Views
@@ -74,8 +74,8 @@ Namespace SCI.Modules.BranchOffice.ViewModels
 #End Region
 #Region "Contructors"
         Sub New()
-            ModuleTitle = "Proveedor"
-            HeaderTitle = UserLogged.Employee.Name & " - Proveedor"
+            ModuleTitle = "Sucursal"
+            HeaderTitle = UserLogged.Employee.Name & " - Sucursal"
 
             ServiceLocator.RegisterService(Of IBranchOfficeDataService)(New BranchOfficeDataService)
             BranchOfficeAccess = GetService(Of IBranchOfficeDataService)()
@@ -121,20 +121,14 @@ Namespace SCI.Modules.BranchOffice.ViewModels
             Select Case Maintance
                 Case MaintanceType.Add
                     If BranchOfficeAccess.AddBranchOffice(SelectedBranchOffice) Then
-                        'SecondDialogContent = New ConfirmDialogView("Éxito", "Se agregó correctamente el empleado", "Aceptar")
-                        'ShowSecondDialog = True
                         ShowSnackbarMessage("Se agregó correctamente la sucursal", "Aceptar")
                     End If
                 Case MaintanceType.Edit
                     If BranchOfficeAccess.EditBranchOffice(SelectedBranchOffice) Then
-                        'SecondDialogContent = New ConfirmDialogView("", "Se actualizó correctamente el empleado", "Aceptar")
-                        'ShowSecondDialog = True
                         ShowSnackbarMessage("Se actualizó correctamente la sucursal", "Aceptar")
                     End If
                 Case MaintanceType.Delete
                     If BranchOfficeAccess.DeleteBranchOffice(SelectedBranchOffice) Then
-                        'SecondDialogContent = New ConfirmDialogView("Se eliminó correctamente el empleado", "", "Aceptar")
-                        'ShowSecondDialog = True
                         ShowSnackbarMessage("Se eliminó correctamente la sucursal", "Aceptar")
                     End If
                 Case MaintanceType.Detail

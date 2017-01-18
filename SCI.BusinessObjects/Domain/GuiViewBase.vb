@@ -23,9 +23,16 @@ Namespace SCI.Infrastructure.Helpers
         Private _CancelButtonTitle As String
         Private _ExecuteButtonTitle As String
         Private _Maintance As MaintanceType
-        Private _MaintanceDetail As MaintanceDetailType
         Private _EnableEdit As Boolean
         Private _VisibleDelete As String
+        'Components Detail 
+        Private _MaintanceDetail As MaintanceDetailType
+        Private _HeaderMaintanceDetailTitle As String
+        Private _MaintanceDetailTitle As String
+        Private _CancelMaintanceDetailButtonTitle As String
+        Private _ExecuteMaintanceDetailButtonTitle As String
+        Private _EnableMaintanceDetailEdit As Boolean
+        Private _VisibleMaintanceDetailDelete As String
         'Snackbar
         Private _ShowSnackbar As Boolean
         Private _SnackbarMessage As String
@@ -180,6 +187,60 @@ Namespace SCI.Infrastructure.Helpers
                 _MaintanceDetail = value
             End Set
         End Property
+        Public Property HeaderMaintanceDetailTitle As String
+            Get
+                Return _HeaderMaintanceDetailTitle
+            End Get
+            Set(value As String)
+                _HeaderMaintanceDetailTitle = value
+                OnPropertyChanged("HeaderMaintanceDetailTitle")
+            End Set
+        End Property
+        Public Property MaintanceDetailTitle As String
+            Get
+                Return _MaintanceDetailTitle
+            End Get
+            Set(value As String)
+                _MaintanceDetailTitle = value
+                OnPropertyChanged("MaintanceDetailTitle")
+            End Set
+        End Property
+        Public Property CancelMaintanceDetailButtonTitle As String
+            Get
+                Return _CancelMaintanceDetailButtonTitle
+            End Get
+            Set(value As String)
+                _CancelMaintanceDetailButtonTitle = value
+                OnPropertyChanged("CancelMaintanceDetailButtonTitle")
+            End Set
+        End Property
+        Public Property ExecuteMaintanceDetailButtonTitle As String
+            Get
+                Return _ExecuteMaintanceDetailButtonTitle
+            End Get
+            Set(value As String)
+                _ExecuteMaintanceDetailButtonTitle = value
+                OnPropertyChanged("ExecuteMaintanceDetailButtonTitle")
+            End Set
+        End Property
+        Public Property EnableMaintanceDetailEdit As Boolean
+            Get
+                Return _EnableMaintanceDetailEdit
+            End Get
+            Set(value As Boolean)
+                _EnableMaintanceDetailEdit = value
+                OnPropertyChanged("EnableMaintanceDetailEdit")
+            End Set
+        End Property
+        Public Property VisibleMaintanceDetailDelete As String
+            Get
+                Return _VisibleMaintanceDetailDelete
+            End Get
+            Set(value As String)
+                _VisibleMaintanceDetailDelete = value
+                OnPropertyChanged("VisibleMaintanceDetailDelete")
+            End Set
+        End Property
         Public Property SnackbarMessage As String
             Get
                 Return _SnackbarMessage
@@ -218,6 +279,16 @@ Namespace SCI.Infrastructure.Helpers
         Public Property AcceptCommand As ICommand
         Public Property SearchCommand As ICommand
         Public Property BackCommand As ICommand
+        'Details
+        Public Property AddMaintanceDetailCommand As ICommand
+        Public Property EditMaintanceDetailCommand As ICommand
+        Public Property DeleteMaintanceDetailCommand As ICommand
+        Public Property DetailMaintanceDetailCommand As ICommand
+        Public Property CancelMaintanceDetailCommand As ICommand
+        Public Property AcceptMaintanceDetailCommand As ICommand
+        Public Property SearchMaintanceDetailCommand As ICommand
+        Public Property BackMaintanceDetailCommand As ICommand
+        'Notifications
         Public Property SnackbarActionCommand As ICommand
 #End Region
 #Region "Constructors"
@@ -229,6 +300,12 @@ Namespace SCI.Infrastructure.Helpers
 #Region "Methods"
         Public MustOverride Sub CleanFields()
         Public MustOverride Sub LoadFields()
+        Public Sub CleanMaintanceDetailFields()
+
+        End Sub
+        Public Sub LoadMaintanceDetailFields()
+
+        End Sub
         Public Sub AddExecute(ByVal Content As Object)
             MaintanceTitle = "Agregar " & ModuleTitle
             FirstDialogContent = Content
@@ -278,6 +355,56 @@ Namespace SCI.Infrastructure.Helpers
         Public Sub BackExecute()
             ShowFirstDialog = False
         End Sub
+        Public Sub AddMaintanceDetailExecute(ByVal Content As Object)
+            MaintanceDetailTitle = "Agregar Producto"
+            FirstDialogContent = Content
+            MaintanceDetail = MaintanceDetailType.Add
+            CancelMaintanceDetailButtonTitle = "Cancelar"
+            ExecuteMaintanceDetailButtonTitle = "Agregar"
+            VisibleMaintanceDetailDelete = "Collapsed"
+            EnableMaintanceDetailEdit = True
+            'ShowFirstDialog = True
+        End Sub
+        Public Sub EditMaintanceDetailExecute(ByVal Content As Object)
+            MaintanceDetailTitle = "Editar"
+            FirstDialogContent = Content
+            MaintanceDetail = MaintanceDetailType.Edit
+            CancelMaintanceDetailButtonTitle = "Cancelar"
+            ExecuteMaintanceDetailButtonTitle = "Editar"
+            VisibleMaintanceDetailDelete = "Hidden"
+            EnableMaintanceDetailEdit = True
+            'ShowFirstDialog = True
+        End Sub
+        Public Sub DeleteMaintanceDetailExecute(ByVal Content As Object)
+            MaintanceDetailTitle = "Eliminar "
+            FirstDialogContent = Content
+            MaintanceDetail = MaintanceDetailType.Delete
+            CancelMaintanceDetailButtonTitle = "No"
+            ExecuteMaintanceDetailButtonTitle = "Si"
+            VisibleMaintanceDetailDelete = "Visible"
+            EnableMaintanceDetailEdit = False
+            'ShowFirstDialog = True
+        End Sub
+        Public Sub DetailMaintanceDetailExecute(ByVal Content As Object)
+            MaintanceTitle = "Detalle " & ModuleTitle
+            FirstDialogContent = Content
+            Maintance = MaintanceType.Detail
+            CancelButtonTitle = "Aceptar"
+            ExecuteButtonTitle = "Imprimir"
+            VisibleDelete = "Hidden"
+            EnableEdit = False
+            ShowFirstDialog = True
+        End Sub
+        Public Sub AcceptMaintanceDetailExecute()
+            CancelExecute()
+        End Sub
+        Public Sub CancelMaintanceDetailExecute()
+            ShowFirstDialog = False
+        End Sub
+        Public Sub BackMaintanceDetailExecute()
+            ShowFirstDialog = False
+        End Sub
+        'Notifications
         Public Sub ParameterCommandExecute()
             ShowSnackbar = False
         End Sub
@@ -307,6 +434,27 @@ Namespace SCI.Infrastructure.Helpers
             Return True
         End Function
         Public Function CanBackExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanAddMaintanceDetailExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanEditMaintanceDetailExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanDeleteMaintanceDetailExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanCancelMaintanceDetailExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanAcceptMaintanceDetailExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanDetailMaintanceDetailExecute(ByVal param As Object) As Boolean
+            Return True
+        End Function
+        Public Function CanBackMaintanceDetailExecute(ByVal param As Object) As Boolean
             Return True
         End Function
 #End Region

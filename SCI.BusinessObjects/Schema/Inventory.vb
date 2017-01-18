@@ -14,7 +14,7 @@ Partial Public Class Inventory
     Public Property InventoryId As Integer
     Public Property ReaderId As Integer
     Public Property Title As String
-    Public Property InventaryDate As Date
+    Public Property InventoryDate As Date
     Public Property InventoryState As Nullable(Of Boolean)
     Public Property InventoryType As String
     Public Property Entries As Nullable(Of Integer)
