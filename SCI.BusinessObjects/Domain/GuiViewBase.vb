@@ -396,7 +396,7 @@ Namespace SCI.Infrastructure.Helpers
             ShowFirstDialog = True
         End Sub
         Public Sub AcceptMaintanceDetailExecute()
-            CancelExecute()
+            CancelMaintanceDetailExecute()
         End Sub
         Public Sub CancelMaintanceDetailExecute()
             ShowFirstDialog = False

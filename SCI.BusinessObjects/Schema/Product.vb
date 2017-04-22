@@ -32,4 +32,7 @@ Partial Public Class Product
     Public Overridable Property Product_Inventory As ICollection(Of Product_Inventory) = New HashSet(Of Product_Inventory)
     Public Overridable Property Product_Purchase As ICollection(Of Product_Purchase) = New HashSet(Of Product_Purchase)
 
+    Public Overrides Function ToString() As String
+        Return Name
+    End Function
 End Class

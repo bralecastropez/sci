@@ -11,10 +11,13 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class Product_Inventory
+    Public Property ProductInventoryId As Integer
     Public Property ProductId As Integer
     Public Property InventoryId As Integer
     Public Property Amount As Nullable(Of Integer)
     Public Property RegisterType As String
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property Inventory As Inventory
     Public Overridable Property Product As Product

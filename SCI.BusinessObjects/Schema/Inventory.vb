@@ -19,6 +19,8 @@ Partial Public Class Inventory
     Public Property InventoryType As String
     Public Property Entries As Nullable(Of Integer)
     Public Property Departures As Nullable(Of Integer)
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property Reader As Reader
     Public Overridable Property Product_Inventory As ICollection(Of Product_Inventory) = New HashSet(Of Product_Inventory)

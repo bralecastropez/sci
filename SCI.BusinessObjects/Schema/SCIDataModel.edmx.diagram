@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ae7e3d73fe054c31805cfe663e162a7d" Name="Diagram1">
+      <Diagram DiagramId="63e179ec99f64f75a83ece60fff42377" Name="Diagram1">
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.BranchOffice" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.CashOrder" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Category" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
@@ -13,11 +13,11 @@
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Customer" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Employee" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Equipment" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Inventory" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Inventory" Width="1.5" PointX="5.25" PointY="18.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Invoice" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Module" Width="1.5" PointX="1.5" PointY="16.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product_Inventory" Width="1.5" PointX="9.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product_Inventory" Width="1.5" PointX="9.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product_Purchase" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product_Sale" Width="1.5" PointX="15" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Provider" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />

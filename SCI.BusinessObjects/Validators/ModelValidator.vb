@@ -32,6 +32,19 @@ Namespace SCI.BusinessObjects.Validators
             End Try
             Return Result
         End Function
+        Public Function ValidateNumber(ByVal Number As Object) As Boolean
+            Dim Result As Boolean = False
+            Try
+                If Not String.IsNullOrWhiteSpace(Number.ToString) Then
+                    If IsNumeric(Number.ToString) Then
+                        Result = True
+                    End If
+                End If
+            Catch ex As Exception
+                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error en 'ValidateNumber'")
+            End Try
+            Return Result
+        End Function
         Public Function ValidateEmpty(ByVal Field As String) As Boolean
             Dim Result As Boolean = False
             Try

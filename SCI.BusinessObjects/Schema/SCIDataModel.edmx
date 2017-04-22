@@ -113,6 +113,8 @@
           <Property Name="InventoryType" Type="varchar" MaxLength="10" />
           <Property Name="Entries" Type="int" />
           <Property Name="Departures" Type="int" />
+          <Property Name="CreationDate" Type="date" />
+          <Property Name="ModificationDate" Type="date" />
         </EntityType>
         <EntityType Name="Invoice">
           <Key>
@@ -157,13 +159,15 @@
         </EntityType>
         <EntityType Name="Product_Inventory">
           <Key>
-            <PropertyRef Name="ProductId" />
-            <PropertyRef Name="InventoryId" />
+            <PropertyRef Name="ProductInventoryId" />
           </Key>
+          <Property Name="ProductInventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="InventoryId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="int" />
-          <Property Name="RegisterType" Type="varchar" MaxLength="50" />
+          <Property Name="RegisterType" Type="varchar" MaxLength="10" />
+          <Property Name="CreationDate" Type="date" />
+          <Property Name="ModificationDate" Type="date" />
         </EntityType>
         <EntityType Name="Product_Purchase">
           <Key>
@@ -812,6 +816,8 @@
           <Property Name="InventoryType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Entries" Type="Int32" />
           <Property Name="Departures" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="0" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Reader" Relationship="Self.FK_Inventary_Reader" FromRole="Inventory" ToRole="Reader" />
           <NavigationProperty Name="Product_Inventory" Relationship="Self.FK_ProductInventory_Inventary" FromRole="Inventory" ToRole="Product_Inventory" />
         </EntityType>
@@ -865,13 +871,15 @@
         </EntityType>
         <EntityType Name="Product_Inventory">
           <Key>
-            <PropertyRef Name="ProductId" />
-            <PropertyRef Name="InventoryId" />
+            <PropertyRef Name="ProductInventoryId" />
           </Key>
+          <Property Name="ProductInventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="InventoryId" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" />
-          <Property Name="RegisterType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegisterType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="0" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Inventory" Relationship="Self.FK_ProductInventory_Inventary" FromRole="Product_Inventory" ToRole="Inventory" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductInventory_Product" FromRole="Product_Inventory" ToRole="Product" />
         </EntityType>
@@ -1496,6 +1504,8 @@
                 <ScalarProperty Name="InventoryType" ColumnName="InventoryType" />
                 <ScalarProperty Name="Entries" ColumnName="Entries" />
                 <ScalarProperty Name="Departures" ColumnName="Departures" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1546,10 +1556,13 @@
           <EntitySetMapping Name="Product_Inventory">
             <EntityTypeMapping TypeName="SCI.BusinessObjects.Schema.Product_Inventory">
               <MappingFragment StoreEntitySet="Product_Inventory">
+                <ScalarProperty Name="ProductInventoryId" ColumnName="ProductInventoryId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="RegisterType" ColumnName="RegisterType" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

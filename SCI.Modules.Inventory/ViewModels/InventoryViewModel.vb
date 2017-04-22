@@ -38,6 +38,7 @@ Namespace SCI.Modules.Inventory.ViewModels
                 _SelectedInventory = value
                 OnPropertyChanged("SelectedInventory")
                 DetailInventoryList = InventoryAccess.GetDetailInventory(value)
+                CleanMaintanceDetailFields()
             End Set
         End Property
         Public Property TypesList As List(Of String)
@@ -199,7 +200,7 @@ Namespace SCI.Modules.Inventory.ViewModels
         Public Overloads Sub CleanMaintanceDetailFields()
             Product = New Global.Product
             Amount = 0
-            RegisterType = "Compras"
+            RegisterType = ""
             DetailInventoryList = InventoryAccess.GetDetailInventory(SelectedInventory)
         End Sub
         Public Overrides Sub CleanFields()
@@ -248,7 +249,7 @@ Namespace SCI.Modules.Inventory.ViewModels
             DeleteExecute(New CrudInventoryView(Me))
         End Sub
         Public Sub CancelMaintanceDetailInventoryExecute()
-            CleanFields()
+            CleanMaintanceDetailFields()
         End Sub
         Public Sub CancelInventoryExecute()
             CleanFields()
@@ -258,6 +259,7 @@ Namespace SCI.Modules.Inventory.ViewModels
             If MaintanceDetail = MaintanceDetailType.Add Then
                 SelectedDetailInventory = New Global.Product_Inventory
             End If
+
             SelectedDetailInventory.Inventory = SelectedInventory
             SelectedDetailInventory.Product = Product
             SelectedDetailInventory.RegisterType = RegisterType
@@ -277,7 +279,10 @@ Namespace SCI.Modules.Inventory.ViewModels
                         ShowSnackbarMessage("Se eliminó correctamente el producto", "Aceptar")
                     End If
             End Select
+
             CleanMaintanceDetailFields()
+            AcceptMaintanceDetailExecute()
+            AddMaintanceDetailExecute(Nothing)
         End Sub
         Public Sub AcceptInventoryExecute()
             If Maintance = MaintanceType.Add Then
@@ -312,9 +317,9 @@ Namespace SCI.Modules.Inventory.ViewModels
             Return ModelValidator.GetInstance.ValidateEmpty(Title)
         End Function
         Public Function CanAcceptMaintanceDetailInventoryExecute() As Boolean
-            If ModelValidator.GetInstance.ValidateEmpty(Amount) _
+            If ModelValidator.GetInstance.ValidateNumber(Amount) _
                 AndAlso Not Product Is Nothing _
-                AndAlso Not String.IsNullOrEmpty(RegisterType) Then
+                AndAlso ModelValidator.GetInstance.ValidateEmpty(RegisterType) Then
                 Return True
             End If
             Return false
