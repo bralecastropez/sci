@@ -4,28 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="63e179ec99f64f75a83ece60fff42377" Name="Diagram1">
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.BranchOffice" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.CashOrder" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Category" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Checkout" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Company" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Customer" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Employee" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Equipment" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Inventory" Width="1.5" PointX="5.25" PointY="18.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Invoice" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Module" Width="1.5" PointX="1.5" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product_Inventory" Width="1.5" PointX="9.75" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product_Purchase" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product_Sale" Width="1.5" PointX="15" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Provider" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Purchase" Width="1.5" PointX="7.5" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Reader" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Report" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Rol" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Sale" Width="1.5" PointX="12.75" PointY="6.25" IsExpanded="true" />
+      <Diagram DiagramId="5650c1f02e9b4b8db3c79025eb99be2f" Name="Diagram1">
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.BranchOffice" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.CashOrder" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Category" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Checkout" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Company" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Customer" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Employee" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Equipment" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Inventory" Width="1.5" PointX="5.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Invoice" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Module" Width="1.5" PointX="1.5" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product" Width="1.5" PointX="7.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product_Inventory" Width="1.5" PointX="9.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product_Purchase" Width="1.5" PointX="9.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Product_Sale" Width="1.5" PointX="15" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Provider" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Purchase" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Reader" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Report" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Rol" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCI.BusinessObjects.Schema.Sale" Width="1.5" PointX="12.75" PointY="7.125" IsExpanded="true" />
         <AssociationConnector Association="SCI.BusinessObjects.Schema.FK_BranchOffice_Company" ManuallyRouted="false" />
         <AssociationConnector Association="SCI.BusinessObjects.Schema.FK_Checkout_BranchOffice" ManuallyRouted="false" />
         <AssociationConnector Association="SCI.BusinessObjects.Schema.FK_CashOrder_Checkout" ManuallyRouted="false" />

@@ -21,6 +21,8 @@ Partial Public Class Employee
     Public Property Comment As String
     Public Property Dpi As String
     Public Property BirthDate As Nullable(Of Date)
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property Reader As ICollection(Of Reader) = New HashSet(Of Reader)
 

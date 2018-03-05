@@ -17,6 +17,8 @@ Partial Public Class Checkout
     Public Property Balance As Decimal
     Public Property Total As Decimal
     Public Property CheckoutDate As Date
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property BranchOffice As BranchOffice
     Public Overridable Property CashOrder As ICollection(Of CashOrder) = New HashSet(Of CashOrder)

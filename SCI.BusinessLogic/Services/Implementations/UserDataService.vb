@@ -12,7 +12,7 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Resultado = (From u In DataContext.DBEntities.Reader Where u.Nick = UserName).FirstOrDefault
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Obtener Usuario")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Obtener Usuario")
                 Throw New Exception(ex.Message, ex.InnerException)
             End Try
             Return Resultado
@@ -90,7 +90,7 @@ Namespace SCI.BusinessLogic.Services
 
                     Dim identity As New IdentityBusinessObject(user.Nick, "Custom")
                     principal = New PrincipleBusinessObject(identity, roleList)
-                    LogonConfig.GetInstance.UserLogged = user
+                    LogonConfig.Instance.UserLogged = user
                     'Throw New Exception(errMsg)
                 Else
                     Dim identity As New IdentityBusinessObject("", "")

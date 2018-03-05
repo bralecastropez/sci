@@ -264,6 +264,10 @@ Namespace SCI.Modules.Inventory.ViewModels
             SelectedDetailInventory.Product = Product
             SelectedDetailInventory.RegisterType = RegisterType
             SelectedDetailInventory.Amount = Amount
+            If SelectedDetailInventory.CreationDate Is Nothing Then
+                SelectedDetailInventory.CreationDate = DateTime.Now
+            End If
+            SelectedDetailInventory.ModificationDate = DateTime.Now
 
             Select Case MaintanceDetail
                 Case MaintanceDetailType.Add
@@ -314,12 +318,12 @@ Namespace SCI.Modules.Inventory.ViewModels
             AcceptExecute()
         End Sub
         Public Function CanAcceptInventoryExecute() As Boolean
-            Return ModelValidator.GetInstance.ValidateEmpty(Title)
+            Return ModelValidator.Instance.ValidateEmpty(Title)
         End Function
         Public Function CanAcceptMaintanceDetailInventoryExecute() As Boolean
-            If ModelValidator.GetInstance.ValidateNumber(Amount) _
+            If ModelValidator.Instance.ValidateNumber(Amount) _
                 AndAlso Not Product Is Nothing _
-                AndAlso ModelValidator.GetInstance.ValidateEmpty(RegisterType) Then
+                AndAlso ModelValidator.Instance.ValidateEmpty(RegisterType) Then
                 Return True
             End If
             Return false

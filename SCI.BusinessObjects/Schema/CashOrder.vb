@@ -19,6 +19,8 @@ Partial Public Class CashOrder
     Public Property DeliveryDate As Date
     Public Property OrderStatus As Integer
     Public Property Total As Integer
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property Checkout As Checkout
     Public Overridable Property Customer As Customer

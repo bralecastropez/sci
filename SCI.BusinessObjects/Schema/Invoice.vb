@@ -14,7 +14,7 @@ Partial Public Class Invoice
     Public Property InvoiceId As Integer
     Public Property CustomerId As Integer
     Public Property CheckoutId As Integer
-    Public Property InvoiceCodigo As String
+    Public Property InvoiceCode As String
     Public Property Serial As String
     Public Property InvoiceDate As Nullable(Of Date)
     Public Property Explanation As String

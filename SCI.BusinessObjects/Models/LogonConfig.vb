@@ -1,7 +1,7 @@
 ﻿Namespace SCI.BusinessObjects.Models
     Public Class LogonConfig
 #Region "Fields"
-        Private Shared _instance As LogonConfig = Nothing
+        Private Shared _Instance As LogonConfig = Nothing
         Private Shared _userLogged As Reader
         Private Shared _isAuth As Boolean = False
         Private Shared _modules As List(Of [Module])
@@ -42,11 +42,11 @@
         End Property
 #End Region
 #Region "Methods"
-        Public Shared Function GetInstance() As LogonConfig
-            If _instance Is Nothing Then
-                _instance = New LogonConfig
+        Public Shared Function Instance() As LogonConfig
+            If _Instance Is Nothing Then
+                _Instance = New LogonConfig
             End If
-            Return _instance
+            Return _Instance
         End Function
 #End Region
 #Region "Constructors"

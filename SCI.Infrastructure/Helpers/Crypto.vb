@@ -22,7 +22,7 @@ Namespace SCI.Infrastructure.Helpers
                     Result &= bytHash(i).ToString("x").PadLeft(2, "0")
                 Next
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, "Crytpo", "Error al Generar Contraseña")
+                SCILog.Instance.Control(ex, "Crytpo", "Error al Generar Contraseña")
             End Try
             Return Result
         End Function
@@ -31,18 +31,18 @@ Namespace SCI.Infrastructure.Helpers
             Try
                 Result = StrReverse(GeneratePassword(Password))
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, "Crytpo", "Error al Encriptar Contraseña")
+                SCILog.Instance.Control(ex, "Crytpo", "Error al Encriptar Contraseña")
             End Try
             Return Result
         End Function
         Public Shared Function GetPassword(ByVal Password As String) As String
-            Dim Resultado As String = ""
+            Dim Result As String = ""
             Try
-                Resultado = EncryptPassword(Password)
+                Result = EncryptPassword(Password)
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, "Crytpo", "Error al Obtener la Contraseña")
+                SCILog.Instance.Control(ex, "Crytpo", "Error al Obtener la Contraseña")
             End Try
-            Return Resultado
+            Return Result
         End Function
         Public Shared Function Verify(ByVal User As String, ByVal Pass As String)
             Return True

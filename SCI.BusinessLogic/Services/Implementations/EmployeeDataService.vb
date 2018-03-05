@@ -13,7 +13,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Employee")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Insertar Employee")
             End Try
             Return Resultado
         End Function
@@ -25,7 +25,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Employee")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Eliminar Employee")
             End Try
             Return Resultado
         End Function
@@ -37,7 +37,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Empleado")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Editar Empleado")
             End Try
             Return Resultado
         End Function
@@ -47,7 +47,7 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Resultado = DataContext.DBEntities.Employee.ToList
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Empleados")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Listar Empleados")
             End Try
             Return Resultado
         End Function
@@ -66,7 +66,7 @@ Namespace SCI.BusinessLogic.Services
                     Next
                 Next
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Employee")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Buscar Employee")
             End Try
             Return Result
         End Function

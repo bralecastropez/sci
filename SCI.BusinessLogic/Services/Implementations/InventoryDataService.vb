@@ -10,9 +10,9 @@ Namespace SCI.BusinessLogic.Services
             Try
                 DataContext.DBEntities.Product_Inventory.Add(Product_Inventory)
                 DataContext.DBEntities.SaveChanges()
-            Catch ex As Exception
+            Catch Ex As Exception
                 Result = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Detalle Inventario")
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Insertar Detalle Inventario")
             End Try
             Return Result
         End Function
@@ -22,9 +22,9 @@ Namespace SCI.BusinessLogic.Services
             Try
                 DataContext.DBEntities.Inventory.Add(Inventory)
                 DataContext.DBEntities.SaveChanges()
-            Catch ex As Exception
+            Catch Ex As Exception
                 Result = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Inventario")
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Insertar Inventario")
             End Try
             Return Result
         End Function
@@ -34,9 +34,9 @@ Namespace SCI.BusinessLogic.Services
             Try
                 DataContext.DBEntities.Product_Inventory.Remove(Product_Inventory)
                 DataContext.DBEntities.SaveChanges()
-            Catch ex As Exception
+            Catch Ex As Exception
                 Result = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Detalle Inventario")
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Eliminar Detalle Inventario")
             End Try
             Return Result
         End Function
@@ -44,11 +44,12 @@ Namespace SCI.BusinessLogic.Services
         Public Function DeleteInventory(Inventory As Inventory) As Boolean Implements IInventoryDataService.DeleteInventory
             Dim Result As Boolean = True
             Try
+                DataContext.DBEntities.Product_Inventory.RemoveRange(GetDetailInventory(Inventory))
                 DataContext.DBEntities.Inventory.Remove(Inventory)
                 DataContext.DBEntities.SaveChanges()
-            Catch ex As Exception
+            Catch Ex As Exception
                 Result = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Inventario")
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Eliminar Inventario")
             End Try
             Return Result
         End Function
@@ -58,9 +59,9 @@ Namespace SCI.BusinessLogic.Services
             Try
                 DataContext.DBEntities.Entry(Product_Inventory).State = EntityState.Modified
                 DataContext.DBEntities.SaveChanges()
-            Catch ex As Exception
+            Catch Ex As Exception
                 Result = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Detalle Inventario")
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Editar Detalle Inventario")
             End Try
             Return Result
         End Function
@@ -70,9 +71,9 @@ Namespace SCI.BusinessLogic.Services
             Try
                 DataContext.DBEntities.Entry(Inventory).State = EntityState.Modified
                 DataContext.DBEntities.SaveChanges()
-            Catch ex As Exception
+            Catch Ex As Exception
                 Result = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Inventario")
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Editar Inventario")
             End Try
             Return Result
         End Function
@@ -82,8 +83,8 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Result = (From Detail In DataContext.DBEntities.Product_Inventory.ToList
                           Where Detail.InventoryId = Inventory.InventoryId).ToList
-            Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Inventarios")
+            Catch Ex As Exception
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Listar Inventarios")
             End Try
             Return Result
         End Function
@@ -92,8 +93,8 @@ Namespace SCI.BusinessLogic.Services
             Dim Result As List(Of Inventory) = New List(Of Inventory)
             Try
                 Result = DataContext.DBEntities.Inventory.ToList
-            Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Inventarios")
+            Catch Ex As Exception
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Listar Inventarios")
             End Try
             Return Result
         End Function
@@ -102,8 +103,8 @@ Namespace SCI.BusinessLogic.Services
             Dim Result As List(Of Product) = New List(Of Product)
             Try
                 Result = DataContext.DBEntities.Product.ToList
-            Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Productos")
+            Catch Ex As Exception
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Listar Productos")
             End Try
             Return Result
         End Function
@@ -112,8 +113,8 @@ Namespace SCI.BusinessLogic.Services
             Dim Result As List(Of Reader) = New List(Of Reader)
             Try
                 Result = DataContext.DBEntities.Reader.ToList
-            Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Usuarios")
+            Catch Ex As Exception
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Listar Usuarios")
             End Try
             Return Result
         End Function
@@ -131,28 +132,32 @@ Namespace SCI.BusinessLogic.Services
                         End If
                     Next
                 Next
-            Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Detalle Inventarios")
+            Catch Ex As Exception
+                SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Buscar Detalle Inventarios")
             End Try
             Return Result
         End Function
 
         Public Function SearchInventory(Data As String) As List(Of Inventory) Implements IInventoryDataService.SearchInventory
             Dim Result As ICollection(Of Inventory) = New List(Of Inventory)
-            Try
-                For Each _Inventory In GetInventories()
-                    Dim _Type As Type = _Inventory.GetType()
-                    Dim _Properties() As PropertyInfo = _Type.GetProperties()
-                    For Each _Property As PropertyInfo In _Properties
-                        If (_Property.GetValue(_Inventory, Nothing).ToString.ToLower.Trim.Contains(Data.ToLower)) Then
-                            Result.Add(_Inventory)
-                            Exit For
-                        End If
+            Data = Trim(Data)
+            Data = Data.ToLower
+            If Not String.IsNullOrEmpty(Data) = True Or Not String.IsNullOrWhiteSpace(Data) = True Then
+                Try
+                    For Each _Inventory In GetInventories()
+                        Dim _Type As Type = _Inventory.GetType()
+                        Dim _Properties() As PropertyInfo = _Type.GetProperties()
+                        For Each _Property As PropertyInfo In _Properties
+                            If (_Property.GetValue(_Inventory, Nothing).ToString.ToLower.Trim.Contains(Data)) Then
+                                Result.Add(_Inventory)
+                                Exit For
+                            End If
+                        Next
                     Next
-                Next
-            Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Inventarios")
-            End Try
+                Catch Ex As Exception
+                    SCILog.Instance.Control(Ex, [GetType]().ToString, "Error al Buscar Inventarios")
+                End Try
+            End If
             Return Result
         End Function
     End Class

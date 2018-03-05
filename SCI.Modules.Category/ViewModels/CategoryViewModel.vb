@@ -88,11 +88,11 @@ Namespace SCI.Modules.Category.ViewModels
         Private Function CanAcceptCategoryExecute() As Boolean
             Dim Result As Boolean = False
             Try
-                If ModelValidator.GetInstance.ValidateEmpty(Name) Then
+                If ModelValidator.Instance.ValidateEmpty(Name) Then
                     Result = True
                 End If
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType].ToString, "Error en 'CanAddCategoryExecute'")
+                SCILog.Instance.Control(ex, [GetType].ToString, "Error en 'CanAddCategoryExecute'")
             End Try
             Return Result
         End Function

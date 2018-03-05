@@ -13,7 +13,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Result = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Customer")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Insertar Customer")
             End Try
             Return Result
         End Function
@@ -25,7 +25,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Result = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Customer")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Eliminar Customer")
             End Try
             Return Result
         End Function
@@ -37,7 +37,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Customer")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Editar Customer")
             End Try
             Return Resultado
         End Function
@@ -47,7 +47,7 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Result = DataContext.DBEntities.Customer.ToList
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Clientes")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Listar Clientes")
             End Try
             Return Result
         End Function
@@ -66,7 +66,7 @@ Namespace SCI.BusinessLogic.Services
                     Next
                 Next
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Customer")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Buscar Customer")
             End Try
             Return Result
         End Function

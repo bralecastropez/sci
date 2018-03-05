@@ -8,6 +8,7 @@ Imports SCI.Modules.Customer.Views
 Imports SCI.Modules.Provider.Views
 Imports SCI.Modules.BranchOffice.Views
 Imports SCI.Modules.Inventory.Views
+Imports SCI.Infrastructure.Util
 
 Namespace SCI.Modules.Manager.ViewModels
     Public Class ManagerViewModel
@@ -52,7 +53,8 @@ Namespace SCI.Modules.Manager.ViewModels
             ServiceLocator.RegisterService(Of IUserDataService)(New UserDataService)
             _userAccess = GetService(Of IUserDataService)()
             HeaderTitle = "Bienvenido " & UserLogged.Employee.Name & " - Dashboard"
-            SelectedModule = 6
+            SelectedModule = 0
+            SCIActivity.Instance.Register("Manager", "Ingreso al Dashboard", UserLogged.Employee.Name, "Select", "Ingreso")
         End Sub
 
         Public Overrides Sub CleanFields()

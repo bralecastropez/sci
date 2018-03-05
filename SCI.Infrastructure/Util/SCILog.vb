@@ -4,67 +4,73 @@
         Public Shared _Instance As SCILog = Nothing
 #End Region
 #Region "Methods"
-        Public Shared Function GetInstance() As SCILog
+        Public Shared Function Instance() As SCILog
             If IsNothing(_Instance) Then
                 _Instance = New SCILog
             End If
             Return _Instance
         End Function
-        Private Sub ArchivoLog(ByVal NombreExcepcion As String, ByVal NombreEvento As String, ByVal NombreControl As String, ByVal NumeroDeLinea As String, ByVal NombreClase As String)
+        Private Sub LogFile(ByVal ExceptionName As String, ByVal EventName As String, ByVal ControlName As String, ByVal LineNumber As String, ByVal ClassName As String)
             Try
-                'Dim Archivo As New System.IO.StreamWriter("C:\\SistemaInventario-debug-log.txt")
-                Dim Path As String = "sci-debug-log.txt"
-                'Dim Archivo As New System.IO.StreamWriter("SistemaInventario-debug-log.txt")
+                Dim LogDate As DateTime = DateTime.Now
+                Dim LogFolderPath As String = AppDomain.CurrentDomain.BaseDirectory
+                Dim LogFileName As String = "/App/Log/SCI-Log-" & LogDate.Year & "-" & LogDate.Month & "-" & LogDate.Day
+                Dim RoutePath As String = LogFolderPath & LogFileName
+                'If Not IO.Directory.Exists(LogFolderPath & "/App/Log") Then
+                '    IO.Directory.CreateDirectory(LogFolderPath & "/App/Log")
+                'End If
+                If Not IO.Directory.Exists(RoutePath) Then
+                    IO.Directory.CreateDirectory(RoutePath)
+                End If
+                Dim Path As String = RoutePath & "/" & "SistemaInventario-debug-log.txt"
 
                 If Not IO.File.Exists(Path) Then
-                    Using FileSystem As New IO.FileStream(Path, IO.FileMode.CreateNew), Archivo As New IO.StreamWriter(FileSystem)
-                        Archivo.WriteLine(" ------------------------------>  Error <------------------------------------- ")
-                        Archivo.WriteLine("Fecha: " & DateTime.Now)
-                        Archivo.WriteLine("Nombre de la Excepcion: " & NombreExcepcion)
-                        Archivo.WriteLine("Nombre del Evento: " & NombreEvento)
-                        Archivo.WriteLine(NumeroDeLinea)
-                        Archivo.WriteLine("Nombre de la Clase: " & NombreClase)
-                        Archivo.WriteLine(" ----------------------------------------------------------------------------- ")
-                        Archivo.Close()
+                    Using FileSystem As New IO.FileStream(Path, IO.FileMode.CreateNew), File As New IO.StreamWriter(FileSystem)
+                        File.WriteLine(" ------------------------------>  Error  <------------------------------------- ")
+                        File.WriteLine(" Fecha: " & LogDate)
+                        File.WriteLine(" Nombre de la Excepcion: " & ExceptionName)
+                        File.WriteLine(" Nombre del Evento: " & EventName)
+                        File.WriteLine(LineNumber)
+                        File.WriteLine(" Nombre de la Clase: " & ClassName)
+                        File.WriteLine(" ------------------------------> Fin del Error <------------------------------------- ")
+                        File.Close()
                     End Using
                 Else
-                    Using FileSystem As New IO.FileStream(Path, IO.FileMode.Append), Archivo As New IO.StreamWriter(FileSystem)
-                        Archivo.WriteLine(" ------------------------------>  Error <------------------------------------- ")
-                        Archivo.WriteLine("Fecha: " & DateTime.Now)
-                        Archivo.WriteLine("Nombre de la Excepcion: " & NombreExcepcion)
-                        Archivo.WriteLine("Nombre del Evento: " & NombreEvento)
-                        Archivo.WriteLine(NumeroDeLinea)
-                        Archivo.WriteLine("Nombre de la Clase: " & NombreClase)
-                        Archivo.WriteLine(" ----------------------------------------------------------------------------- ")
-                        Archivo.Close()
+                    Using FileSystem As New IO.FileStream(Path, IO.FileMode.Append), File As New IO.StreamWriter(FileSystem)
+                        File.WriteLine(" ------------------------------>  Error  <------------------------------------- ")
+                        File.WriteLine(" Fecha: " & LogDate)
+                        File.WriteLine(" Nombre de la Excepcion: " & ExceptionName)
+                        File.WriteLine(" Nombre del Evento: " & EventName)
+                        File.WriteLine(LineNumber)
+                        File.WriteLine(" Nombre de la Clase: " & ClassName)
+                        File.WriteLine(" ------------------------------> Fin del Error <------------------------------------- ")
+                        File.Close()
                     End Using
                 End If
-
-            Catch ex As Exception
-                MsgBox("Error en el Log ---> " & ex.Message)
+            Catch Ex As Exception
+                'MsgBox("Error en el Log ---> " & Ex.Message)
+                Control(Ex, [GetType].ToString, "Log")
             End Try
         End Sub
 
-        Private Function Linea(ByVal Excepcion As Exception) As String
-            Dim NoLinea As String = ""
+        Private Function GetLine(ByVal Exception As Exception) As String
+            Dim LineNumber As String = ""
             Try
-                Dim LineaError() As String = Excepcion.ToString.Split(".vb:línea ")
-                'NoLinea = ("Número de Línea: " & LineaError(24).Replace("vb:línea ", ""))
-                For i As Integer = 0 To (LineaError.Length - 1)
-                    If LineaError(i).ToString.Contains("vb:línea ") Then
-                        NoLinea = "Número de Línea: " & LineaError(i).Replace("vb:línea ", "")
+                Dim ErrorLine() As String = Exception.ToString.Split(".vb:línea ")
+                For i As Integer = 0 To (ErrorLine.Length - 1)
+                    If ErrorLine(i).ToString.Contains("vb:línea ") Then
+                        LineNumber = " Número de Línea: " & ErrorLine(i).Replace("vb:línea ", "")
                     End If
                 Next
-                'NoLinea = Convert.ToInt32(Excepcion.InnerException)
-            Catch ex As Exception
-                MsgBox("Error en el Log --- NoLinea ---> " & ex.Message)
+            Catch Ex As Exception
+                MsgBox("Error en el Log --- NoLinea ---> " & Ex.Message)
             End Try
-            Return NoLinea
+            Return LineNumber
         End Function
 
-        Public Sub Control(ByVal Excepcion As Exception, ByVal Nombre As String, ByVal MetodoReferencia As String)
+        Public Sub Control(ByVal Exception As Exception, ByVal ClassName As String, ByVal ReferenceMethod As String)
             Try
-                ArchivoLog(Excepcion.Message, Excepcion.ToString, MetodoReferencia, Linea(Excepcion), Nombre)
+                LogFile(Exception.Message, Exception.ToString, ReferenceMethod, GetLine(Exception), ClassName)
             Catch ex As Exception
                 MsgBox("Error en el Control ---> " & ex.Message)
             End Try

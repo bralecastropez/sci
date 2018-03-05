@@ -49,7 +49,7 @@
                                 </TextBox.Text>
                             </TextBox>
                             <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Fecha de Nacimiento: "/>
-                            <DatePicker SelectedDate="{Binding BirthDate}" HorizontalAlignment="Stretch" Margin="15 0 4 0" materialDesign:HintAssist.Hint="Fecha de Nacimiento"/>
+                            <DatePicker IsEnabled="{Binding EnableEdit}" SelectedDate="{Binding BirthDate}" HorizontalAlignment="Stretch" Margin="15 0 4 0" materialDesign:HintAssist.Hint="Fecha de Nacimiento"/>
                             <Label Margin="0, 25, 0, 10" IsEnabled="{Binding EnableEdit}" Content="Teléfono: "/>
                             <TextBox Margin="15 0 4 0" IsEnabled="{Binding EnableEdit}" materialDesign:HintAssist.Hint="Teléfono">
                                 <TextBox.Text>

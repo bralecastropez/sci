@@ -16,6 +16,8 @@ Partial Public Class BranchOffice
     Public Property Name As String
     Public Property Direction As String
     Public Property Phone As String
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property Company As Company
     Public Overridable Property Checkout As ICollection(Of Checkout) = New HashSet(Of Checkout)

@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="SCI.Modules.Employee.Views.ReportEmployeeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+        <materialDesign:DialogHost HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsOpen="{Binding MostrarPrimerDialogo}" DialogContent="{Binding ContenidoPrimerDialogo}" CloseOnClickAway="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <materialDesign:ColorZone Mode="PrimaryDark" Padding="16">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                                <TextBlock Text="Listado de Reportes"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:ColorZone>
+                <ListBox Grid.Row="1" ItemsSource="{Binding ListadoDeReportes}" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ListBoxItemStyle}" Margin="16">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <materialDesign:TransitioningContent OpeningEffectsOffset="{materialDesign:IndexedItemOffsetMultiplierExtension 0:0:0.1}" Opacity="0" RunHint="Loaded">
+                                <materialDesign:TransitioningContent.OpeningEffects>
+                                    <materialDesign:TransitionEffect Kind="SlideInFromLeft" />
+                                    <materialDesign:TransitionEffect Kind="FadeIn" />
+                                </materialDesign:TransitioningContent.OpeningEffects>
+                                <materialDesign:ColorZone Mode="Dark">
+                                    <DockPanel>
+                                        <!--<Button Command="{Binding Path=DataContext.ReportesViewModel, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" CommandParameter="ASDF" Content="Hola Mundo"/>-->
+                                        <!--<TextBlock Text="Imprimir" VerticalAlignment="Center" DockPanel.Dock="Right" Margin="0 0 16 0" />-->
+
+                                        <TextBlock VerticalAlignment="Center" DockPanel.Dock="Right" Margin="0 0 16 0" Foreground="White" >
+                                            <Hyperlink Command="{Binding Path=DataContext.ReportesViewModel, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" CommandParameter="{Binding IdReporte}" Foreground="White">
+                                                <Run Text="Imprimir" />
+                                                <!--<LineBreak />-->
+                                            </Hyperlink>
+                                        </TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:ColorZone Mode="Accent" Height="26" Width="26" Margin="4" CornerRadius="2">
+                                                <TextBlock Text="{Binding IdReporte}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </materialDesign:ColorZone>
+                                            <!--<TextBlock Text="{Binding IdReporte}" VerticalAlignment="Center" Margin="16 0 0 0" Width="16" />-->
+                                            <TextBlock VerticalAlignment="Center" Margin="16 0 0 0">
+                                                <Run Text="{Binding Nombre, Mode=OneWay}" />
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </DockPanel>
+                                </materialDesign:ColorZone>
+                            </materialDesign:TransitioningContent>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </materialDesign:DialogHost>
+    </Grid>
+</UserControl>

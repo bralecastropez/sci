@@ -20,6 +20,8 @@ Partial Public Class Customer
     Public Property Direction As String
     Public Property Nit As String
     Public Property Dpi As String
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property CashOrder As ICollection(Of CashOrder) = New HashSet(Of CashOrder)
     Public Overridable Property Invoice As ICollection(Of Invoice) = New HashSet(Of Invoice)

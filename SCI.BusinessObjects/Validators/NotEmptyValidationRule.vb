@@ -20,7 +20,7 @@ Namespace SCI.BusinessObjects.Validators
                 End If
             Catch ex As Exception
                 Result = New ValidationResult(False, "Este campo es requerido")
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al validar campo")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al validar campo")
             End Try
             Return Result
         End Function

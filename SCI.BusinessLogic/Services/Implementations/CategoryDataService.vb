@@ -12,7 +12,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Category")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Insertar Category")
             End Try
             Return Resultado
         End Function
@@ -24,7 +24,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Category")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Eliminar Category")
             End Try
             Return Resultado
         End Function
@@ -36,7 +36,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Category")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Editar Category")
             End Try
             Return Resultado
         End Function
@@ -46,7 +46,7 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Resultado = DataContext.DBEntities.Category.ToList
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Categorias")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Listar Categorias")
             End Try
             Return Resultado
         End Function
@@ -65,7 +65,7 @@ Namespace SCI.BusinessLogic.Services
                     Next
                 Next
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Category")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Buscar Category")
             End Try
             Return Result
         End Function

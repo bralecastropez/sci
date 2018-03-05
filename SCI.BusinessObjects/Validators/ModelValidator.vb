@@ -7,7 +7,7 @@ Namespace SCI.BusinessObjects.Validators
         Private Shared _Instance As ModelValidator
 #End Region
 #Region "Properties"
-        Public Shared Function GetInstance() As ModelValidator
+        Public Shared Function Instance() As ModelValidator
             If IsNothing(_Instance) Then
                 _Instance = New ModelValidator
             End If
@@ -28,7 +28,7 @@ Namespace SCI.BusinessObjects.Validators
                     End If
                 End If
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error en 'ValidateEmail'")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error en 'ValidateEmail'")
             End Try
             Return Result
         End Function
@@ -41,7 +41,7 @@ Namespace SCI.BusinessObjects.Validators
                     End If
                 End If
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error en 'ValidateNumber'")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error en 'ValidateNumber'")
             End Try
             Return Result
         End Function
@@ -52,7 +52,7 @@ Namespace SCI.BusinessObjects.Validators
                     Result = True
                 End If
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error en 'ValidateEmail'")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error en 'ValidateEmail'")
             End Try
             Return Result
         End Function
@@ -85,7 +85,7 @@ Namespace SCI.BusinessObjects.Validators
                     End If
                 End If
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error en 'ValidateEmail'")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error en 'ValidateEmail'")
             End Try
             Return Result
         End Function

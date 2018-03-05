@@ -1,11 +1,11 @@
-﻿Imports MahApps.Metro.Controls
+﻿Imports Dragablz
+Imports MahApps.Metro.Controls
 Imports SCI.Modules.UserLogin.Views
 
 Namespace SCI.WPF.Shell
 
     Class MainWindow
         Inherits MetroWindow
-
         Sub New()
 
             ' Esta llamada es exigida por el diseñador.

@@ -14,6 +14,8 @@
           <Property Name="Name" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="Direction" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="100" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="CashOrder">
           <Key>
@@ -23,10 +25,12 @@
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="CheckoutId" Type="int" Nullable="false" />
           <Property Name="CashOrderCode" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="OrderDate" Type="date" />
+          <Property Name="OrderDate" Type="datetime" />
           <Property Name="DeliveryDate" Type="date" Nullable="false" />
           <Property Name="OrderStatus" Type="int" Nullable="false" />
           <Property Name="Total" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -35,6 +39,8 @@
           <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Explanation" Type="varchar" MaxLength="200" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Checkout">
           <Key>
@@ -46,6 +52,8 @@
           <Property Name="Balance" Type="decimal" Precision="11" Scale="2" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="11" Scale="2" Nullable="false" />
           <Property Name="CheckoutDate" Type="datetime" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
@@ -76,6 +84,8 @@
           <Property Name="Direction" Type="varchar" MaxLength="100" />
           <Property Name="Nit" Type="varchar" MaxLength="10" />
           <Property Name="Dpi" Type="varchar" MaxLength="20" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -91,6 +101,8 @@
           <Property Name="Comment" Type="varchar" MaxLength="200" />
           <Property Name="Dpi" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="BirthDate" Type="date" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
@@ -123,12 +135,329 @@
           <Property Name="InvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="CheckoutId" Type="int" Nullable="false" />
-          <Property Name="InvoiceCodigo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="InvoiceCode" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Serial" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="InvoiceDate" Type="date" />
           <Property Name="Explanation" Type="varchar" MaxLength="255" />
           <Property Name="Total" Type="decimal" Precision="11" Scale="2" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_BranchOffice' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_BranchOffice">
+          <Property Name="BranchOfficeId" Type="int" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="80" />
+          <Property Name="Direction" Type="varchar" MaxLength="200" />
+          <Property Name="Phone" Type="varchar" MaxLength="100" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_CashOrder' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_CashOrder">
+          <Property Name="CashOrderId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="CheckoutId" Type="int" />
+          <Property Name="CashOrderCode" Type="varchar" MaxLength="20" />
+          <Property Name="OrderDate" Type="date" />
+          <Property Name="DeliveryDate" Type="date" />
+          <Property Name="OrderStatus" Type="int" />
+          <Property Name="Total" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Category' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Category">
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Explanation" Type="varchar" MaxLength="200" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Checkout' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Checkout">
+          <Property Name="CheckoutId" Type="int" />
+          <Property Name="ReaderId" Type="int" />
+          <Property Name="BranchOfficeId" Type="int" />
+          <Property Name="Balance" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="Total" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="CheckoutDate" Type="datetime" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Company' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Company">
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Licence" Type="varchar" MaxLength="255" />
+          <Property Name="Pass" Type="varchar" MaxLength="200" />
+          <Property Name="Code" Type="varchar" MaxLength="255" />
+          <Property Name="Branchs" Type="int" />
+          <Property Name="Condition" Type="bit" />
+          <Property Name="CompanyAddress" Type="varchar" MaxLength="200" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+          <Property Name="Nit" Type="varchar" MaxLength="25" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Customer' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Customer">
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Direction" Type="varchar" MaxLength="100" />
+          <Property Name="Nit" Type="varchar" MaxLength="10" />
+          <Property Name="Dpi" Type="varchar" MaxLength="20" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Employee' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Employee">
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="100" />
+          <Property Name="Gender" Type="varchar" MaxLength="15" />
+          <Property Name="Direction" Type="varchar" MaxLength="200" />
+          <Property Name="Comment" Type="varchar" MaxLength="200" />
+          <Property Name="Dpi" Type="varchar" MaxLength="255" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Equipment' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Equipment">
+          <Property Name="EquipmentId" Type="int" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="Serial" Type="varchar" MaxLength="100" />
+          <Property Name="EquipmentCode" Type="varchar" MaxLength="100" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Inventory' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Inventory">
+          <Property Name="InventoryId" Type="int" />
+          <Property Name="ReaderId" Type="int" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="InventoryDate" Type="date" />
+          <Property Name="InventoryState" Type="bit" />
+          <Property Name="InventoryType" Type="varchar" MaxLength="10" />
+          <Property Name="Entries" Type="int" />
+          <Property Name="Departures" Type="int" />
+          <Property Name="CreationDate" Type="date" />
+          <Property Name="ModificationDate" Type="date" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Invoice' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Invoice">
+          <Property Name="InvoiceId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="CheckoutId" Type="int" />
+          <Property Name="InvoiceCode" Type="varchar" MaxLength="100" />
+          <Property Name="Serial" Type="varchar" MaxLength="15" />
+          <Property Name="InvoiceDate" Type="date" />
+          <Property Name="Explanation" Type="varchar" MaxLength="255" />
+          <Property Name="Total" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Module' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Module">
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="80" />
+          <Property Name="Explanation" Type="varchar" MaxLength="255" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Product' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Product">
+          <Property Name="ProductId" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Explanation" Type="varchar" MaxLength="200" />
+          <Property Name="ImageSrc" Type="varchar" MaxLength="100" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="UnitPrice" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="PricePerDozen" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="WholesalePrice" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="Tag" Type="varchar" MaxLength="50" />
+          <Property Name="Review" Type="varchar" MaxLength="50" />
+          <Property Name="AditionalInformation" Type="varchar" MaxLength="100" />
+          <Property Name="Help" Type="varchar" MaxLength="200" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Product_Inventory' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Product_Inventory">
+          <Property Name="ProductInventoryId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="InventoryId" Type="int" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="RegisterType" Type="varchar" MaxLength="10" />
+          <Property Name="CreationDate" Type="date" />
+          <Property Name="ModificationDate" Type="date" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Product_Purchase' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Product_Purchase">
+          <Property Name="PurchaseId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Product_Sale' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Product_Sale">
+          <Property Name="ProductId" Type="int" />
+          <Property Name="SaleId" Type="int" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Provider' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Provider">
+          <Property Name="ProviderId" Type="int" />
+          <Property Name="ProviderCode" Type="varchar" MaxLength="20" />
+          <Property Name="BusinessName" Type="varchar" MaxLength="100" />
+          <Property Name="PrincipalAddress" Type="varchar" MaxLength="200" />
+          <Property Name="Direction" Type="varchar" MaxLength="200" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Pbx" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Nit" Type="varchar" MaxLength="10" />
+          <Property Name="WebPage" Type="varchar" MaxLength="200" />
+          <Property Name="Explanation" Type="varchar" MaxLength="200" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Purchase' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Purchase">
+          <Property Name="PurchaseId" Type="int" />
+          <Property Name="ProviderId" Type="int" />
+          <Property Name="CheckoutId" Type="int" />
+          <Property Name="PurchaseDate" Type="date" />
+          <Property Name="Total" Type="int" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Reader' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Reader">
+          <Property Name="ReaderId" Type="int" />
+          <Property Name="RolId" Type="int" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="Nick" Type="varchar" MaxLength="50" />
+          <Property Name="Pass" Type="varchar" MaxLength="120" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Report' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Report">
+          <Property Name="ReportId" Type="int" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="ReportCode" Type="varchar" MaxLength="25" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Explanation" Type="varchar" MaxLength="200" />
+          <Property Name="ReportType" Type="varchar" MaxLength="20" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Rol' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Rol">
+          <Property Name="RolId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Explanation" Type="varchar" MaxLength="255" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Rol_Module' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Rol_Module">
+          <Property Name="RolId" Type="int" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Inventario_Demo_En.dbo.Log_Sale' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Log_Sale">
+          <Property Name="SaleId" Type="int" />
+          <Property Name="CashOrderId" Type="int" />
+          <Property Name="CheckoutId" Type="int" />
+          <Property Name="SaleDate" Type="datetime" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="LogType" Type="varchar" MaxLength="60" />
+          <Property Name="LogUser" Type="varchar" MaxLength="60" />
+        </EntityType>-->
         <EntityType Name="Module">
           <Key>
             <PropertyRef Name="ModuleId" />
@@ -156,6 +485,8 @@
           <Property Name="Review" Type="varchar" MaxLength="50" />
           <Property Name="AditionalInformation" Type="varchar" MaxLength="100" />
           <Property Name="Help" Type="varchar" MaxLength="200" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Product_Inventory">
           <Key>
@@ -204,6 +535,8 @@
           <Property Name="Nit" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="WebPage" Type="varchar" MaxLength="200" />
           <Property Name="Explanation" Type="varchar" MaxLength="200" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Purchase">
           <Key>
@@ -224,6 +557,8 @@
           <Property Name="EmployeeId" Type="int" Nullable="false" />
           <Property Name="Nick" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Pass" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Report">
           <Key>
@@ -234,6 +569,9 @@
           <Property Name="ReportCode" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Explanation" Type="varchar" MaxLength="200" />
+          <Property Name="ReportType" Type="varchar" MaxLength="20" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -260,7 +598,7 @@
           <Property Name="CheckoutId" Type="int" Nullable="false" />
           <Property Name="SaleDate" Type="datetime" />
         </EntityType>
-        <Association Name="FK__Rol_Modul__Modul__1FCDBCEB">
+        <Association Name="FK__Rol_Modul__Modul__2B3F6F97">
           <End Role="Module" Type="Self.Module" Multiplicity="1" />
           <End Role="Rol_Module" Type="Self.Rol_Module" Multiplicity="*" />
           <ReferentialConstraint>
@@ -272,7 +610,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rol_Modul__RolId__1ED998B2">
+        <Association Name="FK__Rol_Modul__RolId__2A4B4B5E">
           <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
           <End Role="Rol_Module" Type="Self.Rol_Module" Multiplicity="*" />
           <ReferentialConstraint>
@@ -583,11 +921,11 @@
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol_Module" EntityType="Self.Rol_Module" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Rol_Modul__Modul__1FCDBCEB" Association="Self.FK__Rol_Modul__Modul__1FCDBCEB">
+          <AssociationSet Name="FK__Rol_Modul__Modul__2B3F6F97" Association="Self.FK__Rol_Modul__Modul__2B3F6F97">
             <End Role="Module" EntitySet="Module" />
             <End Role="Rol_Module" EntitySet="Rol_Module" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rol_Modul__RolId__1ED998B2" Association="Self.FK__Rol_Modul__RolId__1ED998B2">
+          <AssociationSet Name="FK__Rol_Modul__RolId__2A4B4B5E" Association="Self.FK__Rol_Modul__RolId__2A4B4B5E">
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Rol_Module" EntitySet="Rol_Module" />
           </AssociationSet>
@@ -698,6 +1036,8 @@
           <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Direction" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Company" Relationship="Self.FK_BranchOffice_Company" FromRole="BranchOffice" ToRole="Company" />
           <NavigationProperty Name="Checkout" Relationship="Self.FK_Checkout_BranchOffice" FromRole="BranchOffice" ToRole="Checkout" />
         </EntityType>
@@ -709,10 +1049,12 @@
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="CheckoutId" Type="Int32" Nullable="false" />
           <Property Name="CashOrderCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
           <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="OrderStatus" Type="Int32" Nullable="false" />
           <Property Name="Total" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Checkout" Relationship="Self.FK_CashOrder_Checkout" FromRole="CashOrder" ToRole="Checkout" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_CashOrder_Customer" FromRole="CashOrder" ToRole="Customer" />
           <NavigationProperty Name="Sale" Relationship="Self.FK_Sale_CashOrder" FromRole="CashOrder" ToRole="Sale" />
@@ -724,6 +1066,8 @@
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Explanation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Checkout">
@@ -736,6 +1080,8 @@
           <Property Name="Balance" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
           <Property Name="Total" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
           <Property Name="CheckoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="BranchOffice" Relationship="Self.FK_Checkout_BranchOffice" FromRole="Checkout" ToRole="BranchOffice" />
           <NavigationProperty Name="CashOrder" Relationship="Self.FK_CashOrder_Checkout" FromRole="Checkout" ToRole="CashOrder" />
           <NavigationProperty Name="Reader" Relationship="Self.FK_Checkout_Reader" FromRole="Checkout" ToRole="Reader" />
@@ -775,6 +1121,8 @@
           <Property Name="Direction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Nit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Dpi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CashOrder" Relationship="Self.FK_CashOrder_Customer" FromRole="Customer" ToRole="CashOrder" />
           <NavigationProperty Name="Invoice" Relationship="Self.FK_Customer_Invoice" FromRole="Customer" ToRole="Invoice" />
         </EntityType>
@@ -792,6 +1140,8 @@
           <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Dpi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Reader" Relationship="Self.FK_Reader_Employee" FromRole="Employee" ToRole="Reader" />
         </EntityType>
         <EntityType Name="Equipment">
@@ -828,7 +1178,7 @@
           <Property Name="InvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="CheckoutId" Type="Int32" Nullable="false" />
-          <Property Name="InvoiceCodigo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InvoiceCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Serial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="InvoiceDate" Type="DateTime" Precision="0" />
           <Property Name="Explanation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -864,6 +1214,8 @@
           <Property Name="Review" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AditionalInformation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Help" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Product_Sale" Relationship="Self.FK_Product_Sale" FromRole="Product" ToRole="Product_Sale" />
           <NavigationProperty Name="Product_Inventory" Relationship="Self.FK_ProductInventory_Product" FromRole="Product" ToRole="Product_Inventory" />
@@ -922,6 +1274,8 @@
           <Property Name="Nit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="WebPage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Explanation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Purchase" Relationship="Self.FK_Purchase_Provider" FromRole="Provider" ToRole="Purchase" />
         </EntityType>
         <EntityType Name="Purchase">
@@ -946,6 +1300,8 @@
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
           <Property Name="Nick" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Pass" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Checkout" Relationship="Self.FK_Checkout_Reader" FromRole="Reader" ToRole="Checkout" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Reader_Employee" FromRole="Reader" ToRole="Employee" />
           <NavigationProperty Name="Inventory" Relationship="Self.FK_Inventary_Reader" FromRole="Reader" ToRole="Inventory" />
@@ -960,6 +1316,9 @@
           <Property Name="ReportCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Explanation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ReportType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Company" Relationship="Self.FK_Repore_Company" FromRole="Report" ToRole="Company" />
         </EntityType>
         <EntityType Name="Rol">
@@ -1397,6 +1756,8 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Direction" ColumnName="Direction" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1411,6 +1772,8 @@
                 <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
                 <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1420,6 +1783,8 @@
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Explanation" ColumnName="Explanation" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1432,6 +1797,8 @@
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="CheckoutDate" ColumnName="CheckoutDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1464,6 +1831,8 @@
                 <ScalarProperty Name="Direction" ColumnName="Direction" />
                 <ScalarProperty Name="Nit" ColumnName="Nit" />
                 <ScalarProperty Name="Dpi" ColumnName="Dpi" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1480,6 +1849,8 @@
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Dpi" ColumnName="Dpi" />
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1515,7 +1886,7 @@
                 <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="CheckoutId" ColumnName="CheckoutId" />
-                <ScalarProperty Name="InvoiceCodigo" ColumnName="InvoiceCodigo" />
+                <ScalarProperty Name="InvoiceCode" ColumnName="InvoiceCode" />
                 <ScalarProperty Name="Serial" ColumnName="Serial" />
                 <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
                 <ScalarProperty Name="Explanation" ColumnName="Explanation" />
@@ -1550,6 +1921,8 @@
                 <ScalarProperty Name="Review" ColumnName="Review" />
                 <ScalarProperty Name="AditionalInformation" ColumnName="AditionalInformation" />
                 <ScalarProperty Name="Help" ColumnName="Help" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1600,6 +1973,8 @@
                 <ScalarProperty Name="Nit" ColumnName="Nit" />
                 <ScalarProperty Name="WebPage" ColumnName="WebPage" />
                 <ScalarProperty Name="Explanation" ColumnName="Explanation" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1622,6 +1997,8 @@
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="Nick" ColumnName="Nick" />
                 <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1633,6 +2010,9 @@
                 <ScalarProperty Name="ReportCode" ColumnName="ReportCode" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Explanation" ColumnName="Explanation" />
+                <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

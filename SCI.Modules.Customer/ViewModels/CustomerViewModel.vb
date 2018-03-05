@@ -145,18 +145,18 @@ Namespace SCI.Modules.Customer.ViewModels
         Private Function CanAcceptCustomerExecute() As Boolean
             Dim Result As Boolean = False
             Try
-                If ModelValidator.GetInstance.ValidateEmail(Email) Then
-                    If ModelValidator.GetInstance.ValidateNit(Nit) Then
-                        If ModelValidator.GetInstance.ValidateEmpty(Name) AndAlso
-                                ModelValidator.GetInstance.ValidateEmpty(LastName) AndAlso
-                                ModelValidator.GetInstance.ValidateEmpty(Phone) AndAlso
-                                ModelValidator.GetInstance.ValidateEmpty(Direction) Then
+                If ModelValidator.Instance.ValidateEmail(Email) Then
+                    If ModelValidator.Instance.ValidateNit(Nit) Then
+                        If ModelValidator.Instance.ValidateEmpty(Name) AndAlso
+                                ModelValidator.Instance.ValidateEmpty(LastName) AndAlso
+                                ModelValidator.Instance.ValidateEmpty(Phone) AndAlso
+                                ModelValidator.Instance.ValidateEmpty(Direction) Then
                             Result = True
                         End If
                     End If
                 End If
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType].ToString, "Error en 'CanAddCustomerExecute'")
+                SCILog.Instance.Control(ex, [GetType].ToString, "Error en 'CanAddCustomerExecute'")
             End Try
             Return Result
         End Function

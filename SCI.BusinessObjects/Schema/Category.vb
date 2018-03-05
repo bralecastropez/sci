@@ -14,6 +14,8 @@ Partial Public Class Category
     Public Property CategoryId As Integer
     Public Property Name As String
     Public Property Explanation As String
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property Product As ICollection(Of Product) = New HashSet(Of Product)
 

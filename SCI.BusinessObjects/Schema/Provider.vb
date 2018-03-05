@@ -22,6 +22,8 @@ Partial Public Class Provider
     Public Property Nit As String
     Public Property WebPage As String
     Public Property Explanation As String
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property Purchase As ICollection(Of Purchase) = New HashSet(Of Purchase)
 

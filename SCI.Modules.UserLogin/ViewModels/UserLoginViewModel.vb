@@ -5,6 +5,8 @@ Imports System.Windows
 Imports SCI.Modules.Manager.Views
 Imports SCI.Modules.Category.Views
 Imports System.Net.Mail
+Imports SCI.Infrastructure
+Imports SCI.Infrastructure.Util
 
 Namespace SCI.Modules.UserLogin.ViewModels
     Public Class UserLoginViewModel
@@ -97,6 +99,7 @@ Namespace SCI.Modules.UserLogin.ViewModels
                 If _userAccess.Login(paramUserName, paramPassword) Then
                     LoginSuccess = True
                     LoginMessage = "Bienvenido " & _userAccess.GetUserByUserName(UserName).Nick
+                    SCIActivity.Instance.Register("UserLogin", "Ingreso el Usuario", _userAccess.GetUserByUserName(UserName).Nick, "Select", "Login")
                     Application.Current.MainWindow.Content = New ManagerView
 
                     'Try

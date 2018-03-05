@@ -12,7 +12,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Proveedor")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Insertar Proveedor")
             End Try
             Return Resultado
         End Function
@@ -24,7 +24,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Proveedor")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Eliminar Proveedor")
             End Try
             Return Resultado
         End Function
@@ -36,7 +36,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Proveedor")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Editar Proveedor")
             End Try
             Return Resultado
         End Function
@@ -46,7 +46,7 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Resultado = DataContext.DBEntities.Provider.ToList
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Proveedores")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Listar Proveedores")
             End Try
             Return Resultado
         End Function
@@ -65,7 +65,7 @@ Namespace SCI.BusinessLogic.Services
                     Next
                 Next
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Proveedor")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Buscar Proveedor")
             End Try
             Return Result
         End Function

@@ -99,13 +99,13 @@ Namespace SCI.Modules.BranchOffice.ViewModels
             Dim Result As Boolean = False
             Try
 
-                If ModelValidator.GetInstance.ValidateEmpty(Name) AndAlso
-                    ModelValidator.GetInstance.ValidateEmpty(Phone) AndAlso
-                    ModelValidator.GetInstance.ValidateEmpty(Direction) Then
+                If ModelValidator.Instance.ValidateEmpty(Name) AndAlso
+                    ModelValidator.Instance.ValidateEmpty(Phone) AndAlso
+                    ModelValidator.Instance.ValidateEmpty(Direction) Then
                     Result = True
                 End If
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType].ToString, "Error en 'CanAddCustomerExecute'")
+                SCILog.Instance.Control(ex, [GetType].ToString, "Error en 'CanAddCustomerExecute'")
             End Try
             Return Result
         End Function

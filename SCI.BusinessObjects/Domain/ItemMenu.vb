@@ -32,7 +32,6 @@ Namespace SCI.BusinessObjects.Domain
             Me.Name = Name
             Me.Content = Content
         End Sub
-
 #End Region
     End Class
 

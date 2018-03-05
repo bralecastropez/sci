@@ -13,7 +13,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Insertar Caja")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Insertar Caja")
             End Try
             Return Resultado
         End Function
@@ -25,7 +25,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Eliminar Caja")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Eliminar Caja")
             End Try
             Return Resultado
         End Function
@@ -37,7 +37,7 @@ Namespace SCI.BusinessLogic.Services
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Resultado = False
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Editar Caja")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Editar Caja")
             End Try
             Return Resultado
         End Function
@@ -47,7 +47,7 @@ Namespace SCI.BusinessLogic.Services
             Try
                 Resultado = DataContext.DBEntities.BranchOffice.ToList
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Listar Caja")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Listar Caja")
             End Try
             Return Resultado
         End Function
@@ -66,7 +66,7 @@ Namespace SCI.BusinessLogic.Services
                     Next
                 Next
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType]().ToString, "Error al Buscar Caja")
+                SCILog.Instance.Control(ex, [GetType]().ToString, "Error al Buscar Caja")
             End Try
             Return Result
         End Function

@@ -6,7 +6,7 @@ Namespace SCI.Infrastructure.Helpers
         Inherits ViewModelBase
 #Region "Login"
         'USER
-        Public Property UserLogged As Reader = LogonConfig.GetInstance.UserLogged
+        Public Property UserLogged As Reader = LogonConfig.Instance.UserLogged
 #End Region
 #Region "Fields"
         'Dialogs

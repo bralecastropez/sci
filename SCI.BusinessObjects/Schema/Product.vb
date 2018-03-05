@@ -26,6 +26,8 @@ Partial Public Class Product
     Public Property Review As String
     Public Property AditionalInformation As String
     Public Property Help As String
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property Category As Category
     Public Overridable Property Product_Sale As ICollection(Of Product_Sale) = New HashSet(Of Product_Sale)
@@ -35,4 +37,6 @@ Partial Public Class Product
     Public Overrides Function ToString() As String
         Return Name
     End Function
+
+
 End Class

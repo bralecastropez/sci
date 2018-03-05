@@ -1,4 +1,6 @@
-﻿Imports System.Windows.Controls
+﻿Imports System.Windows
+Imports System.Windows.Controls
+Imports Dragablz
 Imports SCI.BusinessLogic.Services
 Imports SCI.BusinessObjects.Validators
 Imports SCI.BusinessObjects.ViewHelpers.Views
@@ -9,10 +11,13 @@ Imports SCI.Modules.Employee.Views
 Namespace SCI.Modules.Employee.ViewModels
     Public Class EmployeeViewModel
         Inherits GuiViewBase
+        Implements IInterTabClient
+
 #Region "Fields"
         Private _EmployeesList As List(Of Global.Employee)
         Private _GendersList As List(Of String)
         Private _SelectedEmployee As Global.Employee
+        Private _SelectedTab As String
         Private _Name As String
         Private _LastName As String
         Private _Email As String
@@ -23,6 +28,9 @@ Namespace SCI.Modules.Employee.ViewModels
         Private _Dpi As String
         Private _BirthDate As Date
         Private _EmployeeAccess As IEmployeeDataService
+
+        Private _ActivityEmployeeView As Object
+
 #End Region
 #Region "Properties"
         Public Property EmployeeAccess As IEmployeeDataService
@@ -58,6 +66,20 @@ Namespace SCI.Modules.Employee.ViewModels
             Set(value As Global.Employee)
                 _SelectedEmployee = value
                 OnPropertyChanged("SelectedEmployee")
+            End Set
+        End Property
+        Public Property SelectedTab As String
+            Get
+                Return _SelectedTab
+            End Get
+            Set(value As String)
+                _SelectedTab = value
+                OnPropertyChanged("SelectedTab")
+                If _SelectedTab = 2 Then
+                    'ActivityEmployeeView = New ActivityEmployeeView
+                    SnackbarMessage = SelectedTab
+                    ShowSnackbar = True
+                End If
             End Set
         End Property
         Public Property Name As String
@@ -141,6 +163,17 @@ Namespace SCI.Modules.Employee.ViewModels
                 OnPropertyChanged("BirthDate")
             End Set
         End Property
+
+        Private Property ActivityEmployeeView As Object
+            Get
+                Return _ActivityEmployeeView
+
+            End Get
+            Set(value As Object)
+                _ActivityEmployeeView = value
+                OnPropertyChanged("ActivityEmployeeView")
+            End Set
+        End Property
 #End Region
 #Region "Contructors"
         Sub New()
@@ -162,6 +195,8 @@ Namespace SCI.Modules.Employee.ViewModels
             SearchCommand = New RelayCommand(AddressOf SearchEmployee)
             BackCommand = New RelayCommand(AddressOf BackExecute)
 
+            ActivityEmployeeView = New ActivityEmployeeView
+
             GendersList = New List(Of String)
             GendersList.Add("Masculino")
             GendersList.Add("Femenino")
@@ -171,16 +206,16 @@ Namespace SCI.Modules.Employee.ViewModels
         Private Function CanAcceptEmployeeExecute() As Boolean
             Dim Result As Boolean = False
             Try
-                If ModelValidator.GetInstance.ValidateEmail(Email) Then
-                    If ModelValidator.GetInstance.ValidateEmpty(Name) AndAlso
-                            ModelValidator.GetInstance.ValidateEmpty(LastName) AndAlso
-                            ModelValidator.GetInstance.ValidateEmpty(Phone) AndAlso
-                            ModelValidator.GetInstance.ValidateEmpty(Direction) Then
+                If ModelValidator.Instance.ValidateEmail(Email) Then
+                    If ModelValidator.Instance.ValidateEmpty(Name) AndAlso
+                            ModelValidator.Instance.ValidateEmpty(LastName) AndAlso
+                            ModelValidator.Instance.ValidateEmpty(Phone) AndAlso
+                            ModelValidator.Instance.ValidateEmpty(Direction) Then
                         Result = True
                     End If
                 End If
             Catch ex As Exception
-                SCILog.GetInstance.Control(ex, [GetType].ToString, "Error en 'CanAddCustomerExecute'")
+                SCILog.Instance.Control(ex, [GetType].ToString, "Error en 'CanAddCustomerExecute'")
             End Try
             Return Result
         End Function
@@ -205,18 +240,22 @@ Namespace SCI.Modules.Employee.ViewModels
                         'SecondDialogContent = New ConfirmDialogView("Éxito", "Se agregó correctamente el empleado", "Aceptar")
                         'ShowSecondDialog = True
                         ShowSnackbarMessage("Se agregó correctamente el empleado", "Aceptar")
+                        SCIActivity.Instance.Register("Employee", "Agrego un empleado", UserLogged.Nick, "Function", "Add")
+
                     End If
                 Case MaintanceType.Edit
                     If EmployeeAccess.EditEmployee(SelectedEmployee) Then
                         'SecondDialogContent = New ConfirmDialogView("", "Se actualizó correctamente el empleado", "Aceptar")
                         'ShowSecondDialog = True
                         ShowSnackbarMessage("Se actualizó correctamente el empleado", "Aceptar")
+                        SCIActivity.Instance.Register("Employee", "Actualizo un empleado", UserLogged.Nick, "Function", "Update")
                     End If
                 Case MaintanceType.Delete
                     If EmployeeAccess.DeleteEmployee(SelectedEmployee) Then
                         'SecondDialogContent = New ConfirmDialogView("Se eliminó correctamente el empleado", "", "Aceptar")
                         'ShowSecondDialog = True
                         ShowSnackbarMessage("Se eliminó correctamente la categoria", "Aceptar")
+                        SCIActivity.Instance.Register("Employee", "Elimino un empleado", UserLogged.Nick, "Function", "Delete")
                     End If
                 Case MaintanceType.Detail
                     Dim printDlg As New PrintDialog
@@ -272,7 +311,20 @@ Namespace SCI.Modules.Employee.ViewModels
         Public Sub SearchEmployee(ByVal Data As String)
             EmployeesList = EmployeeAccess.SearchEmployee(Data)
         End Sub
+
 #End Region
+        Public Function GetNewHost(interTabClient As IInterTabClient, partition As Object, source As TabablzControl) As INewTabHost(Of Window) Implements IInterTabClient.GetNewHost
+            Try
+                Return Nothing
+            Catch ex As Exception
+                SCILog.Instance.Control(ex, [GetType].Name, "GetNewHost")
+            End Try
+
+        End Function
+
+        Public Function TabEmptiedHandler(tabControl As TabablzControl, window As Window) As TabEmptiedResponse Implements IInterTabClient.TabEmptiedHandler
+            Throw New NotImplementedException()
+        End Function
 
     End Class
 End Namespace

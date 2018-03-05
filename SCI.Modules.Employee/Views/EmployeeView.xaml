@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:system="clr-namespace:System;assembly=mscorlib">
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:SCI.Modules.Employee.Views">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -23,137 +25,157 @@
         </EventTrigger>
     </UserControl.Triggers>-->
     <Grid>
-        <materialDesign:DialogHost HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsOpen="{Binding ShowFirstDialog}" DialogContent="{Binding FirstDialogContent}" CloseOnClickAway="True">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <!--<materialDesign:Card Padding="32" Margin="16">
+        <dragablz:TabablzControl Name="TabsContainer" BorderThickness="0" Margin="0,-1,0,1" SelectedIndex="{Binding SelectedTab}" >
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController />
+            </dragablz:TabablzControl.InterTabController>
+            <TabItem Header="Empleados">
+                <materialDesign:DialogHost HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsOpen="{Binding ShowFirstDialog}" DialogContent="{Binding FirstDialogContent}" CloseOnClickAway="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <!--<materialDesign:Card Padding="32" Margin="16">
                     <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" TextAlignment="Center">Listado de Categorias</TextBlock>
                 </materialDesign:Card>-->
 
-                <materialDesign:Card Margin="0, 0, 0, 0" >
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <materialDesign:TransitioningContent Grid.Row="0" OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
-                            <materialDesign:ColorZone Mode="PrimaryMid" materialDesign:ShadowAssist.ShadowDepth="Depth3">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0" Margin="16" Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="AccountMultiple" Height="32" Width="32" />
-                                        <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Margin="16 0 16 0">Listado de Empleados</TextBlock>
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                        <Border Background="White" MaxHeight="30" CornerRadius="3" ToolTip="Nombre para buscar" Margin="0 0 2 0">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Button Style="{DynamicResource MaterialDesignToolButton}" Command="{Binding SearchCommand}" x:Name="SearchButton" CommandParameter="{Binding ElementName=SearchBox, Path=Text}" Height="24" Width="24">
-                                                    <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
-                                                </Button>
-                                                <TextBox Foreground="Black" Grid.Column="1" Margin="5 0 0 0" materialDesign:HintAssist.Hint="Buscar" x:Name="SearchBox" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
-                                            </Grid>
-                                        </Border>
+                        <materialDesign:Card Margin="0, 0, 0, 0" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <materialDesign:TransitioningContent Grid.Row="0" OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
+                                    <materialDesign:ColorZone Mode="PrimaryMid" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0" Margin="16" Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="AccountMultiple" Height="32" Width="32" />
+                                                <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Margin="16 0 16 0">Listado de Empleados</TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                <Border Background="White" MaxHeight="30" CornerRadius="3" ToolTip="Nombre para buscar" Margin="0 0 2 0">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button Style="{DynamicResource MaterialDesignToolButton}" Command="{Binding SearchCommand}" x:Name="SearchButton" CommandParameter="{Binding ElementName=SearchBox, Path=Text}" Height="24" Width="24">
+                                                            <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                                                        </Button>
+                                                        <TextBox Foreground="Black" Grid.Column="1" Margin="5 0 0 0" materialDesign:HintAssist.Hint="Buscar" x:Name="SearchBox" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
+                                                    </Grid>
+                                                </Border>
 
 
-                                        <!--<Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="10 0 10 0" HorizontalAlignment="Left" ToolTip="Imprimir">-->
-                                        <!--<Button Style="{StaticResource  MaterialDesignFloatingActionMiniButton}" Margin="10 0 10 0" HorizontalAlignment="Left" ToolTip="Información">
+                                                <!--<Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="10 0 10 0" HorizontalAlignment="Left" ToolTip="Imprimir">-->
+                                                <!--<Button Style="{StaticResource  MaterialDesignFloatingActionMiniButton}" Margin="10 0 10 0" HorizontalAlignment="Left" ToolTip="Información">
                                             <materialDesign:PackIcon Kind="InformationOutline" Height="24" Width="24" />
                                         </Button>-->
-                                        <materialDesign:PopupBox Margin="16,0,16,0" StaysOpen="True">
-                                            <Grid Width="300" Margin="8,8,8,8">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="*"/>
-                                                </Grid.RowDefinitions>
-                                                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignTitleTextBlock}" Margin="8,8,8,16">Opciones</TextBlock>
-                                                <ListBox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <materialDesign:PackIcon Kind="CommentQuestionOutline" Margin="10 0 10 0" Height="24" Width="24" />
-                                                        <TextBlock>Información</TextBlock>
-                                                    </StackPanel>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <materialDesign:PackIcon Kind="CommentAlertOutline" Margin="10 0 10 0" Height="24" Width="24" />
-                                                        <TextBlock>Notificar un Error</TextBlock>
-                                                    </StackPanel>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <materialDesign:PackIcon Kind="CommentTextOutline" Margin="10 0 10 0" Height="24" Width="24" />
-                                                        <TextBlock>Comentarios</TextBlock>
-                                                    </StackPanel>
-                                                </ListBox>
-                                            </Grid>
-                                        </materialDesign:PopupBox>
-                                    </StackPanel>
+                                                <materialDesign:PopupBox Margin="16,0,16,0" StaysOpen="True">
+                                                    <Grid Width="300" Margin="8,8,8,8">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignTitleTextBlock}" Margin="8,8,8,16">Opciones</TextBlock>
+                                                        <ListBox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <materialDesign:PackIcon Kind="CommentQuestionOutline" Margin="10 0 10 0" Height="24" Width="24" />
+                                                                <TextBlock>Información</TextBlock>
+                                                            </StackPanel>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <materialDesign:PackIcon Kind="CommentAlertOutline" Margin="10 0 10 0" Height="24" Width="24" />
+                                                                <TextBlock>Notificar un Error</TextBlock>
+                                                            </StackPanel>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <materialDesign:PackIcon Kind="CommentTextOutline" Margin="10 0 10 0" Height="24" Width="24" />
+                                                                <TextBlock>Comentarios</TextBlock>
+                                                            </StackPanel>
+                                                        </ListBox>
+                                                    </Grid>
+                                                </materialDesign:PopupBox>
+                                            </StackPanel>
 
 
-                                </Grid>
-                            </materialDesign:ColorZone>
-                        </materialDesign:TransitioningContent>
-                        <DataGrid Padding="20" Grid.Row="1" SelectedItem="{Binding SelectedEmployee}" ItemsSource="{Binding EmployeesList}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" ScrollViewer.CanContentScroll="True">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="#" Binding="{Binding EmployeeId}"/>
-                                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*" />
-                                <DataGridTextColumn Header="Apellido" Binding="{Binding LastName}" Width="*" />
-                                <!--<DataGridTextColumn Header="Correo" Binding="{Binding Email}" Width="*" />-->
-                                <DataGridTextColumn Header="Telefono" Binding="{Binding Phone}"/>
-                                <!--<DataGridTextColumn Header="Dirección" Binding="{Binding Direction}" Width="*" />-->
-                                <DataGridTextColumn Header="Género" Binding="{Binding Gender}"/>
-                                <DataGridTextColumn Header="Fecha de Nacimiento" Binding="{Binding BirthDate}"/>
-                                <DataGridTextColumn Header="Comentario" Binding="{Binding Comment}" Width="*" />
-                                <DataGridTextColumn Header="DPI" Binding="{Binding Dpi}" Width="*" />
-                                <DataGridTemplateColumn Header="Acciones">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Editar" Width="50">
-                                                        <materialDesign:PackIcon Kind="Pencil" Height="15" Width="15" />
-                                                    </Button>
-                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Eliminar" Width="50">
-                                                        <materialDesign:PackIcon Kind="Delete" Height="15" Width="15" />
-                                                    </Button>
-                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DetailCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Detalle" Width="50">
-                                                        <materialDesign:PackIcon Kind="Information" Height="15" Width="15" />
-                                                    </Button>
-                                                </StackPanel>
-                                            </materialDesign:TransitioningContent>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
+                                        </Grid>
+                                    </materialDesign:ColorZone>
+                                </materialDesign:TransitioningContent>
+                                <DataGrid Padding="20" Grid.Row="1" SelectedItem="{Binding SelectedEmployee}" ItemsSource="{Binding EmployeesList}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" ScrollViewer.CanContentScroll="True">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="#" Binding="{Binding EmployeeId}"/>
+                                        <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*" />
+                                        <DataGridTextColumn Header="Apellido" Binding="{Binding LastName}" Width="*" />
+                                        <!--<DataGridTextColumn Header="Correo" Binding="{Binding Email}" Width="*" />-->
+                                        <DataGridTextColumn Header="Telefono" Binding="{Binding Phone}"/>
+                                        <!--<DataGridTextColumn Header="Dirección" Binding="{Binding Direction}" Width="*" />-->
+                                        <DataGridTextColumn Header="Género" Binding="{Binding Gender}"/>
+                                        <DataGridTextColumn Header="Fecha de Nacimiento" Binding="{Binding BirthDate}"/>
+                                        <DataGridTextColumn Header="Comentario" Binding="{Binding Comment}" Width="*" />
+                                        <DataGridTextColumn Header="DPI" Binding="{Binding Dpi}" Width="*" />
+                                        <DataGridTemplateColumn Header="Acciones">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.EditCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Editar" Width="50">
+                                                                <materialDesign:PackIcon Kind="Pencil" Height="15" Width="15" />
+                                                            </Button>
+                                                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Eliminar" Width="50">
+                                                                <materialDesign:PackIcon Kind="Delete" Height="15" Width="15" />
+                                                            </Button>
+                                                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DetailCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" ToolTip="Detalle" Width="50">
+                                                                <materialDesign:PackIcon Kind="Information" Height="15" Width="15" />
+                                                            </Button>
+                                                        </StackPanel>
+                                                    </materialDesign:TransitioningContent>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
 
-                </materialDesign:Card>
+                        </materialDesign:Card>
 
-                <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1" Effect="{DynamicResource MaterialDesignShadowDepth5}">
-                    <TextBlock Margin="16"></TextBlock>
-                </materialDesign:ColorZone>
-                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="0" Margin="0 0 28 -20" 
+                        <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1" Effect="{DynamicResource MaterialDesignShadowDepth5}">
+                            <TextBlock Margin="16"/>
+                        </materialDesign:ColorZone>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="0" Margin="0 0 28 -20" 
                         ToolTip="Agregar Empleado" Command="{Binding AddCommand}" >
-                    <Viewbox Width="22" Height="22">
-                        <Canvas Width="24" Height="24">
-                            <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}, Path=Foreground}" />
-                        </Canvas>
-                    </Viewbox>
-                </Button>
-                <materialDesign:Snackbar IsActive="{Binding ShowSnackbar}">
-                    <materialDesign:SnackbarMessage Content="{Binding SnackbarMessage}" ActionContent="{Binding SnackbarActionContent}" ActionCommand="{Binding SnackbarActionCommand}"/>
-                </materialDesign:Snackbar>
-            </Grid>
-        </materialDesign:DialogHost>
+                            <Viewbox Width="22" Height="22">
+                                <Canvas Width="24" Height="24">
+                                    <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}, Path=Foreground}" />
+                                </Canvas>
+                            </Viewbox>
+                        </Button>
+                        <!--<materialDesign:Snackbar IsActive="{Binding ShowSnackbar}">
+                            <materialDesign:SnackbarMessage Content="{Binding SnackbarMessage}" ActionContent="{Binding SnackbarActionContent}" ActionCommand="{Binding SnackbarActionCommand}"/>
+                        </materialDesign:Snackbar>-->
+                    </Grid>
+                </materialDesign:DialogHost>
+
+            </TabItem>
+            <TabItem Header="Reportes" Content="{Binding ReportEmployeeView}"/>
+            <TabItem Header="Actividad">
+                <ContentControl Content="{Binding ActivityEmployeeView}"/>
+            </TabItem>
+            <TabItem Header="Actividad">
+                <local:ActivityEmployeeView/>
+            </TabItem>
+            <TabItem Header="Activity" Content="{Binding ActivityEmployeeView}"/>
+            
+            <materialDesign:Snackbar IsActive="{Binding ShowSnackbar}">
+                <materialDesign:SnackbarMessage Content="{Binding SnackbarMessage}" ActionContent="{Binding SnackbarActionContent}" ActionCommand="{Binding SnackbarActionCommand}"/>
+            </materialDesign:Snackbar>
+        </dragablz:TabablzControl>
     </Grid>
 </UserControl>

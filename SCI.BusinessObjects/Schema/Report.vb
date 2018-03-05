@@ -16,6 +16,9 @@ Partial Public Class Report
     Public Property ReportCode As String
     Public Property Name As String
     Public Property Explanation As String
+    Public Property ReportType As String
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property Company As Company
 

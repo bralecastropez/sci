@@ -16,6 +16,8 @@ Partial Public Class Reader
     Public Property EmployeeId As Integer
     Public Property Nick As String
     Public Property Pass As String
+    Public Property CreationDate As Nullable(Of Date)
+    Public Property ModificationDate As Nullable(Of Date)
 
     Public Overridable Property Checkout As ICollection(Of Checkout) = New HashSet(Of Checkout)
     Public Overridable Property Employee As Employee
