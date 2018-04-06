@@ -157,25 +157,17 @@
                                 </Canvas>
                             </Viewbox>
                         </Button>
-                        <!--<materialDesign:Snackbar IsActive="{Binding ShowSnackbar}">
+                        <materialDesign:Snackbar IsActive="{Binding ShowSnackbar}">
                             <materialDesign:SnackbarMessage Content="{Binding SnackbarMessage}" ActionContent="{Binding SnackbarActionContent}" ActionCommand="{Binding SnackbarActionCommand}"/>
-                        </materialDesign:Snackbar>-->
+                        </materialDesign:Snackbar>
                     </Grid>
                 </materialDesign:DialogHost>
 
             </TabItem>
             <TabItem Header="Reportes" Content="{Binding ReportEmployeeView}"/>
             <TabItem Header="Actividad">
-                <ContentControl Content="{Binding ActivityEmployeeView}"/>
-            </TabItem>
-            <TabItem Header="Actividad">
                 <local:ActivityEmployeeView/>
             </TabItem>
-            <TabItem Header="Activity" Content="{Binding ActivityEmployeeView}"/>
-            
-            <materialDesign:Snackbar IsActive="{Binding ShowSnackbar}">
-                <materialDesign:SnackbarMessage Content="{Binding SnackbarMessage}" ActionContent="{Binding SnackbarActionContent}" ActionCommand="{Binding SnackbarActionCommand}"/>
-            </materialDesign:Snackbar>
         </dragablz:TabablzControl>
     </Grid>
 </UserControl>
